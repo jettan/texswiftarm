@@ -38,7 +38,7 @@ In return of this favour, we promised we would put some time and effort into a m
 The end result, however, was a TV with root access with which we could continue to the next step, getting libswift to run.
 After rooting the TV, it was possible to transfer files from and to the TV using FTP and to log into the TV using a netcat shell.
 
-\section{Compiling libswift for the TV}
+\section*{Compiling libswift for the TV}
 Even though we have compiled libswift for ARM machines before, this still proved to be a non-trivial task.
 Because the root file system on the TV is read-only, adding libraries like libevent, on which libswift depends was out of the question.
 This caused problems when trying to dynamically link libraries.
@@ -52,11 +52,11 @@ we discovered that FileZilla automatically decides whether the file to be transf
 For some reason, FileZilla treated our compiled library as an ASCII file.
 Once we switched to using FTP in the command line and setting the transfer mode to binary this problem was resolved and got libswift running.
 
-\section{Running libswift on the TV}
+\section*{Running libswift on the TV}
 Once libswift was compiled and running on the TV we were finally able to actually test whether the TV could handle it.
 For this we tried a number of video and music files of different quality streamed from a laptop to the TV and from the TV to the laptop.
 Videos up to a 720p with 24 frames per second went seamlessly.
-The TV's media player limitations, however, still apply.\footnote{http://www.samsung.com/uk/consumer/learningresources/media2.0/usb_faq.html}
+The TV's media player limitations, however, still apply.\footnote{http://www.samsung.com/uk/consumer/learningresources/media2.0/usb\_faq.html}
 When feeded 1080p video files, the TV begun to have some troubles.
 We made a demonstration video of these results which can be seen on YouTube\footnote{http://www.youtube.com/watch?v=MUCUMA0LVgc},
 this is the same video mentioned earlier.
