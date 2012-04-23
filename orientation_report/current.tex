@@ -1,0 +1,63 @@
+\chapter*{Current Progress}
+\label{chap:current}
+
+In this section, we will describe what we have been workin on during the third quarter as preparement for the TV development.
+Our first choice was to implement the application to run on the TV natively.
+Not only because it's challenging, but also because we believe it is possible for the TV to run it natively.
+The idea of having a TV without a set-top box or another device running the to be implemented application attracted us to do so.
+Moreover, since the Tribler team already ported libswift for Android and made a demo application,
+it wouldn't be as fun as implementing the application to run native on the TV.
+Should the TV be unrootable, we would have chosen this solution.
+Implementing the application to run on the Raspberry Pi was our last backup solution.
+Not only due to the unknown availibility of the device,
+but also because developing an application for it wouldn't be much different than developing an application for your own computer.
+
+\section*{Gaining root access to the TV}
+Initially we believed getting root access of the TV would be a simple step,
+but it turned out to be harder than we thought.
+To root the TV we planned on using the method provided by SamyGo (See \hyperref[sec:smarttv]{how to root\ref*{sec:smarttv}},
+but because the firmware version of our TV was the latest,
+we could not use the SamyGo tool\footnote{The SamyGo tool requires the TV to be at firmware <= 1019.0, whereas our TV was at 1021.0.}.
+
+Since there was no official way to downgrade to a lower firmware version,
+we decided to try to trick the TV into downgrading.
+The idea was to create our own firmware which would be an old version of the firmware repackaged with a higher version number.
+Since Samsung provided access to the source of all the firmware versions on the Internet,
+all that needed to be done was to change the version number and repackage it.
+Sadly Samsung incorporates a salted signature into the packaging of the firmware.
+While the SamyGo team possesses a tool to decrypt the packages succesfully,
+there was no way to repackage them back, so this plan ended up failing.
+
+During our own attempts to downgrade the firmware we had contacted the developers at SamyGo to ask 
+whether they had a solution for our firmware version or an approximate date for a new root kit.
+After some conversation they agreed to give us access to a server they used to spoof the Samsung online firmware updating server.
+Using the same technique we attempted offline, the idea was to trick the TV into downgrading by making it think it is upgrading.
+The online version however, succeeded to downgrade the TV to firmware 1015.0.
+Apparently a signature was not needed or was circumvented in some other way.
+In return of this favour, we promised we would put some time and effort into a method for gaining root access to the newest firmware version.
+The end result, however, was a TV with root access with which we could continue to the next step, getting libswift to run.
+After rooting the TV, it was possible to transfer files from and to the TV using FTP and to log into the TV using a netcat shell.
+
+\section{Compiling libswift for the TV}
+Even though we have compiled libswift for ARM machines before, this still proved to be a non-trivial task.
+Because the root file system on the TV is read-only, adding libraries like libevent, on which libswift depends was out of the question.
+This caused problems when trying to dynamically link libraries.
+By setting the 'static' flag on, libraries can be linked statically and solving this problem.
+
+The problem that costed most of our time, however, 
+had to do with the transfer of the compiled libswift to the TV.
+The libswift library would be compiled on a laptop and then transferred to the TV using FileZilla, an FTP client.
+After a long time of wondering why the compiled library would not run or even recognized as executable file by gdb on the TV,
+we discovered that FileZilla automatically decides whether the file to be transferred is an ASCII file or a binary file.
+For some reason, FileZilla treated our compiled library as an ASCII file.
+Once we switched to using FTP in the command line and setting the transfer mode to binary this problem was resolved and got libswift running.
+
+\section{Running libswift on the TV}
+Once libswift was compiled and running on the TV we were finally able to actually test whether the TV could handle it.
+For this we tried a number of video and music files of different quality streamed from a laptop to the TV and from the TV to the laptop.
+Videos up to a 720p with 24 frames per second went seamlessly.
+The TV's media player limitations, however, still apply.\footnote{http://www.samsung.com/uk/consumer/learningresources/media2.0/usb_faq.html}
+When feeded 1080p video files, the TV begun to have some troubles.
+We made a demonstration video of these results which can be seen on YouTube\footnote{http://www.youtube.com/watch?v=MUCUMA0LVgc},
+this is the same video mentioned earlier.
+
