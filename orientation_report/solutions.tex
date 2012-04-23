@@ -1,0 +1,57 @@
+\chapter*{Solutions}
+
+In this section, we will list 3 solutions to develop a peer-to-peer application for the Samsung Smart TV.
+
+\section*{Develop a native application}
+The first solution is to implement the peer-to-peer application so that it can be run natively on the TV itself.
+The TVs to be used are the UE40D7000\footnote{http://www.samsung.com/nl/consumer/tv-audio-video/televisions/led-tv/UE40D7000LSXXN-spec} 
+and the UE46D8000\footnote{http://www.samsung.com/nl/consumer/tv-audio-video/televisions/led-tv/UE46D8000YSXXH-spec}.
+In order to run the application native on the TV, root access is required, 
+as the TV does not allow external libraries, in particular libswift, to be used in the Samsung SDK.
+In fact, one can only make application with HTML, DOM, CSS or Javascript with Flash support and the built-in media player\footnote{http://www.samsungdforum.com/Devtools/Spec}.
+
+To gain root access, one must follow the steps on \hyperref{http://wiki.samygo.tv/index.php5/Rooting_D_series_arm_cpu_models}.
+
+These are the steps to gain root access:
+
+Create the developer account.
+1. Enter recovery menu on the TV (press info, menu, mute, power while TV is turned off)
+2. Set the RS232 on debug and the watchdog off.
+3. Save settings and reboot the TV normally.
+4. Enter SmartHub.
+5. Go to Settings.
+6. Create a developer account (name = develop, password any)
+7. Exit SmartHub and reboot the TV.
+
+Now install the hack:
+
+1. Enter SmartHub.
+2. Login on your developer account.
+3. Go to Settings -> Development -> Setting Server IP
+4. Enter 46.4.199.222 as IP.
+5. Press User Application Synchronization (This could take a long time).
+6. Exit Developer menu and SmartHub.
+7. Reboot TV.
+8. Enter SmartHub.
+9. Execute the SamyGo widget.
+
+With this the TV will be rooted.
+
+To cross-compile code for the Samsung TV, 
+a cross-compilation toolchain is needed, which can be found \hyperref{here\ref*{https://opensource.samsung.com}}.
+With this, we can cross-compile libswift for the TV.
+
+Further development will then involve the use of the Samsung SDK with another daemon that handles the libswift calls.
+
+\section*{Developing an application for the Raspberry Pi}
+The second solution is to implement an application for an embedded system sporting an arm processor such as the Raspberry Pi\footnote{http://www.raspberrypi.org}
+and using the Raspberry Pi as a set-top box on the Samsung Smart TV.
+Since the Raspberry Pi already runs a Linux distro such as Fedora, development can be done on the device itself.
+Lots of libraries are already present and we can even make use of strong media players such as mplayer.
+In short, the application to be developed would then be a Tribler clone, but only for arm Linux.
+
+\section*{Develop an application for the Galaxy Nexus}
+The main idea of this solution is to develop an application that runs on the Samsung Galaxy Nexus with Android Ice Cream Sandwich.
+Display will be forwarded to the TV screen by using an MHL cable\footnote{http://www.handtec.co.uk/product.php/6075/samsung-galaxy-nexus-official-mhl-microusb-to-hdmi-adapter}.
+Since the Tribler team already ported libswift for the Android succesfully,
+we can proceed with the development of the application itself when choosing this solution.
