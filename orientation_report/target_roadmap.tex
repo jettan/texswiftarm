@@ -1,4 +1,4 @@
-\chapter*{Target Roadmap}
+\chapter{Target Roadmap}
 
 In order to keep the development of the application structured we have divided the functionality 
 we would like to achieve into separate phases. 
@@ -12,31 +12,34 @@ The phases as described now are aimed primarily at solution 1 although they can 
 apply to the other solutions.
 
 The functionality described in the phases could be categorised as must have, 
-should have, would have and could have functionality. What exactly each phase will entail is explained below.
+should have, would have and could have functionality.
+What exactly each phase will entail is explained below.
 
-\section*{Phase 1}
+\section{Phase 1}
 This phase concentrates on getting the very basics up and running. 
 Our application will be built around the libswift library and therefore 
-libswift must be compiled and runnable on the TV. 
+libswift must be compiled and executable on the TV. 
 As libswift is for file transfer over the Internet we will also need to make the 
 TV internet connectible and be able to download files. 
-To make accessing the TV easier we want to be able to use Telnet or SSH to connect to it.
+To access the TV easier we want to be able to access the TV remotely by Telnet, SSH or something similar.
 
 To summarise:
 
-The TV is Telnet connectible
-The TV is Internet connectible
-Libswift runs on the TV
-You can download files from the Internet via the command line
+\begin{itemize}
+\item The TV is Internet connectible;
+\item The TV is remotely accessible;
+\item Libswift runs on the TV;
+\item You can download files from the Internet via the command-line.
+\end{itemize}
 At the moment, this phase is already finished as we already succeeded in gaining root access and 
 have libswift up and running on the TV. See \hyperref[chap:current]{here\ref*{chap:current}} for more about the current progress.
-However, although we already have root access on the TV, 
+Although we already have root access on the TV, 
 we would like to find a method to gain root access on the newest firmware currently 
 available so that our application will be compatible with the latest software. 
 
-\section*{Phase 2}
+\section{Phase 2}
 The next step is to build our own application using functionality from the libswift library. 
-This step will also be run from the command line. 
+This step will also be run from the command-line. 
 We want to be able to download files using the libswift library and 
 be able to pass them on to a media decoder and play them on the screen. 
 Another feature that libswift offers is streaming of video rather than 
@@ -50,7 +53,7 @@ We would like to implement that in this phase as well.
 \item Full streaming functionality.
 \end{itemize}
 
-\section*{Phase 3}
+\section{Phase 3}
 This phase is aimed at making a more user friendly application rather than 
 the command line interface that was being used up until this point. 
 The advantage is that all the download functionality has been implemented in the 
@@ -61,17 +64,17 @@ have some hard coded test swarms from which you can download files for demonstra
 \begin{itemize}
 \item A GUI controlled by the TV remote control;
 \item A file browser;
-\item A list of test swarms (hard coded) from which you can download and play;
+\item A list of test swarms (hard coded) from which you can download and play.
 \end{itemize}
 
-\section*{Phase 4}
+\section{Phase 4}
 In phase 4 we have a number of options. 
 Due to the fact that it is probably unrealistic to implement them all within the given time we have decided to split 
 them up into three groups. 
 Which one we will choose will be decided at a later time during the project based 
 on the amount of time we have left and our personal preference.
 
-\subsection*{Phase 4A}
+\subsection{Phase 4A}
 The first option is to get Python, SQLite and M2Crypto working on the TV. 
 This would enable us to run `Dispersie', made by the Tribler team and let us implement searching, 
 browsing and sharing functionality.
@@ -81,7 +84,7 @@ browsing and sharing functionality.
 \item Use this to implement searching, browsing, streaming and sharing functionality.
 \end{itemize}
 
-\subsection*{Phase 4B}
+\subsection{Phase 4B}
 Another option is to expand the application by adding a more advanced GUI with search functionality. 
 Also TV to TV download and upload would be interesting rather than downloading from a central server. 
 We could also add more demo applications and functions.
@@ -93,7 +96,7 @@ We could also add more demo applications and functions.
 \item More demo apps;
 \end{itemize}
 
-\subsection*{Phase 4C}
+\subsection{Phase 4C}
 The last option is to connect a web cam to the TV and support streaming to multiple other 
 TV\textquotesingle s from the TV with the web cam.
 
@@ -101,7 +104,8 @@ TV\textquotesingle s from the TV with the web cam.
 \item Live streaming from a web cam to multiple TV\textquotesingle s using the libswift library.
 \end{itemize}
 
-\subsection*{Planning}
+\newpage
+\subsection{Planning}
 
 \begin{table}[h]
 	\begin{tabular}{|l|l|}

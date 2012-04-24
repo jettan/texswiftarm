@@ -1,0 +1,20 @@
+\contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.1}
+\contentsline {chapter}{\numberline {2}Usage of Libswift}{3}{chapter.2}
+\contentsline {chapter}{\numberline {3}Solutions}{4}{chapter.3}
+\contentsline {section}{\numberline {3.1}Develop a native application}{4}{section.3.1}
+\contentsline {section}{\numberline {3.2}Developing an application for the Raspberry Pi}{5}{section.3.2}
+\contentsline {section}{\numberline {3.3}Develop an application for the Galaxy Nexus}{5}{section.3.3}
+\contentsline {chapter}{\numberline {4}Study of Feasibility}{6}{chapter.4}
+\contentsline {chapter}{\numberline {5}Target Roadmap}{7}{chapter.5}
+\contentsline {section}{\numberline {5.1}Phase 1}{7}{section.5.1}
+\contentsline {section}{\numberline {5.2}Phase 2}{8}{section.5.2}
+\contentsline {section}{\numberline {5.3}Phase 3}{8}{section.5.3}
+\contentsline {section}{\numberline {5.4}Phase 4}{8}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Phase 4A}{9}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}Phase 4B}{9}{subsection.5.4.2}
+\contentsline {subsection}{\numberline {5.4.3}Phase 4C}{9}{subsection.5.4.3}
+\contentsline {subsection}{\numberline {5.4.4}Planning}{10}{subsection.5.4.4}
+\contentsline {chapter}{\numberline {6}Current Progress}{11}{chapter.6}
+\contentsline {section}{\numberline {6.1}Gaining root access to the TV}{11}{section.6.1}
+\contentsline {section}{\numberline {6.2}Compiling libswift for the TV}{12}{section.6.2}
+\contentsline {section}{\numberline {6.3}Running libswift on the TV}{12}{section.6.3}
