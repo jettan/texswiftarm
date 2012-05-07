@@ -1,0 +1,65 @@
+\documentclass[a4paper]{report}
+
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{parskip}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{pdfpages}
+
+\begin{document}
+
+\begin{titlepage}
+			\begin{center}
+			\textsc{\LARGE {IN3405 Bachelor Project}}\\[1cm]
+			\rule{\linewidth}{0.5mm} \\[0.4cm]
+
+			{\Huge \bfseries NAME}\\[0.15cm]
+
+			\rule{\linewidth}{0.5mm} \\[1.5cm]
+			
+			\vskip 2 cm
+			\includegraphics[scale=0.5]{title.jpg}
+			\vskip 1 cm
+				\rule{\linewidth}{0.5mm}
+			
+			\vskip 0.5 cm
+			
+			\begin{minipage}{0.4\textwidth}
+				\begin{flushleft} \large
+					\emph{Authors:}\\
+					\begin{tabular}{l}
+						S.E. Austin (4005996) \\
+						A. Drif (4030532) \\
+						W.K.H. Ko (4005686) \\
+						J.E.T. Tan (4032918)
+					\end{tabular}
+				\end{flushleft}
+			\end{minipage}
+			\hspace{1cm}
+			\begin{minipage}{0.4\textwidth}
+				\begin{flushright} \large
+					\emph{Supervisor:} \\
+					Dr.Ir. J.A. Pouwelse
+				\end{flushright}
+			\end{minipage}
+			
+			\vskip 0.5 cm
+			
+			\rule{\linewidth}{0.5mm}
+			\end{center}
+\end{titlepage}
+
+\include{preface}
+
+\tableofcontents
+
+\include{abstract}
+\include{introduction}
+\include{problem}
+\include{design}
+\include{implementation}
+\include{lessons_learnt}
+\include{appendix}
+
+\end{document}
