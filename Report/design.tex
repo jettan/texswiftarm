@@ -1,9 +1,80 @@
 \chapter{Design}
-This chapter discusses the design process of our application. First, it was needed to know what the user requirements are. For this, we interviewed our supervisor who also acts as our client.
+This chapter discusses the design process of our application. First, it was needed to know what the user requirements are. For this, we interviewed our supervisor who also acts as our client. These requirements were also acquired through brainstorming. Then, use cases for our application were designed, which corresponds with the user requirements. In this phase, a business class diagram was also made which is easier to understand for the client than the complete class diagram of the whole application. After researching the framework present on the Samsung Smart TV and the possibilities of libswift, a design for the software architecture could be made. Lastly, implementation models such as sequence diagrams and class diagrams were made, which serve as blueprints for the application.
 
 \section{Requirements}
 
 \section{Use Cases}
+
+\begin{center}
+\begin{tikzpicture}
+\begin{umlsystem}[fill=red!10]{The system}
+
+\umlusecase[x=7, width=5cm]{1.Limit upload/download speed}
+\umlusecase[x= 1.5, width =1.5cm]{2.Search File}
+\umlusecase[x=-1, y=-2, width =1.5cm]{3.Download File}
+\umlusecase[x=3, y=-2, width =1.5cm]{4.Stream File}
+\umlusecase[x=8, y=-4, width=3cm]{5.Play Media File}
+\umlusecase[x=2, y=-6, width=3cm]{6.Browse File System}
+\umlusecase[x=0.5, y=-12, width=1.5cm]{7.Search Files}
+\umlusecase[x=-1, y=-9, width=1.5cm]{8.Update Files}
+\umlusecase[x=3, y=-9, width=1.5cm]{9.Delete Files}
+\umlusecase[x=9, y=-8, width=3cm]{10.Change File Visibility}
+\umlusecase[x=8, y=-10, width=1.5cm]{11.Sort Files}
+\umlusecase[x=-1, y=-15, width=1.5cm]{12.Search locally}
+\umlusecase[x=2, y=-15, width=1.5cm]{13.Search on the net}
+\umlusecase[x=4, y=-12, width=1.5cm]{14.Sort on date}
+\umlusecase[x=6, y=-12, width=1.5cm]{15.Sort on type}
+\umlusecase[x=8, y=-12, width=1.5cm]{16.Sort on name}
+\umlusecase[x=10, y=-12, width=1.5cm]{17.Sort on size}
+
+\end{umlsystem}
+
+\umlactor[x=12.5, y=-5]{User}
+
+%\umlassoc{User}{usecase-1}
+%\umlassoc{User}{usecase-2}
+%\umlassoc{User}{usecase-3}
+%\umlassoc{User}{usecase-4}
+%\umlassoc{User}{usecase-5}
+%\umlassoc{User}{usecase-6}
+%\umlassoc{User}{usecase-7}
+%\umlassoc{User}{usecase-8}
+%\umlassoc{User}{usecase-9}
+%\umlassoc{User}{usecase-10}
+%\umlassoc{User}{usecase-11}
+%\umlassoc{User}{usecase-12}
+%\umlassoc{User}{usecase-13}
+%\umlassoc{User}{usecase-14}
+%\umlassoc{User}{usecase-15}
+%\umlassoc{User}{usecase-16}
+%\umlassoc{User}{usecase-17}
+
+
+\umlinclude[name=incl]{usecase-3}{usecase-2}
+\umlinclude[name=incl]{usecase-4}{usecase-2}
+\umlinclude[name=incl]{usecase-4}{usecase-5}
+
+\umlinclude[name=incl]{usecase-5}{usecase-6}
+\umlinclude[name=incl]{usecase-8}{usecase-6}
+\umlinclude[name=incl]{usecase-9}{usecase-6}
+\umlinclude[name=incl]{usecase-10}{usecase-6}
+\umlinclude[name=incl]{usecase-11}{usecase-6}
+
+\umlinclude[name=incl]{usecase-8}{usecase-7}
+\umlinclude[name=incl]{usecase-9}{usecase-7}
+
+\umlVHextend{usecase-14}{usecase-11}
+\umlVHextend{usecase-15}{usecase-11}
+\umlVHextend{usecase-16}{usecase-11}
+\umlVHextend{usecase-17}{usecase-11}
+
+\umlVHextend{usecase-12}{usecase-7}
+\umlVHextend{usecase-13}{usecase-7}
+
+\end{tikzpicture}
+\end{center}
+
+\section{Business Class Diagram}
 
 \section{Software Architecture}
 

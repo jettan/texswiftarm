@@ -1,2 +1,9 @@
+\select@language {english}
 \contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}
 \contentsline {chapter}{\numberline {2}Problem}{4}{chapter.2}
+\contentsline {chapter}{\numberline {3}Design}{5}{chapter.3}
+\contentsline {section}{\numberline {3.1}Requirements}{6}{section.3.1}
+\contentsline {section}{\numberline {3.2}Use Cases}{6}{section.3.2}
+\contentsline {section}{\numberline {3.3}Business Class Diagram}{7}{section.3.3}
+\contentsline {section}{\numberline {3.4}Software Architecture}{7}{section.3.4}
+\contentsline {section}{\numberline {3.5}Implementation}{7}{section.3.5}
