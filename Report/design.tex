@@ -5,6 +5,7 @@ This chapter discusses the design process of our application. First, it was need
 
 \section{Use Cases}
 
+\begin{comment}
 \begin{center}
 \begin{tikzpicture}
 \begin{umlsystem}[fill=red!10]{The system}
@@ -31,25 +32,6 @@ This chapter discusses the design process of our application. First, it was need
 
 \umlactor[x=12.5, y=-5]{User}
 
-%\umlassoc{User}{usecase-1}
-%\umlassoc{User}{usecase-2}
-%\umlassoc{User}{usecase-3}
-%\umlassoc{User}{usecase-4}
-%\umlassoc{User}{usecase-5}
-%\umlassoc{User}{usecase-6}
-%\umlassoc{User}{usecase-7}
-%\umlassoc{User}{usecase-8}
-%\umlassoc{User}{usecase-9}
-%\umlassoc{User}{usecase-10}
-%\umlassoc{User}{usecase-11}
-%\umlassoc{User}{usecase-12}
-%\umlassoc{User}{usecase-13}
-%\umlassoc{User}{usecase-14}
-%\umlassoc{User}{usecase-15}
-%\umlassoc{User}{usecase-16}
-%\umlassoc{User}{usecase-17}
-
-
 \umlinclude[name=incl]{usecase-3}{usecase-2}
 \umlinclude[name=incl]{usecase-4}{usecase-2}
 \umlinclude[name=incl]{usecase-4}{usecase-5}
@@ -73,8 +55,112 @@ This chapter discusses the design process of our application. First, it was need
 
 \end{tikzpicture}
 \end{center}
+\end{comment}
 
 \section{Business Class Diagram}
+
+\begin{center}
+\begin{tikzpicture}
+%\begin{umlpackage}{p}
+%\begin{umlpackage}{sp1}
+
+\umlclass[x=-5]{Sendable}{
+  - trackers : list<tracker> \\
+  - seeders  : list<seeder> \\
+  - speed	   : double
+}{
+  + stop() : void \\
+  + pause() : void \\
+}
+
+\umlclass[x=3]{FileManager}{
+  - list<File>
+}{
+  + remove(File file) : void \\
+  + add(File file) : File \\		
+  + rename(File file) : File \\
+  + sort() : void \\
+  + search(File file) : list<File> \\
+}
+
+\umlclass[x=3, y=-6]{File}{
+  - name : String \\
+  - date : String \\  
+  - extension : String \\  
+  - size : double \\
+  - visible : bool \\
+}{
+  + setVisibility(bool value); \\
+  + isVisible() : bool;
+}
+
+\umlclass[x=4, y=-11]{Media}{
+  - length : double \\
+   
+}{}
+
+\umlclass[x=0, y=-11]{Picture}{
+  - height : double \\
+  - width  : double \\
+}{}
+
+\umlclass[x=-7, y=-4]{Download}{
+  - percentage : double
+}{
+  + start() : void \\		
+  + resume() : void \\  
+}
+
+\umlclass[x=-3, y=-4]{Upload}{
+  - amount : double
+}{
+  + start() : void \\		
+  + resume() : void \\  	
+}
+
+\umlclass[x=-5, y=-6]{Stream}{
+  - amount : double
+}{
+  + play() : void
+}
+
+\umlclass[x=-5, y=-10.5]{DownloadManager}{
+  - amount : double
+}{
+  + play() : void
+}
+
+\umlclass[x=-2, y=-14]{MediaPlayer}{
+}{
+  + open(Media file) : void \\
+  + open(Stream stream) : void
+}
+
+\umlaggreg[mult1=1, mult2=1, pos=0.8, angle1=30, angle2=60]{Sendable}{File}
+\umlaggreg[mult1=1, mult2=*]{FileManager}{File}
+
+\umlVHVinherit{Download}{Sendable}
+\umlVHVinherit{Upload}{Sendable}
+\umlinherit{Stream}{Sendable}
+
+\umlVHVinherit{Media}{File}
+\umlVHVinherit{Picture}{File}
+
+\umlVHVaggreg[mult1=1, mult2=*]{DownloadManager}{Upload}
+\umlVHVaggreg[mult1=1, mult2=*]{DownloadManager}{Download}
+
+\umlVHassoc{MediaPlayer}{Stream}
+\umlVHassoc{Media}{MediaPlayer}
+
+%\umlassoc[geometry=-|-, arg1=tata, mult1=*, pos1=0.3, arg2=toto, mult2=1, pos2=2.9, align2=left]{C}{B}
+%\umlunicompo[geometry=-|, arg=titi, mult=*, pos=1.7, stereo=vector]{D}{C}
+%\umlimport[geometry=|-, anchors=90 and 50, name=import]{sp2}{sp1}
+%\umlaggreg[arg=tutu, mult=1, pos=0.8, angle1=30, angle2=60, loopsize=2cm]{D}{D}
+%\umlinherit[geometry=-|]{D}{B}
+%\umlnote[x=2.5,y=-6, width=3cm]{B}{Je suis une note qui concerne la classe B}
+%\umlnote[x=7.5,y=-2]{import-2}{Je suis une note qui concerne la relation d'import}
+\end{tikzpicture}
+\end{center}
 
 \section{Software Architecture}
 
