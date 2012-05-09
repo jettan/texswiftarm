@@ -10,22 +10,22 @@ Functional requirements specify the core functionality of the application. These
 \begin{itemize}
 \item[1.] Given two peers \textit{A} and \textit{B}:
 	\begin{itemize}
-	\item[1.1.] \textit{A} is able to download from \textit{B} (UC 3);
+	\item[1.1.] \textit{A} is able to download from \textit{B} (UC 12);
 	\item[1.2.] \textit{A} is able to upload to \textit{B} (No use case since this should happen automatically);
-	\item[1.3.] \textit{A} is able to stream to/from \textit{B} (UC 4);
+	\item[1.3.] \textit{A} is able to stream to/from \textit{B} (UC 11);
 	\end{itemize}	
-\item[2.] The users should be able to search for files other peers own (UC 2, 13);
-\item[3.] The users should be able to search/browse files they own themselves (UC 2, 6, 12);
-\item[4.] The users should be able to playback media content. Media in this context means any kind of video or audio file (UC 5);
+\item[2.] The users should be able to search for files other peers own (UC 9, 13);
+\item[3.] The users should be able to search/browse files they own themselves (UC 2, 8, 13);
+\item[4.] The users should be able to playback media content. Media in this context means any kind of video or audio file (UC 6);
 \item[5.] Users should be able to:
 	\begin{itemize}
-	\item[5.1.] Move files on the file system (UC 7);
-	\item[5.2.] Edit files on the file system, i.e. rename files (UC 8);	
-	\item[5.3.] Remove files on the file system (UC 9);
+	\item[5.1.] Move files on the file system (UC 5);
+	\item[5.2.] Edit files on the file system, i.e. rename files (UC 3);	
+	\item[5.3.] Remove files on the file system (UC 4);
 	
 	\end{itemize}	 
-\item[6.] Users should be able to sort files by name, size, date and type (UC 11, 14, 15, 16, 17); 
-\item[7.] Users should be able to separate private files from public files (UC 10);
+\item[6.] Users should be able to sort files by name, size, date and type (UC 10, 14, 15, 16, 17); 
+\item[7.] Users should be able to separate private files from public files (UC 7);
 \item[8.] Users should be able to limit the upload/download speed (UC 1). 
 \end{itemize} 
 
@@ -60,7 +60,7 @@ of the application;
 
 \item[2] The application must be integrated with the Samsung 
 framework, meaning that it should be recognised by the TV as 
-Javascript app developed with the Samsung SDK.
+JavaScript app developed with the Samsung SDK.
 \end{itemize}
 
 \section{Use Cases}
@@ -70,58 +70,57 @@ Javascript app developed with the Samsung SDK.
 \begin{tikzpicture}
 \begin{umlsystem}[fill=red!10]{The system}
 
-\umlusecase[x=7, width=5cm]{1.Limit upload/download speed}
-\umlusecase[x= 1.5, width =1.5cm]{2.Search File}
-\umlusecase[x=-1, y=-2, width =1.5cm]{3.Download File}
-\umlusecase[x=3, y=-2, width =1.5cm]{4.Stream File}
-\umlusecase[x=8, y=-4, width=3cm]{5.Play Media File}
-\umlusecase[x=2, y=-6, width=3cm]{6.Browse File System}
-\umlusecase[x=0.5, y=-12, width=1.5cm]{2.Search File}
-\umlusecase[x=-1, y=-9, width=1.5cm]{8.Update Files}
-\umlusecase[x=3, y=-9, width=1.5cm]{9.Delete Files}
-\umlusecase[x=9, y=-8, width=3cm]{10.Change File Visibility}
-\umlusecase[x=8, y=-10, width=1.5cm]{11.Sort Files}
-\umlusecase[x=-1, y=-15, width=1.5cm]{12.Search locally}
-\umlusecase[x=2, y=-15, width=1.5cm]{13.Search on the net}
-\umlusecase[x=4, y=-14, width=1.5cm]{14.Sort on date}
-\umlusecase[x=6, y=-14, width=1.5cm]{15.Sort on type}
-\umlusecase[x=8, y=-14, width=1.5cm]{16.Sort on name}
-\umlusecase[x=10, y=-14, width=1.5cm]{17.Sort on size}
-\umlusecase[x=-1, y=-4, width=1.5cm]{7.Move Files}
+\umlusecase[x=6, width=4cm]{1.Limit upload/download speed}
+\umlusecase[x=-2, y=-4, width=1.5cm]{3.Update Files}
+\umlusecase[x=1, y=-3, width=1.5cm]{4.Delete Files}
+\umlusecase[x=7, y=-2, width=3cm]{6.Play Media File}
+\umlusecase[width=3cm]{2.Browse File System}
+\umlusecase[x=4, y=-4, width=1.5cm]{5.Move Files}
+\umlusecase[x=7, y=-9, width =1.5cm]{11.Stream File}
+\umlusecase[x=7, y=-11, width =1.5cm]{12.Download File}
+\umlusecase[x=8, y=-4, width=3cm]{7.Change File Visibility}
+\umlusecase[y=-10, width=1.5cm]{10.Sort Files}
+\umlusecase[x=-1, y=-7, width=1.5cm]{8.Search locally}
+\umlusecase[x=2, y=-7, width=1.5cm]{9.Search on the net}
+\umlusecase[x=3, y=-10, width=1.5cm]{13.Search File}
+\umlusecase[x=-2, y=-14, width=1.5cm]{14.Sort on date}
+\umlusecase[x=0, y=-14, width=1.5cm]{15.Sort on type}
+\umlusecase[x=2, y=-14, width=1.5cm]{16.Sort on name}
+\umlusecase[x=4, y=-14, width=1.5cm]{17.Sort on size}
 
 \end{umlsystem}
 
-\umlactor[x=12.5, y=-5]{User}
+\umlactor[x=-4.5, y=-5]{User}
 
-\umlinclude[name=incl]{usecase-3}{usecase-2}
-\umlinclude[name=incl]{usecase-4}{usecase-2}
+\umlinclude[name=incl]{usecase-7}{usecase-12}
+\umlinclude[name=incl]{usecase-8}{usecase-12}
+
+\umlinclude[name=incl]{usecase-9}{usecase-5}
+\umlinclude[name=incl]{usecase-2}{usecase-5}
+\umlinclude[name=incl]{usecase-3}{usecase-5}
 \umlinclude[name=incl]{usecase-4}{usecase-5}
+\umlinclude[name=incl]{usecase-6}{usecase-5}
+\umlHVinclude[name=incl]{usecase-10}{usecase-5}
 
-\umlinclude{usecase-18}{usecase-6}
-\umlinclude[name=incl]{usecase-5}{usecase-6}
-\umlinclude[name=incl]{usecase-8}{usecase-6}
-\umlinclude[name=incl]{usecase-9}{usecase-6}
-\umlinclude[name=incl]{usecase-10}{usecase-6}
-\umlinclude[name=incl]{usecase-11}{usecase-6}
+\umlinclude[name=incl]{usecase-2}{usecase-11}
+\umlinclude[name=incl]{usecase-3}{usecase-11}
+\umlinclude[name=incl]{usecase-6}{usecase-11}
+\umlinclude[name=incl]{usecase-9}{usecase-11}
 
-\umlinclude[name=incl]{usecase-8}{usecase-7}
-\umlinclude[name=incl]{usecase-9}{usecase-7}
+\umlVHVextend{usecase-14}{usecase-10}
+\umlVHVextend{usecase-15}{usecase-10}
+\umlVHVextend{usecase-16}{usecase-10}
+\umlVHVextend{usecase-17}{usecase-10}
 
-\umlVHVextend{usecase-14}{usecase-11}
-\umlVHVextend{usecase-15}{usecase-11}
-\umlVHVextend{usecase-16}{usecase-11}
-\umlVHVextend{usecase-17}{usecase-11}
-
-\umlVHVextend{usecase-12}{usecase-7}
-\umlVHVextend{usecase-13}{usecase-7}
+\umlVHVextend{usecase-11}{usecase-13}
+\umlVHVextend{usecase-12}{usecase-13}
 
 \end{tikzpicture}
-\caption{Use case diagram of the application to be built. Note that UC 2 appears two times to keep the diagram clear.}
+\caption{Use case diagram of the application to be built. Note that the associations from the user to the use cases are left out in order to keep the diagram clear.}
 \end{figure}
 \end{center}
 
 \clearpage
-
 \section{Business Class Diagram}
 
 \begin{center}
@@ -223,7 +222,6 @@ Javascript app developed with the Samsung SDK.
 \end{figure}
 \end{center}
 \clearpage
-
 \section{MosCoW}
 
 \section{Software Architecture}
