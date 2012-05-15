@@ -562,8 +562,12 @@ Postconditions & A list sorted by size is returned.
   - size : double \\
   - visible : bool \\
 }{
-  + setVisibility(bool value); \\
-  + isVisible() : bool;
+  + setVisibility(bool value) : void \\
+  + isVisible() : bool \\
+  + setName(String name) : void \\
+  + getSize() : double \\
+  + getDate() : String \\
+  + getName() : String
 }
 
 \umlclass[x=4, y=-11]{Media}{
@@ -580,14 +584,14 @@ Postconditions & A list sorted by size is returned.
   - percentage : double
 }{
   + start() : void \\		
-  + resume() : void \\  
+  + resume() : void
 }
 
 \umlclass[x=-3, y=-4]{Upload}{
   - amount : double
 }{
   + start() : void \\		
-  + resume() : void \\  	
+  + resume() : void
 }
 
 \umlclass[x=-5, y=-6]{Stream}{
@@ -597,9 +601,17 @@ Postconditions & A list sorted by size is returned.
 }
 
 \umlclass[x=-5, y=-10.5]{DownloadManager}{
-  - amount : double
+  - downloaded : double \\
+  - uploaded : double \\
+  - downloads : list<Download> \\
+  - uploads : list<Uploads> 
 }{
-  + play() : void
+  + startDownload(String link) : void \\
+  + stopDownload(String link) : void \\
+  + pauseDownload(String link) : void \\
+  + resumeDownload(String link) : void \\
+  + startUpload(String name) : void \\
+  + stopUpload(String name) : void
 }
 
 \umlclass[x=-2, y=-14]{MediaPlayer}{
