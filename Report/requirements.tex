@@ -1,0 +1,649 @@
+\chapter{Requirements Analysis}
+This chapter discusses the design process of our application. First, it was needed to know what the user requirements are. For this, we interviewed our supervisor who also acts as our client. These requirements were also acquired through brainstorming. Then, use cases for our application were designed, which corresponds with the user requirements. In this phase, a business class diagram was also made which is easier to understand for the client than the complete class diagram of the whole application. After researching the framework present on the Samsung Smart TV and the possibilities of libswift, a design for the software architecture could be made. Lastly, implementation models such as sequence diagrams and class diagrams were made, which serve as blueprints for the application.
+
+\section{Requirements}
+The requirements can be split in two kinds, functional and non-functional requirements. These requirements  correspond to the use cases as mentioned in section \hyperref[sec:use_cases]{\ref*{sec:use_cases}} The non-functional requirements can then again be split in quality and platform requirements. In this section, the constraints the application has to deal with are also discussed.
+
+\subsection{Functional requirements} 
+Functional requirements specify the core functionality of the application. These requirements are covered by the use cases in the next section. The functional requirements are as follows:
+
+\begin{itemize}
+\item[1.] Given two peers \textit{A} and \textit{B}:
+	\begin{itemize}
+	\item[1.1.] \textit{A} is able to download from \textit{B} (UC 12);
+	\item[1.2.] \textit{A} is able to upload to \textit{B} (No use case since this should happen automatically);
+	\item[1.3.] \textit{A} is able to stream to/from \textit{B} (UC 11);
+	\end{itemize}	
+\item[2.] The users should be able to search for files other peers own (UC 9, 10);
+\item[3.] The users should be able to search/browse files they own themselves (UC 2, 8, 10);
+\item[4.] The users should be able to playback media content. 
+		  Media in this context means any kind of video or audio file (UC 6);
+\item[5.] Users should be able to:
+	\begin{itemize}
+	\item[5.1.] Move files on the file system (UC 5);
+	\item[5.2.] Edit files on the file system, i.e. rename files (UC 3);	
+	\item[5.3.] Remove files on the file system (UC 4);
+	
+	\end{itemize}	 
+\item[6.] Users should be able to sort files by name, size, date and type (UC 13, 14, 15, 16, 17); 
+\item[7.] Users should be able to separate private files from public files (UC 7);
+\item[8.] Users should be able to limit the upload/download speed (UC 1). 
+\end{itemize} 
+
+\subsection{Non-functional requirements}
+Non-functional requirements are those requirements that have to do with the operation of the system. 
+Unlike functional requirements, they do not describe what the services the system should provide, 
+but more how the system should work. We identified two kinds of non-functional requirements for our application, 
+quality and platform requirements.
+
+\subsubsection{Quality requirements} 
+\begin{itemize}
+\item[1] The response time of the system should be as low as possible since TVs are real-time systems. 
+We aim to limit the response time to 300 ms;
+\item[2] The RAM memory used by the application should not exceed 256 MB. 
+This includes the size of the application itself and the memory needed for calculations;
+\item[3] The application may use 100\% CPU power since no other applications should run along the application 
+to be built;
+\item[4] Downloads should be continued without loss of data after a failure;
+\item[5] Unfinished downloads should be resumed at start up;
+\item[6] The application should be able to cope with external devices, 
+memory sticks and other external storage devices in particular;
+\item[7] The user should be able to make use of (part of) the application at any time, 
+even when no Internet connection is available.  
+\end{itemize} 
+
+\subsubsection{Platform requirements}
+\begin{itemize}
+\item[1] The C++ back-end which makes use of the libswift library should be implemented so 
+that it is reusable for other systems that work with other front-ends (such as Android);
+\item[2] The application is made to run on a rooted Samsung Smart TV. 
+To see whether a Samsung TV is rootable or not, please check \url{http://www.samygo.tv/};
+\end{itemize}
+
+\subsection{Constraints}
+The constraints specify what our own limitations are we have to take into account when implementing the application. 
+These can be limitations put by the software we use, 
+or put by ourselves to reduce the application\textquotesingle s complexity.
+
+\begin{itemize}
+\item[1] Due to the limited memory available on the TV, it is not 
+possible to download and store great amounts of data on the TV. 
+Therefore, usage of external storage devices is mandatory to make use 
+of the application;
+
+\item[2] The application must be integrated with the Samsung 
+framework, meaning that it should be recognised by the TV as 
+JavaScript app developed with the Samsung SDK.
+\end{itemize}
+
+\section{Use Cases}
+\label{sec:use_cases}
+The use case models describe interactions between one or more actors and the system. 
+The models are used to depict what the users can do with the system and how they  should operate it.
+In our case, we only have one actor, which is the user who watches TV. This is because our application should always
+maintain the same behaviour for everyone who uses it; everyone using the application has the same rights, privileges 
+and use cases of the system. The use cases are shown in figure \ref{fig:use_case_diagram}, 
+in which the relations between them are also shown. The user should be able to carry out all the use cases, 
+these relations are left out for clarity. The use cases in figure \ref{fig:use_case_diagram} 
+are explained in further detail in their descriptions and with the use of UML sequence diagrams in sections 
+\hyperref[sec:use_case_descriptions]{\ref*{sec:use_case_descriptions}} and 
+\hyperref[sec:dynamic_models]{\ref*{sec:dynamic_models}} respectively.
+
+\begin{center}
+\begin{figure}[h!]
+\begin{tikzpicture}
+\begin{umlsystem}[fill=red!10]{The system}
+
+\umlusecase[x=6, width=4cm]{1.Limit upload/download speed}
+\umlusecase[x=-2, y=-4, width=1.5cm]{3.Update Files}
+\umlusecase[x=1, y=-3, width=1.5cm]{4.Delete Files}
+\umlusecase[x=7, y=-2, width=3cm]{6.Play Media File}
+\umlusecase[width=3cm]{2.Browse File System}
+\umlusecase[x=4, y=-4, width=1.5cm]{5.Move Files}
+\umlusecase[x=7, y=-9, width =1.5cm]{11.Stream File}
+\umlusecase[x=7, y=-11, width =1.5cm]{12.Download File}
+\umlusecase[x=8, y=-4, width=3cm]{7.Change File Visibility}
+\umlusecase[y=-10, width=1.5cm]{13.Sort Files}
+\umlusecase[x=-1, y=-7, width=1.5cm]{8.Search locally}
+\umlusecase[x=2, y=-7, width=1.5cm]{9.Search on the net}
+\umlusecase[x=3, y=-10, width=1.5cm]{10.Search File}
+\umlusecase[x=-2, y=-14, width=1.5cm]{14.Sort by date}
+\umlusecase[x=0, y=-14, width=1.5cm]{15.Sort by type}
+\umlusecase[x=2, y=-14, width=1.5cm]{16.Sort by name}
+\umlusecase[x=4, y=-14, width=1.5cm]{17.Sort by size}
+
+\end{umlsystem}
+
+\umlactor[x=-4.5, y=-5]{User}
+
+\umlinclude[name=incl]{usecase-7}{usecase-12}
+\umlinclude[name=incl]{usecase-8}{usecase-12}
+
+\umlinclude[name=incl]{usecase-9}{usecase-5}
+\umlinclude[name=incl]{usecase-2}{usecase-5}
+\umlinclude[name=incl]{usecase-3}{usecase-5}
+\umlinclude[name=incl]{usecase-4}{usecase-5}
+\umlinclude[name=incl]{usecase-6}{usecase-5}
+\umlHVinclude[name=incl]{usecase-10}{usecase-5}
+\umlVHinclude[name=incl]{usecase-4}{usecase-11}
+
+\umlinclude[name=incl]{usecase-2}{usecase-11}
+\umlinclude[name=incl]{usecase-3}{usecase-11}
+\umlinclude[name=incl]{usecase-6}{usecase-11}
+\umlinclude[name=incl]{usecase-9}{usecase-11}
+
+\umlVHVinherit{usecase-14}{usecase-10}
+\umlVHVinherit{usecase-15}{usecase-10}
+\umlVHVinherit{usecase-16}{usecase-10}
+\umlVHVinherit{usecase-17}{usecase-10}
+
+\umlVHVinherit{usecase-11}{usecase-13}
+\umlVHVinherit{usecase-12}{usecase-13}
+
+\end{tikzpicture}
+\label{fig:use_case_diagram}
+\caption{Use case diagram of the application to be built. 
+Note that the associations from the user to the use cases are left out in order to keep the diagram clear.}
+\end{figure}
+\end{center}
+
+\clearpage
+\subsection{Use Case Descriptions}
+\label{sec:use_case_descriptions}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+Name & Limit upload/download speeds\\ \hline
+Goal & Save bandwidth.\\ \hline
+Preconditions & -- \\ \hline
+Summary & The user adjusts the upload or download speed.\\ \hline
+Steps &  1. User clicks the settings button; \\
+      &  2. \textit{System} shows the settings page; \\
+      &  3. User sets the download and upload speeds; \\
+      &  4. User clicks OK button; \\
+      &  5. \textit{System} saves the settings and applies the new speeds;
+        \\ \hline
+Postconditions & Downloads and uploads will never exceed the new speeds.
+\\ \hline
+\end{tabular}
+\caption{Use Case 1: Limit upload/download speeds}
+\label{tab:UC1}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+Name & Browse File System\\ \hline
+Goal & Getting an overview of the files in the file system.\\ \hline
+Preconditions & One or more external storage devices are connected. \\ \hline
+Summary & The user browses through the directories on the file system.\\ \hline
+Related Cases & Play Media File, Move File, Update File, Delete File, \\ 
+              &  Sort Files, Change File Visibility. \\ \hline
+Steps &  1. User selects the device to browse; \\
+      &  2. \textit{System} shows list of files and directories of the selected device. 
+        \\ \hline
+Postconditions & Downloads and uploads will never exceed the new speeds.
+\\ \hline
+\end{tabular}
+\caption{Use Case 2: Browse File System}
+\label{tab:UC2}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+Name & Update Files\\ \hline
+Goal & Change the properties of a file.\\ \hline
+Preconditions & A changeable file is available locally. \\ \hline
+Summary & The user changes the properties of a local file.\\ \hline
+Related Cases & Includes \textbf{Browse File System} and \textbf{Search locally}. \\ \hline
+Steps &  1. User selects the file to update; \\
+      &  2. \textit{System} shows the properties of the file; \\ 
+      &  3. User changes the properties and clicks the OK button; \\
+      &  4. \textit{System} changes the properties and saves them. 
+        \\ \hline
+Postconditions & File properties are changed locally and if uploading, also online.
+\\ \hline
+\end{tabular}
+\caption{Use Case 3: Update Files}
+\label{tab:UC3}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+Name & Delete Files\\ \hline
+Goal & Delete one or more files.\\ \hline
+Preconditions & A deletable file is available locally. \\ \hline
+Summary & The user deletes a file.\\ \hline
+Related Cases & Includes \textbf{Browse File System} and \textbf{Search locally}. \\ \hline
+Steps &  1. User selects the files to delete; \\
+      &  2. \textit{System} asks for confirmation; \\ 
+      &  3. User clicks the OK button; \\
+      &  4. \textit{System} deletes selected files. 
+        \\ \hline
+Postconditions & Files are deleted locally and if uploading, also online.
+\\ \hline
+\end{tabular}
+\caption{Use Case 4: Delete Files}
+\label{tab:UC4}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+Name & Move Files\\ \hline
+Goal & Move one, multiple files or directories.\\ \hline
+Preconditions & A moveable file or directory is available locally. \\ \hline
+Summary & The user selects files or directories and moves them in the file system.\\ \hline
+Related Cases & Includes \textbf{Browse File System} and \textbf{Search locally}. \\ \hline
+Steps &  1. User selects the files or directories to move; \\
+      &  2. User browses to the new location; \\
+      &  3. \textit{System} moves the selected files and directories. 
+        \\ \hline
+Postconditions & Files are moved to another directory.
+\\ \hline
+\end{tabular}
+\caption{Use Case 5: Move Files}
+\label{tab:UC5}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+Name & Play Media File\\ \hline
+Goal & Play a music or video file or display a picture.\\ \hline
+Preconditions & A playable file is available. \\ \hline
+Summary & The user opens a stream or a locally available file.\\ \hline
+Related Cases & Includes \textbf{Browse File System} and \textbf{Search locally}. \\ \hline
+Steps &  1. User selects the file to play; \\
+      &  2. \textit{System} either starts the photo viewer or media player to open the file. 
+        \\ \hline
+Postconditions & File is opened and is viewable/listenable.
+\\ \hline
+\end{tabular}
+\caption{Use Case 6: Play Media File}
+\label{tab:UC6}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+Name & Change File Visibility\\ \hline
+Goal & Start or stops the uploading of a file.\\ \hline
+Preconditions & An uploadable file is available. \\
+& Also, the system must be connected to the Internet. \\ \hline
+Summary & The user checks/unchecks the visibility box \\
+& of a file to control file uploads.\\ \hline
+Related Cases & Includes \textbf{Browse File System} and \textbf{Search locally}. \\ \hline
+Steps &  1. User checks or unchecks the visibility box of a file; \\
+      &  2. \textit{System} either starts uploading the file and adds the upload to the Upload \\
+      &     Manager or  stops uploading the file and removes the upload from the Upload \\
+      &     Manager.
+        \\ \hline
+Postconditions & File is uploaded or removed from the Upload Manager.
+\\ \hline
+\end{tabular}
+\caption{Use Case 7: Change File Visibility}
+\label{tab:UC7}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+Name & Search locally\\ \hline
+Goal & Find a file on an external storage device.\\ \hline
+Preconditions & One or more external storage devices are connected. \\ \hline
+Summary & The user searches with keywords for files in a file system.\\ \hline
+
+Related Cases & Play Media File, Move File, Update File, Delete File, \\ 
+              & Change File Visibility. Inherits \textbf{Search File} \\ \hline
+Steps &  1. User presses Search button; \\
+      &  2. \textit{System} shows Search menu; \\
+      &  3. User sets search range on ``Local''; \\
+      &  4. User selects the file type to search; \\
+      &  5. User puts keywords in the textbox and presses Start button; \\
+      &  6. \textit{System} returns with a list and number of found files. 
+        \\ \hline
+Postconditions & A list of found files is returned together with the number of found files.
+\\ \hline
+\end{tabular}
+\caption{Use Case 8: Search locally}
+\label{tab:UC8}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+Name & Search on the net\\ \hline
+Goal & Find a file to download or stream on the Internet.\\ \hline
+Preconditions & The system is connected to the Internet. \\ \hline
+Summary & The user searches with keywords for media content on the Internet.\\ \hline
+
+Related Cases & Stream File, Download File. Inherits \textbf{Search File} \\ \hline
+Steps &  1. User presses Search button; \\
+      &  2. \textit{System} shows Search menu; \\
+      &  3. User sets search range on ``Online''; \\
+      &  4. User selects the file type to search; \\
+      &  5. User puts keywords in the textbox and presses Start button; \\
+      &  6. \textit{System} returns with a list and number of found files. 
+        \\ \hline
+Postconditions & A list of found files is returned together with the number of found files.
+\\ \hline
+\end{tabular}
+\caption{Use Case 9: Search on the net}
+\label{tab:UC9}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+Name & Search File\\ \hline
+Goal & Find a file by using keywords.\\ \hline
+Preconditions & A keyword with length > 0 is provided by the user. \\ \hline
+Summary & The user searches for a file.\\ \hline
+Related Cases & Generalizes \textbf{Search locally} and \textbf{Search on the net}. \\ \hline
+Steps &  1. User inputs a keyword; \\
+      &  2. User selects the file type to search; \\
+      &  3. \textit{System} returns the list and number of found files. 
+        \\ \hline
+Postconditions & A list and number of found files is returned.
+\\ \hline
+\end{tabular}
+\caption{Use Case 10: Search File}
+\label{tab:UC10}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+Name & Stream File\\ \hline
+Goal & Listen to a stream and play its content.\\ \hline
+Preconditions & A network connection is established. \\
+& Also, an external storage device must be connected. \\ \hline
+Summary & The user plays the content of a stream. \\
+& This can happen either online or within the local network.\\ \hline
+
+Related Cases & Includes \textbf{Search on the net}. \\ \hline
+Steps &  1. Selects an uploaded file; \\
+      &  2. \textit{System} shows options ``Download'' and ``Open''; \\
+      &  3. User selects ``Open''; \\
+      &  4. \textit{System} starts the videoplayer and plays the stream.
+        \\ \hline
+Postconditions & A stream is opened and played by the videoplayer. \\
+& Temporary files are removed after playing the stream.
+\\ \hline
+\end{tabular}
+\caption{Use Case 11: Stream File}
+\label{tab:UC11}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+Name & Download File\\ \hline
+Goal & Download a file and puts it in the file system.\\ \hline
+Preconditions & A network connection is established. \\
+& Also, an external storage device must be connected. \\ \hline
+Summary & The user plays the content of a stream. \\
+& This can happen either online or within the local network.\\ \hline
+
+Related Cases & Includes \textbf{Search on the net}. \\ \hline
+Steps &  1. Selects an uploaded file; \\
+      &  2. \textit{System} shows options ``Download'' and ``Open''; \\
+      &  3. User selects ``Download''; \\
+      &  4. \textit{System} adds the Download to the Download Manager and starts download.
+        \\ \hline
+Postconditions & A file is retrieved from the Internet and stored on the file system.
+\\ \hline
+\end{tabular}
+\caption{Use Case 12: Download File}
+\label{tab:UC12}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+Name & Sort Files\\ \hline
+Goal & Arrange the files in a coherent way.\\ \hline
+Preconditions & An external storage device is connected. \\ \hline
+Summary & The user sorts the files.\\ \hline
+Related Cases & Generalizes \textbf{Sort by type}, \textbf{Sort by name}, \\
+& \textbf{Sort by date}, \textbf{Sort by size} . \\ \hline
+Steps &  1. User clicks on attribute ``type'', ``name'', ``date'' or ``size''; \\
+      &  2. \textit{System} sorts the files and returns the sorted list. 
+        \\ \hline
+Postconditions & A sorted list is returned.
+\\ \hline
+\end{tabular}
+\caption{Use Case 13: Sort Files}
+\label{tab:UC13}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+Name & Sort by date\\ \hline
+Goal & Arrange the files by date.\\ \hline
+Preconditions & An external storage device is connected. \\ \hline
+Summary & The user sorts the files by date.\\ \hline
+Related Cases & Inherits \textbf{Sort files}. \\ \hline
+Steps &  1. User clicks on attribute ``date''; \\
+      &  2. \textit{System} sorts the files by their dates of creation
+      \\ & and returns the sorted list (ascending); \\
+      &  3. User clicks on attribute ``date'' again; \\
+      &  4. \textit{System} sorts the files by their dates of creation
+      \\ & and returns the sorted list (descending).
+        \\ \hline
+Postconditions & A list sorted by date is returned.
+\\ \hline
+\end{tabular}
+\caption{Use Case 14: Sort by date}
+\label{tab:UC14}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+Name & Sort by type\\ \hline
+Goal & Arrange the files by type.\\ \hline
+Preconditions & An external storage device is connected. \\ \hline
+Summary & The user sorts the files by type.\\ \hline
+Related Cases & Inherits \textbf{Sort files}. \\ \hline
+Steps &  1. User clicks on attribute ``type''; \\
+      &  2. \textit{System} sorts the files by their types 
+      \\ & and returns the sorted list (ascending); \\
+      &  3. User clicks on attribute ``type'' again; \\
+      &  4. \textit{System} sorts the files by their types
+      \\ & and returns the sorted list (descending).
+        \\ \hline
+Postconditions & A list sorted by type is returned.
+\\ \hline
+\end{tabular}
+\caption{Use Case 15: Sort by type}
+\label{tab:UC15}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+Name & Sort by name\\ \hline
+Goal & Arrange the files by name.\\ \hline
+Preconditions & An external storage device is connected. \\ \hline
+Summary & The user sorts the files by name.\\ \hline
+Related Cases & Inherits \textbf{Sort files}. \\ \hline
+Steps &  1. User clicks on attribute ``name''; \\
+      &  2. \textit{System} sorts the files by their names
+      \\ & and returns the sorted list (ascending); \\
+      &  3. User clicks on attribute ``name'' again; \\
+      &  4. \textit{System} sorts the files by their names
+      \\ & and returns the sorted list (descending).
+        \\ \hline
+Postconditions & A list sorted by name is returned.
+\\ \hline
+\end{tabular}
+\caption{Use Case 16: Sort by name}
+\label{tab:UC16}
+\end{table}
+
+\clearpage
+
+\begin{table}[t]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+Name & Sort by size\\ \hline
+Goal & Arrange the files by size.\\ \hline
+Preconditions & An external storage device is connected. \\ \hline
+Summary & The user sorts the files by size.\\ \hline
+Related Cases & Inherits \textbf{Sort files}. \\ \hline
+Steps &  1. User clicks on attribute ``size''; \\
+      &  2. \textit{System} sorts the files by their sizes
+      \\ & and returns the sorted list (ascending); \\
+      &  3. User clicks on attribute ``name'' again; \\
+      &  4. \textit{System} sorts the files by their sizes
+      \\ & and returns the sorted list (descending).
+        \\ \hline
+Postconditions & A list sorted by size is returned.
+\\ \hline
+\end{tabular}
+\caption{Use Case 17: Sort by size}
+\label{tab:UC17}
+\end{table}
+
+\section{Business Class Diagram}
+
+\begin{center}
+\begin{figure}[h!]
+\begin{tikzpicture}
+%\begin{umlpackage}{p}
+%\begin{umlpackage}{sp1}
+
+\umlclass[x=-5]{Sendable}{
+  - trackers : list<tracker> \\
+  - seeders  : list<seeder> \\
+  - speed	   : double
+}{
+  + stop() : void \\
+  + pause() : void \\
+}
+
+\umlclass[x=3]{FileManager}{
+  - list<File>
+}{
+  + remove(File file) : void \\
+  + add(File file) : File \\		
+  + rename(File file) : File \\
+  + sort() : void \\
+  + search(File file) : list<File> \\
+}
+
+\umlclass[x=3, y=-6]{File}{
+  - name : String \\
+  - date : String \\  
+  - extension : String \\  
+  - size : double \\
+  - visible : bool \\
+}{
+  + setVisibility(bool value) : void \\
+  + isVisible() : bool \\
+  + setName(String name) : void \\
+  + getSize() : double \\
+  + getDate() : String \\
+  + getName() : String
+}
+
+\umlclass[x=4, y=-11]{Media}{
+  - length : double \\
+   
+}{}
+
+\umlclass[x=0, y=-11]{Picture}{
+  - height : double \\
+  - width  : double \\
+}{}
+
+\umlclass[x=-7, y=-4]{Download}{
+  - percentage : double
+}{
+  + start() : void \\		
+  + resume() : void
+}
+
+\umlclass[x=-3, y=-4]{Upload}{
+  - amount : double
+}{
+  + start() : void \\		
+  + resume() : void
+}
+
+\umlclass[x=-5, y=-6]{Stream}{
+  - amount : double
+}{
+  + play() : void
+}
+
+\umlclass[x=-5, y=-10.5]{DownloadManager}{
+  - downloaded : double \\
+  - uploaded : double \\
+  - downloads : list<Download> \\
+  - uploads : list<Uploads> 
+}{
+  + startDownload(String link) : void \\
+  + stopDownload(String link) : void \\
+  + pauseDownload(String link) : void \\
+  + resumeDownload(String link) : void \\
+  + startUpload(String name) : void \\
+  + stopUpload(String name) : void
+}
+
+\umlclass[x=-2, y=-14]{MediaPlayer}{
+}{
+  + open(Media file) : void \\
+  + open(Stream stream) : void
+}
+
+\umlaggreg[mult1=1, mult2=1, pos=0.8, angle1=30, angle2=60]{Sendable}{File}
+\umlaggreg[mult1=1, mult2=*]{FileManager}{File}
+
+\umlVHVinherit{Download}{Sendable}
+\umlVHVinherit{Upload}{Sendable}
+\umlinherit{Stream}{Sendable}
+
+\umlVHVinherit{Media}{File}
+\umlVHVinherit{Picture}{File}
+
+\umlVHVaggreg[mult1=1, mult2=*]{DownloadManager}{Upload}
+\umlVHVaggreg[mult1=1, mult2=*]{DownloadManager}{Download}
+
+\umlVHassoc{MediaPlayer}{Stream}
+\umlVHassoc{Media}{MediaPlayer}
+
+\end{tikzpicture}
+\caption{Part of the class diagram. This part only shows the business classes comprehensible for end-users.}
+\end{figure}
+\end{center}
+\clearpage
+
+\section{Dynamic Models}
+\label{sec:dynamic_models}
+
+\section{MosCoW}
+
