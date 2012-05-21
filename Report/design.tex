@@ -63,35 +63,37 @@
 \umlclass[x=-5]{Sendable}{
   - trackers : list<tracker> \\
   - seeders  : list<seeder> \\
-  - speed	   : double
+  - speed    : double
 }{
   + stop() : void \\
+  + start() : void \\
+  + resume() : void \\
   + pause() : void \\
 }
 
-\umlclass[x=-7, y=-4]{Download}{
+\umlclass[x=-7, y=-6]{Download}{
   - percentage : double
 }{
-  + start() : void \\
-  + resume() : void
+  - isCompletedCallback() : void \\
 }
 
-\umlclass[x=-3, y=-4]{Upload}{
+\umlclass[x=-1, y=-6]{Upload}{
   - amount : double
 }{
-  + start() : void \\
-  + resume() : void
+  - isInactiveCallback() : void \\
+  - calculateAmountCallback() : void 
 }
 
-\umlclass[x=-7, y=-12]{DownloadManager}{
+\umlclass[x=-7, y=-15]{DownloadManager}{
   - downloaded : double \\
   - uploaded : double \\
   - downloads : list<Download> \\
-  - uploads : list<Uploads> 
+  - uploads : list<Upload>
 }{
   + startStreaming() : bool \\
   + stopStreaming() : bool \\
   + stream() : void \\
+  + setVisible(Sendable file) : bool \\
   + startDownload(String link) : void \\
   + stopDownload(String link) : void \\
   + pauseDownload(String link) : void \\
@@ -100,15 +102,16 @@
   + stopUpload(String name) : void
 }
 
-\umlclass[x=1.5, y=-10.5]{HttpServer}{
+\umlclass[x=1.5, y=-13]{HttpServer}{
 }{
   + InstallHTTPGateway() : bool \\
-  + send\_response() : void \\
+  + sendResponse() : void \\
+  + sendXMLResponse() : void \\
   + handle\_request(struct evhttp\_request *req, void *arg) : void \\
   + init() : void
 }
 
-\umlclass[x=1.5, y=-14]{DispersyInterface}{
+\umlclass[x=-1.5, y = -17]{DispersyInterface}{
 }{
 
 }
