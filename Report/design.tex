@@ -60,49 +60,40 @@
 %\begin{umlpackage}{p}
 %\begin{umlpackage}{sp1}
 
-\umlclass[x=-5]{Sendable}{
-  - trackers : list<tracker> \\
-  - seeders  : list<seeder> \\
-  - speed    : double
-}{
-  + stop() : void \\
-  + start() : void \\
-  + resume() : void \\
-  + pause() : void \\
-}
-
-\umlclass[x=-7, y=-6]{Download}{
-  - percentage : double
+\umlclass[x=-10]{Download}{
+  - tracker : char* \\
+  - seeders : int \\
+  - peers : int \\
+  - ratio : double \\
+  - download\_speed : double \\
+  - size : double \\
+  - upload\_speed : double \\
+  - download\_percentage : double \\
+  - upload\_amount : double \\
+  - status : Status
 }{
   - isCompletedCallback() : void \\
+  - calculateAmountCallback() : void \\
+  + start() : void \\
+  + resume() : void \\
+  + pause() : void
 }
 
-\umlclass[x=-1, y=-6]{Upload}{
-  - amount : double
-}{
-  - isInactiveCallback() : void \\
-  - calculateAmountCallback() : void 
-}
-
-\umlclass[x=-7, y=-15]{DownloadManager}{
+\umlclass[x=-10, y=-12]{DownloadManager}{
   - downloaded : double \\
   - uploaded : double \\
   - downloads : list<Download> \\
-  - uploads : list<Upload>
+  - uploads : list<Upload> \\
 }{
   + startStreaming() : bool \\
   + stopStreaming() : bool \\
   + stream() : void \\
-  + setVisible(Sendable file) : bool \\
-  + startDownload(String link) : void \\
-  + stopDownload(String link) : void \\
-  + pauseDownload(String link) : void \\
-  + resumeDownload(String link) : void \\
-  + startUpload(String name) : void \\
-  + stopUpload(String name) : void
+  + add(Download download) : void \\
+  + removeFromList(int download\_id) : void \\
+  + removeFromDisk(int download\_id) : void \\
 }
 
-\umlclass[x=1.5, y=-13]{HttpServer}{
+\umlclass[x=-3, y=-6]{HttpServer}{
 }{
   + InstallHTTPGateway() : bool \\
   + sendResponse() : void \\
@@ -111,19 +102,16 @@
   + init() : void
 }
 
-\umlclass[x=-1.5, y = -17]{DispersyInterface}{
+\umlclass[x=-1.5, y = -11]{DispersyInterface}{
 }{
 
 }
 
-\umlVHVinherit{Download}{Sendable}
-\umlVHVinherit{Upload}{Sendable}
-
-\umlVHassoc{HttpServer}{Sendable}
+\umlVHassoc{HttpServer}{Download}
+\umlassoc{HttpServer}{DownloadManager}
 \umlVHassoc{DispersyInterface}{HttpServer}
 
-\umlVHVaggreg[mult1=1, mult2=*]{DownloadManager}{Upload}
-\umlVHVaggreg[mult1=1, mult2=*]{DownloadManager}{Download}
+\umlaggreg[mult1=1, mult2=*]{DownloadManager}{Download}
 
 \end{tikzpicture}
 \label{fig:class_server}
