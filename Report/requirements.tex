@@ -614,7 +614,7 @@ Postconditions & A list sorted by size is returned.
   + stopUpload(String name) : void
 }
 
-\umlclass[x=-2, y=-14]{MediaPlayer}{
+\umlclass[x=-1, y=-14]{MediaPlayer}{
 }{
   + open(Media file) : void \\
   + open(Stream stream) : void
@@ -643,7 +643,209 @@ Postconditions & A list sorted by size is returned.
 \clearpage
 
 \section{Dynamic Models}
-\label{sec:dynamic_models}
+\label{sec:req_dynamic_models}
+\begin{figure}[h!]
+\scalebox{1}{
+\begin{tikzpicture}
+\begin{umlseqdiag}
+\umlactor{User}
+\umlobject[x=5]{Samsung App Interface}
+\umlobject[x=10]{DownloadManager}
+\begin{umlcall}[op={goToSettings()}, with return, padding=3]{User}{Samsung App Interface}
+\begin{umlcall}[op={getSettings()}, with return]{Samsung App Interface}{DownloadManager}
+\end{umlcall}
+\end{umlcall}
+\begin{umlcall}[op={setSpeeds(dspeed, uspeed)}, padding=3, with return]{User}{Samsung App Interface}
 
+\begin{umlcall}[op={setSpeeds(dspeed, uspeed)}, padding=3, with return]{Samsung App Interface}{DownloadManager}
+\end{umlcall}
+\end{umlcall}
+\end{umlseqdiag}
+\end{tikzpicture}
+}
+\label{fig:req_seq1}
+\caption{Use Case 1: Limit upload/download speeds.}
+\end{figure}
+
+\begin{figure}[h!]
+\scalebox{0.8}{
+\begin{tikzpicture}
+\begin{umlseqdiag}
+\umlactor{User}
+\umlobject{Samsung App Interface}
+\umlobject{FileManager}
+\umlobject{MediaPlayer}
+\umlmulti{File}
+
+\begin{umlcall}[op={browse}, with return, padding=3]{User}{Samsung App Interface}
+	\begin{umlcall}[op={getFiles()}, with return, padding=3]{Samsung App Interface}{FileManager}
+		\begin{umlcall}[op={get()}, with return, padding=3]{FileManager}{File}
+		\end{umlcall}
+	\end{umlcall}
+\end{umlcall}
+
+\begin{umlfragment}[type=alt, label=Update, inner xsep=5]
+\begin{umlcall}[op={update}, with return]{User}{Samsung App Interface}
+	\begin{umlcall}[op={update(int file\_id)}, with return]{Samsung App Interface}{FileManager}
+		\begin{umlcall}[op={update()}, with return]{FileManager}{File}
+		\end{umlcall}
+	\end{umlcall}
+\end{umlcall}
+
+\umlfpart [Delete]
+\begin{umlcall}[op={delete}, with return]{User}{Samsung App Interface}
+	\begin{umlcall}[op={delete(int file\_id)}, with return]{Samsung App Interface}{FileManager}
+		\begin{umlcall}[op={destroy()}, with return]{FileManager}{File}
+		\end{umlcall}
+	\end{umlcall}
+\end{umlcall}
+
+\umlfpart[Move]
+\begin{umlcall}[op={move}, with return]{User}{Samsung App Interface}
+	\begin{umlcall}[op={move(string location, int file\_id)}, with return]{Samsung App Interface}{FileManager}
+		\begin{umlcall}[op={changeLocation(string location)}, with return]{FileManager}{File}
+		\end{umlcall}
+	\end{umlcall}
+\end{umlcall}
+
+\umlfpart[Play]
+\begin{umlcall}[op={play}, with return]{User}{Samsung App Interface}
+	\begin{umlcall}[op={play(int file\_id)}, with return]{Samsung App Interface}{MediaPlayer}
+		\begin{umlcall}[op={play()}, with return]{MediaPlayer}{File}
+		\end{umlcall}
+	\end{umlcall}
+\end{umlcall}
+
+\end{umlfragment}
+\end{umlseqdiag}
+\end{tikzpicture}
+}
+\label{fig:req_seq2}
+\caption{Use Cases 2 to 6: Basic browsing and file manipulation}
+\end{figure}
+
+\begin{figure}[h!]
+\scalebox{0.9}{
+\begin{tikzpicture}
+\begin{umlseqdiag}
+\umlactor[y=1]{User}
+\umlobject[y=1, x=3]{Samsung App Interface}
+\umlobject[y=1, x=7]{FileManager}
+\umlmulti[y=1, x=12]{File}
+
+\begin{umlcall}[op={change visbility}]{User}{Samsung App Interface}
+\end{umlcall}
+
+\begin{umlfragment}[type=alt, label=visible, inner xsep=5]	
+
+\begin{umlcall}[op={changeVisibility(file, true)}, with return]{Samsung App Interface}{FileManager}
+		\begin{umlcall}[op={visible(true)}, with return]{FileManager}{File}
+		\end{umlcall}
+\end{umlcall}
+
+\umlfpart[invisible]
+
+\begin{umlcall}[op={changeVisibility(file, false)}, with return]{Samsung App Interface}{FileManager}
+		\begin{umlcall}[op={visible(false)}, with return]{FileManager}{File}
+		\end{umlcall}
+\end{umlcall}
+
+\end{umlfragment}
+
+\end{umlseqdiag}
+\end{tikzpicture}
+}
+\label{fig:req_seq3}
+\caption{Use Case 7: Change File Visibility}
+\end{figure}
+
+\begin{figure}[h!]
+\scalebox{0.8}{
+\begin{tikzpicture}
+\begin{umlseqdiag}
+\umlactor{User}
+\umlobject{Samsung App Interface}
+\umlobject{FileManager}
+\umlobject{DownloadManager}
+\umlmulti{File}
+
+\begin{umlcall}[op={goToSearch}, with return, padding=3]{User}{Samsung App Interface}
+\end{umlcall}
+
+	\begin{umlfragment}[type=alt, label=Local, inner xsep=5]	
+		\begin{umlcall}[op={searchLocal(file)}, with return]{User}{Samsung App Interface}
+			\begin{umlcall}[op={search(file)}, with return]{Samsung App Interface}{FileManager}
+				\begin{umlcall}[op={get()}, with return]{FileManager}{File}
+				\end{umlcall}	
+			\end{umlcall}
+		\end{umlcall}
+
+	\umlfpart [Online]
+\begin{umlcall}[op={searchOnline(file)}, with return]{User}{Samsung App Interface}
+	\begin{umlcall}[op={search(file)}, with return]{Samsung App Interface}{DownloadManager}
+		\begin{umlcall}[op={get()}, with return]{DownloadManager}{File}
+		\end{umlcall}
+	\end{umlcall}
+\end{umlcall}
+
+	
+	\end{umlfragment}
+
+\end{umlseqdiag}
+\end{tikzpicture}
+}
+\label{fig:req_seq4}
+\caption{Use Cases 8 to 10: Search.}
+\end{figure}
+
+\begin{figure}[h!]
+\scalebox{1}{
+\begin{tikzpicture} 
+\begin{umlseqdiag}
+\umlactor{User} 
+\umlobject{Samsung App Interface}
+\umlobject{DownloadManager}
+\umlobject{Stream}  
+
+\begin{umlcall}[op={play}]{User}{Samsung App Interface}
+\end{umlcall}
+
+\begin{umlcall}[op={playStream(string tracker)}]{Samsung App Interface}{DownloadManager} 
+	\begin{umlcall}[op={start()}]{DownloadManager}{Stream} 
+	\end{umlcall}
+\end{umlcall} 
+
+\end{umlseqdiag} 
+\end{tikzpicture}
+}
+\label{fig:req_seq5}
+\caption{Use Case 11: Stream File.}
+\end{figure}
+
+\begin{figure}[h!]
+\scalebox{1}{
+\begin{tikzpicture} 
+\begin{umlseqdiag} 
+\umlactor{User}
+\umlobject{Samsung App Interface}
+\umlobject{DownloadManager}
+
+\begin{umlcall}[op={download}]{User}{Samsung App Interface}  
+\end{umlcall}
+ 
+\umlcreatecall[class=Download]{Samsung App Interface}{download} 
+
+\begin{umlcall}[op={add(download)}]{Samsung App Interface}{DownloadManager} 
+	\begin{umlcall}[op={start()}]{DownloadManager}{download} 
+	\end{umlcall} 
+\end{umlcall}
+
+\end{umlseqdiag} 
+\end{tikzpicture}
+}
+\label{fig:req_seq6}
+\caption{Use Case 12: Download File.}
+\end{figure}
+
+\clearpage
 \section{MosCoW}
-

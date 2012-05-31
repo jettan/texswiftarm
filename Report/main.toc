@@ -12,8 +12,8 @@
 \contentsline {subsection}{\numberline {3.2.1}Use Case Descriptions}{9}{subsection.3.2.1}
 \contentsline {section}{\numberline {3.3}Business Class Diagram}{14}{section.3.3}
 \contentsline {section}{\numberline {3.4}Dynamic Models}{16}{section.3.4}
-\contentsline {section}{\numberline {3.5}MosCoW}{16}{section.3.5}
-\contentsline {chapter}{\numberline {4}Design}{17}{chapter.4}
-\contentsline {section}{\numberline {4.1}Class Diagram}{17}{section.4.1}
-\contentsline {section}{\numberline {4.2}Dynamic models}{20}{section.4.2}
-\contentsline {section}{\numberline {4.3}Software Architecture}{20}{section.4.3}
+\contentsline {section}{\numberline {3.5}MosCoW}{20}{section.3.5}
+\contentsline {chapter}{\numberline {4}Design}{21}{chapter.4}
+\contentsline {section}{\numberline {4.1}Class Diagram}{21}{section.4.1}
+\contentsline {section}{\numberline {4.2}Dynamic models}{24}{section.4.2}
+\contentsline {section}{\numberline {4.3}Software Architecture}{24}{section.4.3}

@@ -73,12 +73,21 @@
   - status : Status
 }{
   - isCompletedCallback() : void \\
-  - calculateAmountCallback() : void \\
   + start() : void \\
   + resume() : void \\
   + pause() : void
 }
 
+\umlclass[x=-1.5, y=-12]{Stream}{
+  - tracker : char* \\
+  - status : Status
+}{
+  - isCompletedCallback() : void \\
+  + start() : void \\
+  + resume() : void \\
+  + pause() : void \\
+  + stop() : void
+}
 \umlclass[x=-10, y=-12]{DownloadManager}{
   - downloaded : double \\
   - uploaded : double \\
@@ -91,6 +100,7 @@
   + add(Download download) : void \\
   + removeFromList(int download\_id) : void \\
   + removeFromDisk(int download\_id) : void \\
+  + setSpeed(double dspeed, double uspeed)
 }
 
 \umlclass[x=-3, y=-6]{HttpServer}{
@@ -102,16 +112,17 @@
   + init() : void
 }
 
-\umlclass[x=-1.5, y = -11]{DispersyInterface}{
+\umlclass[x=-0.5, y = -3]{DispersyInterface}{
 }{
 
 }
 
-\umlVHassoc{HttpServer}{Download}
-\umlassoc{HttpServer}{DownloadManager}
-\umlVHassoc{DispersyInterface}{HttpServer}
+\umlVHassoc[mult1=1, mult2=*]{HttpServer}{Download}
+\umlassoc[mult1=1, mult2=1]{HttpServer}{DownloadManager}
+\umlVHassoc[mult1=1, mult2=1]{DispersyInterface}{HttpServer}
 
 \umlaggreg[mult1=1, mult2=*]{DownloadManager}{Download}
+\umlaggreg[mult1=1, mult2=1]{DownloadManager}{Stream}
 
 \end{tikzpicture}
 \label{fig:class_server}
