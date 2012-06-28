@@ -25,10 +25,12 @@
 \contentsline {chapter}{\numberline {5}Implementation}{26}{chapter.5}
 \contentsline {section}{\numberline {5.1}Javascript}{26}{section.5.1}
 \contentsline {section}{\numberline {5.2}C++}{26}{section.5.2}
-\contentsline {section}{\numberline {5.3}Python}{26}{section.5.3}
-\contentsline {chapter}{\numberline {6}Process}{27}{chapter.6}
-\contentsline {section}{\numberline {6.1}Introduction}{27}{section.6.1}
-\contentsline {section}{\numberline {6.2}Planning}{27}{section.6.2}
-\contentsline {section}{\numberline {6.3}Testing}{27}{section.6.3}
-\contentsline {section}{\numberline {6.4}Problems encountered}{27}{section.6.4}
-\contentsline {chapter}{\numberline {7}Conclusion}{28}{chapter.7}
+\contentsline {section}{\numberline {5.3}Python}{27}{section.5.3}
+\contentsline {chapter}{\numberline {6}Process}{28}{chapter.6}
+\contentsline {section}{\numberline {6.1}Planning}{28}{section.6.1}
+\contentsline {section}{\numberline {6.2}Testing}{29}{section.6.2}
+\contentsline {section}{\numberline {6.3}Problems encountered}{29}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Rooting the television}{29}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}Communication between javascript and C++}{29}{subsection.6.3.2}
+\contentsline {subsection}{\numberline {6.3.3}Starting the HTTP server}{30}{subsection.6.3.3}
+\contentsline {chapter}{\numberline {7}Conclusion}{31}{chapter.7}
