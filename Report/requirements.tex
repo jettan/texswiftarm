@@ -1,4 +1,5 @@
 \chapter{Requirements Analysis}
+
 This chapter discusses the design process of our application. First, it was needed to know what the user requirements are. For this, we interviewed our supervisor who also acts as our client. These requirements were also acquired through brainstorming. Then, use cases for our application were designed, which corresponds with the user requirements. In this phase, a business class diagram was also made which is easier to understand for the client than the complete class diagram of the whole application. After researching the framework present on the Samsung Smart TV and the possibilities of libswift, a design for the software architecture could be made. Lastly, implementation models such as sequence diagrams and class diagrams were made, which serve as blueprints for the application.
 
 \section{Requirements}
@@ -11,7 +12,7 @@ Functional requirements specify the core functionality of the application. These
 \item[1.] Given two peers \textit{A} and \textit{B}:
 	\begin{itemize}
 	\item[1.1.] \textit{A} is able to download from \textit{B} (UC 12);
-	\item[1.2.] \textit{A} is able to upload to \textit{B} (No use case since this should happen automatically);
+	\item[1.2.] \textit{A} is able to upload to \textit{B} (Should happen automatically after download is finished);
 	\item[1.3.] \textit{A} is able to stream to/from \textit{B} (UC 11);
 	\end{itemize}	
 \item[2.] The users should be able to search for files other peers own (UC 9, 10);
@@ -24,7 +25,7 @@ Functional requirements specify the core functionality of the application. These
 	\item[5.2.] Edit files on the file system, i.e. rename files (UC 3);	
 	\item[5.3.] Remove files on the file system (UC 4);
 	
-	\end{itemize}	 
+	\end{itemize}
 \item[6.] Users should be able to sort files by name, size, date and type (UC 13, 14, 15, 16, 17); 
 \item[7.] Users should be able to separate private files from public files (UC 7);
 \item[8.] Users should be able to limit the upload/download speed (UC 1). 
@@ -36,27 +37,27 @@ Unlike functional requirements, they do not describe what the services the syste
 but more how the system should work. We identified two kinds of non-functional requirements for our application, 
 quality and platform requirements.
 
-\subsubsection{Quality requirements} 
+\subsubsection{Quality requirements}
 \begin{itemize}
-\item[1] The response time of the system should be as low as possible since TVs are real-time systems. 
+\item[9.] The response time of the system should be as low as possible since TVs are real-time systems.
 We aim to limit the response time to 300 ms;
-\item[2] The RAM memory used by the application should not exceed 256 MB. 
+\item[10.] The RAM memory used by the application should not exceed 256 MB.
 This includes the size of the application itself and the memory needed for calculations;
-\item[3] The application may use 100\% CPU power since no other applications should run along the application 
+\item[11.] The application may use 100\% CPU power since no other applications should run along the application 
 to be built;
-\item[4] Downloads should be continued without loss of data after a failure;
-\item[5] Unfinished downloads should be resumed at start up;
-\item[6] The application should be able to cope with external devices, 
+\item[12.] Downloads should be continued without loss of data after a failure;
+\item[13.] Unfinished downloads should be resumed at start up;
+\item[14.] The application should be able to cope with external devices,
 memory sticks and other external storage devices in particular;
-\item[7] The user should be able to make use of (part of) the application at any time, 
-even when no Internet connection is available.  
-\end{itemize} 
+\item[15.] The user should be able to make use of (part of) the application at any time,
+even when no Internet connection is available.
+\end{itemize}
 
 \subsubsection{Platform requirements}
 \begin{itemize}
-\item[1] The C++ back-end which makes use of the libswift library should be implemented so 
+\item[1.] The C++ back-end which makes use of the libswift library should be implemented so 
 that it is reusable for other systems that work with other front-ends (such as Android);
-\item[2] The application is made to run on a rooted Samsung Smart TV. 
+\item[2.] The application is made to run on a rooted Samsung Smart TV.
 To see whether a Samsung TV is rootable or not, please check \url{http://www.samygo.tv/};
 \end{itemize}
 
@@ -66,12 +67,12 @@ These can be limitations put by the software we use,
 or put by ourselves to reduce the application\textquotesingle s complexity.
 
 \begin{itemize}
-\item[1] Due to the limited memory available on the TV, it is not 
+\item[1.] Due to the limited memory available on the TV, it is not 
 possible to download and store great amounts of data on the TV. 
 Therefore, usage of external storage devices is mandatory to make use 
 of the application;
 
-\item[2] The application must be integrated with the Samsung 
+\item[2.] The application must be integrated with the Samsung 
 framework, meaning that it should be recognised by the TV as 
 JavaScript app developed with the Samsung SDK.
 \end{itemize}
@@ -87,7 +88,7 @@ in which the relations between them are also shown. The user should be able to c
 these relations are left out for clarity. The use cases in figure \ref{fig:use_case_diagram} 
 are explained in further detail in their descriptions and with the use of UML sequence diagrams in sections 
 \hyperref[sec:use_case_descriptions]{\ref*{sec:use_case_descriptions}} and 
-\hyperref[sec:dynamic_models]{\ref*{sec:dynamic_models}} respectively.
+\hyperref[sec:req_dynamic_models]{\ref*{sec:req_dynamic_models}} respectively.
 
 \begin{center}
 \begin{figure}[h!]
@@ -528,6 +529,8 @@ Postconditions & A list sorted by size is returned.
 \label{tab:UC17}
 \end{table}
 
+\clearpage
+
 \section{Business Class Diagram}
 
 \begin{center}
@@ -549,7 +552,7 @@ Postconditions & A list sorted by size is returned.
   - list<File>
 }{
   + remove(File file) : void \\
-  + add(File file) : File \\		
+  + add(File file) : File \\
   + rename(File file) : File \\
   + sort() : void \\
   + search(File file) : list<File> \\
@@ -557,8 +560,8 @@ Postconditions & A list sorted by size is returned.
 
 \umlclass[x=3, y=-6]{File}{
   - name : String \\
-  - date : String \\  
-  - extension : String \\  
+  - date : String \\
+  - extension : String \\
   - size : double \\
   - visible : bool \\
 }{
@@ -572,25 +575,19 @@ Postconditions & A list sorted by size is returned.
 
 \umlclass[x=4, y=-11]{Media}{
   - length : double \\
-   
-}{}
-
-\umlclass[x=0, y=-11]{Picture}{
-  - height : double \\
-  - width  : double \\
 }{}
 
 \umlclass[x=-7, y=-4]{Download}{
   - percentage : double
 }{
-  + start() : void \\		
+  + start() : void \\
   + resume() : void
 }
 
 \umlclass[x=-3, y=-4]{Upload}{
   - amount : double
 }{
-  + start() : void \\		
+  + start() : void \\
   + resume() : void
 }
 
@@ -604,7 +601,7 @@ Postconditions & A list sorted by size is returned.
   - downloaded : double \\
   - uploaded : double \\
   - downloads : list<Download> \\
-  - uploads : list<Uploads> 
+  - uploads : list<Uploads>
 }{
   + startDownload(String link) : void \\
   + stopDownload(String link) : void \\
@@ -614,7 +611,7 @@ Postconditions & A list sorted by size is returned.
   + stopUpload(String name) : void
 }
 
-\umlclass[x=-1, y=-14]{MediaPlayer}{
+\umlclass[x=2, y=-14]{MediaPlayer}{
 }{
   + open(Media file) : void \\
   + open(Stream stream) : void
@@ -628,7 +625,6 @@ Postconditions & A list sorted by size is returned.
 \umlinherit{Stream}{Sendable}
 
 \umlVHVinherit{Media}{File}
-\umlVHVinherit{Picture}{File}
 
 \umlVHVaggreg[mult1=1, mult2=*]{DownloadManager}{Upload}
 \umlVHVaggreg[mult1=1, mult2=*]{DownloadManager}{Download}
@@ -736,7 +732,7 @@ Postconditions & A list sorted by size is returned.
 \begin{umlcall}[op={change visbility}]{User}{Samsung App Interface}
 \end{umlcall}
 
-\begin{umlfragment}[type=alt, label=visible, inner xsep=5]	
+\begin{umlfragment}[type=alt, label=visible, inner xsep=5]
 
 \begin{umlcall}[op={changeVisibility(file, true)}, with return]{Samsung App Interface}{FileManager}
 		\begin{umlcall}[op={visible(true)}, with return]{FileManager}{File}
@@ -772,7 +768,7 @@ Postconditions & A list sorted by size is returned.
 \begin{umlcall}[op={goToSearch}, with return, padding=3]{User}{Samsung App Interface}
 \end{umlcall}
 
-	\begin{umlfragment}[type=alt, label=Local, inner xsep=5]	
+	\begin{umlfragment}[type=alt, label=Local, inner xsep=5]
 		\begin{umlcall}[op={searchLocal(file)}, with return]{User}{Samsung App Interface}
 			\begin{umlcall}[op={search(file)}, with return]{Samsung App Interface}{FileManager}
 				\begin{umlcall}[op={get()}, with return]{FileManager}{File}
@@ -800,12 +796,12 @@ Postconditions & A list sorted by size is returned.
 
 \begin{figure}[h!]
 \scalebox{1}{
-\begin{tikzpicture} 
+\begin{tikzpicture}
 \begin{umlseqdiag}
-\umlactor{User} 
+\umlactor{User}
 \umlobject{Samsung App Interface}
 \umlobject{DownloadManager}
-\umlobject{Stream}  
+\umlobject{Stream}
 
 \begin{umlcall}[op={play}]{User}{Samsung App Interface}
 \end{umlcall}
@@ -813,9 +809,9 @@ Postconditions & A list sorted by size is returned.
 \begin{umlcall}[op={playStream(string tracker)}]{Samsung App Interface}{DownloadManager} 
 	\begin{umlcall}[op={start()}]{DownloadManager}{Stream} 
 	\end{umlcall}
-\end{umlcall} 
+\end{umlcall}
 
-\end{umlseqdiag} 
+\end{umlseqdiag}
 \end{tikzpicture}
 }
 \label{fig:req_seq5}
@@ -824,15 +820,15 @@ Postconditions & A list sorted by size is returned.
 
 \begin{figure}[h!]
 \scalebox{1}{
-\begin{tikzpicture} 
-\begin{umlseqdiag} 
+\begin{tikzpicture}
+\begin{umlseqdiag}
 \umlactor{User}
 \umlobject{Samsung App Interface}
 \umlobject{DownloadManager}
 
 \begin{umlcall}[op={download}]{User}{Samsung App Interface}  
 \end{umlcall}
- 
+
 \umlcreatecall[class=Download]{Samsung App Interface}{download} 
 
 \begin{umlcall}[op={add(download)}]{Samsung App Interface}{DownloadManager} 
@@ -847,5 +843,75 @@ Postconditions & A list sorted by size is returned.
 \caption{Use Case 12: Download File.}
 \end{figure}
 
+\begin{figure}[h!]
+\scalebox{1}{
+\begin{tikzpicture}
+\begin{umlseqdiag}
+\umlactor{User}
+\umlobject{Samsung App Interface}
+\umlobject{FileManager}
+
+	\begin{umlcall}[op={sortName()}, with return]{User}{Samsung App Interface}
+		\begin{umlcall}[op={sortName()}, with return]{Samsung App Interface}{FileManager}
+		\end{umlcall}
+	\end{umlcall}
+	
+\begin{umlfragment}[type=alt, label=Size, inner xsep=5]
+	\begin{umlcall}[op={sortSize(), with return}]{User}{Samsung App Interface}
+		\begin{umlcall}[op={sortSize()}, with return]{Samsung App Interface}{FileManager}
+		\end{umlcall}
+	\end{umlcall}
+		
+	\umlfpart [Type]
+	\begin{umlcall}[op={sortType(), with return}]{User}{Samsung App Interface}
+		\begin{umlcall}[op={sortType()}, with return]{Samsung App Interface}{FileManager}
+		\end{umlcall}
+	\end{umlcall}
+		
+	\umlfpart [Date]
+	\begin{umlcall}[op={sortDate(), with return}]{User}{Samsung App Interface}
+		\begin{umlcall}[op={sortDate()}, with return]{Samsung App Interface}{FileManager}
+		\end{umlcall}
+	\end{umlcall}
+\end{umlfragment}
+
+\end{umlseqdiag}
+\end{tikzpicture}
+}
+\label{fig:req_seq7}
+\caption{Use Cases 13 to 17: Sort Files.}
+\end{figure}
+
 \clearpage
+
 \section{MosCoW}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|}
+\hline
+\textbf{Must have}\\ \hline
+Stream functionality (req. 1.3); \\
+Download/upload functionality (req. 1.1 and 1.2); \\
+Media playback (req. 4); \\ \hline
+
+\textbf{Should have}\\ \hline
+Browse in local file system (req. 3); \\
+Add, remove and rename files (req. 5); \\
+Seperate private and public files (req. 7); \\
+Limit upload/download speeds (req. 8); \\ \hline
+
+\textbf{Could have}\\ \hline
+Sort files by name/date/size/type (req. 6); \\ \hline
+
+\textbf{Would have}\\ \hline
+External access to application; \\
+Possibility to minimise app; \\
+Regulation of upload/download speeds by ratio; \\
+Download continuation without loss of data (req 12); \\
+Download continuation at start up (req 13); \\ \hline
+\end{tabular}
+\caption{List of priorities.}
+\label{tab:UC18}
+\end{table}
+

@@ -1,4 +1,7 @@
 \chapter{Design}
+This chapter describes the design of the application to be built, this design is based on the requirements gathered previously.
+Class diagrams are used to depict the structure of the application and sequence diagrams are used to show the flow of the program. 
+Also, the architecture of the appplication is discussed here.
 
 \section{Class Diagram}
 
@@ -72,7 +75,6 @@
   - upload\_amount : double \\
   - status : Status
 }{
-  - isCompletedCallback() : void \\
   + start() : void \\
   + resume() : void \\
   + pause() : void
@@ -82,7 +84,6 @@
   - tracker : char* \\
   - status : Status
 }{
-  - isCompletedCallback() : void \\
   + start() : void \\
   + resume() : void \\
   + pause() : void \\
@@ -112,14 +113,15 @@
   + init() : void
 }
 
-\umlclass[x=-0.5, y = -3]{DispersyInterface}{
+\umlclass[x=-0.5, y = 2]{SearchEngine}{
 }{
-
+  + search(char* filename) : void \\
+  + getResults() : char*
 }
 
 \umlVHassoc[mult1=1, mult2=*]{HttpServer}{Download}
 \umlassoc[mult1=1, mult2=1]{HttpServer}{DownloadManager}
-\umlVHassoc[mult1=1, mult2=1]{DispersyInterface}{HttpServer}
+\umlVHassoc[mult1=1, mult2=1]{SearchEngine}{HttpServer}
 
 \umlaggreg[mult1=1, mult2=*]{DownloadManager}{Download}
 \umlaggreg[mult1=1, mult2=1]{DownloadManager}{Stream}
