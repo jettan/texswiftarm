@@ -1,6 +1,9 @@
 main:
 	pdflatex main
 	pdflatex main
+	bibtex main
+	pdflatex main
+	pdflatex main
 
 clean:
-	rm *.log *.pdf *.aux *.out || true
+	rm main.run.xml *.dvi *.aux *.ps *.out *.log *.pdf *.bbl *.blg main-blx.bib 2>/dev/null

@@ -6,7 +6,7 @@ Also, the architecture of the appplication is discussed here.
 \section{Software Architecture}
 The Samsung Smart TV uses webapplications, so we had to build a web interface to our application in order to integrate the application in the Smart TV.
 However, it was not possible to develop the application by merely using web technology, since web technology limits the developer in accessing core functionality of the machine.
-This is especially a problem to us since low-level control was required in order to make use of the swift download engine. This is why we chose for a client-server architecture, i
+This is especially a problem to us since low-level control was required in order to make use of the swift download engine. This is why we chose for a client-server architecture,
 simply because there was no other choice if the application had to be integrated in the TV\textquotesingle s framework, while still being able to use low-level functionality.
 
 The webinterface can communicate with the application by using HTTP requests, meaning that the application will act as an HTTP server.

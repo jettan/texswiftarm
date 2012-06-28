@@ -22,7 +22,7 @@ We only wrote tests for C++ as this was the core of our application. We made use
 This section focusses on all the important problems we encountered while developing the application for the TV.
 A brief explanation will be given per problem together with the solution we came up with.
 
-The first hurdle before we could even start developing was gaining root access to the television. We needed this to be able to install libraries and execute code. Rooting the television should not have been an issue as there are tutorials and an app that roots the television for you from SamyGO. The problem we ran into is that the televisions we got had a new firmware for which there was no way to root yet.
+The first hurdle before we could even start developing was gaining root access to the television. We needed this to be able to install libraries and execute code. Rooting the television should not have been an issue as there are tutorials and an app that roots the television for you from SamyGO\cite{SamyGO}. The problem we ran into is that the televisions we got had a new firmware for which there was no way to root yet.
 \\\\
 We had a quick look into finding a vulnerability in the new firmware that would allow us to execute arbitrary code and gain root access. We did find a possible vulnerability in ffmpeg, in the part used to decode matroska video files, but developing an exploit for this would have taken too long as we did not have any experience in this field.
 \\\\
@@ -32,17 +32,19 @@ We contacted SamyGO to ask whether there was any way to downgrade to an older fi
 
 \subsection{Installing missing dependencies}
 Even though the Smart TV runs a linux kernel, not everything was available from the start, so we had to install a great number of packages on the TV.
-For this purpose, we used cross-compiling toolchains to build executables compatible with the ARM processors which resides in the TV. However, we failed
+For this purpose, we used cross-compiling toolchains to build executables compatible with the ARM \cite{arm} processors which resides in the TV. However, we failed
 to fully compile some of these packages, of which the Python interpreter is one of the most important. The Python interpreter was needed because the dispersie and DHT modules 
-developed by the tribler team were written in Python. Since we had to use these modules in our application, we also needed to install Python on the TV. 
+developed by the Tribler team were written in Python. Since we had to use these modules in our application, we also needed to install Python on the TV. 
 
 We succeeded in cross-compiling and running the interpreter on the TV, but not in cross-compiling the standard Python-modules we need to run simple Python executables.
-Our solution was to emulate the ARMv7 processor with QEMU. Within this emulation, we installed a copy of the Linux Ubuntu OS, in which we were able to install the Python package with the apt tool.
-To achieve this, it was also needed to enable networking within QEMU. Then we copied the binary files to the TV, after which we could succesfully run the Python interpreter together with all its dependencies.
+Our solution was to emulate the ARMv7 processor with QEMU \cite{qemu}. Within this emulation, we installed a copy of Ubuntu, \cite{ubuntu} in which we were able to install the Python package with the apt tool.
+To achieve this, it was also needed to enable networking within QEMU. \cite{qemu-network} Then we copied the binary files to the TV, after which we could succesfully run the Python interpreter together with all its dependencies.
+
+Aside from Python, we also installed other applications via QEMU such as bash, sshd etc. to make it easier to work on the TV to accelerate the development.
 
 \subsection{TCP Reset packages}
 
-\subsection{Classical Fork() and thread problem}
+\subsection{Classical fork() and thread problem}
 
 \subsection{Communication between javascript and C++}
 

@@ -70,7 +70,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {6.3.3}TCP Reset packages}{31}{subsection.6.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.3.4}Classical Fork() and thread problem}{31}{subsection.6.3.4}
+\contentsline {subsection}{\numberline {6.3.4}Classical fork() and thread problem}{31}{subsection.6.3.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {6.3.5}Communication between javascript and C++}{31}{subsection.6.3.5}
 \defcounter {refsection}{0}\relax 
