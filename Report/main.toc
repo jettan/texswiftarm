@@ -14,9 +14,14 @@
 \contentsline {section}{\numberline {3.4}Dynamic Models}{16}{section.3.4}
 \contentsline {section}{\numberline {3.5}MosCoW}{21}{section.3.5}
 \contentsline {chapter}{\numberline {4}Design}{22}{chapter.4}
-\contentsline {section}{\numberline {4.1}Class Diagram}{22}{section.4.1}
-\contentsline {section}{\numberline {4.2}Dynamic models}{25}{section.4.2}
-\contentsline {section}{\numberline {4.3}Software Architecture}{25}{section.4.3}
+\contentsline {section}{\numberline {4.1}Software Architecture}{22}{section.4.1}
+\contentsline {section}{\numberline {4.2}Class Diagram}{22}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}HttpServer}{24}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Download}{24}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Stream}{24}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}DownloadManager}{24}{subsection.4.2.4}
+\contentsline {subsection}{\numberline {4.2.5}SearchEngine}{24}{subsection.4.2.5}
+\contentsline {section}{\numberline {4.3}Dynamic models}{25}{section.4.3}
 \contentsline {chapter}{\numberline {5}Implementation}{26}{chapter.5}
 \contentsline {section}{\numberline {5.1}Javascript}{26}{section.5.1}
 \contentsline {section}{\numberline {5.2}C++}{26}{section.5.2}

@@ -1,61 +1,20 @@
 \chapter{Design}
 This chapter describes the design of the application to be built, this design is based on the requirements gathered previously.
-Class diagrams are used to depict the structure of the application and sequence diagrams are used to show the flow of the program. 
+Class diagrams are used to depict the structure of the application and sequence diagrams are used to show the flow of the program.
 Also, the architecture of the appplication is discussed here.
 
+\section{Software Architecture}
+The Samsung Smart TV uses webapplications, so we had to build a web interface to our application in order to integrate the application in the Smart TV.
+However, it was not possible to develop the application by merely using web technology, since web technology limits the developer in accessing core functionality of the machine.
+This is especially a problem to us since low-level control was required in order to make use of the swift download engine. This is why we chose for a client-server architecture, i
+simply because there was no other choice if the application had to be integrated in the TV\textquotesingle s framework, while still being able to use low-level functionality.
+
+The webinterface can communicate with the application by using HTTP requests, meaning that the application will act as an HTTP server.
+The web interface also serves as the user interface of our application. Whenever the user interacts with the system,
+an HTTP request will be sent to the server. This server listens to these requests constantly and handles them accordingly.
+
 \section{Class Diagram}
-
-\begin{center}
-\begin{figure}[h!]
-\begin{tikzpicture}
-\begin{umlpackage}{GUI}
-
-\end{umlpackage}
-
-\begin{umlpackage}[x=0, y=-3]{Control layer}
-\umlclass{MediaPlayer}{
-}{
-
-}
-
-\umlclass[x=3]{Downloads}{
-}{
-
-}
-
-\umlclass[x=6]{FileManager}{
-}{
-
-}
-
-\umlclass[y=-3]{SettingsManager}{
-}{
-
-}
-
-\umlclass[x=6, y=-3]{SearchEngine}{
-}{
-
-}
-
-\end{umlpackage}
-
-\begin{umlpackage}[x=0, y=-5]{I/O layer}
-\umlclass[y=-6]{HttpClient}{
-}{
-
-}
-
-\end{umlpackage}
-
-\umlassoc{SettingsManager}{HttpClient}
-\umlVHassoc{SearchEngine}{HttpClient}
-
-
-\end{tikzpicture}
-\caption{Class diagram for the client}
-\end{figure}
-\end{center}
+Figure \ref{fig:class_server} shows the class diagram for the webserver. These classes are then explained in more detail.
 
 \begin{center}
 \begin{figure}[h!]
@@ -93,7 +52,7 @@ Also, the architecture of the appplication is discussed here.
   - downloaded : double \\
   - uploaded : double \\
   - downloads : list<Download> \\
-  - uploads : list<Upload> \\
+  - uploads : list<Download> \\
 }{
   + startStreaming() : bool \\
   + stopStreaming() : bool \\
@@ -133,7 +92,35 @@ Also, the architecture of the appplication is discussed here.
 \end{center}
 \clearpage
 
-\section{Dynamic models}
+\subsection{HttpServer}
+This class listens to the requests coming from the web application.
+It will then call methods from either SearchEngine or DownloadManager, depending on what the request is. As response, either a confirmation
+is sent or the return value of the called methods is sent. The class can be seen as the main controller of the system
+since all logic happens here. This class is designed to be a static class since it is not desirable to have multiple controllers.
 
-\section{Software Architecture}
+\subsection{Download}
+This class serves as a datatype to store all information regarding downloads from the swift engine and as an interface to the swift methods.
+This information can be accessed by the DownloadManager, which publishes the information of all Downloads to the web interface via
+the HttpServer class. This information can be retrieved by using swift methods. Core functionality of this class is based on the swift engine.
+In that sense, it is a wrapper class which makes use of swift methods.
+
+\subsection{Stream}
+This class serves as a datatype to store all information regarding streams from the swift engine and as interface to the swift methods. It is in
+essence the live-on-demand counterpart of the Download class, which is used to retrieve files from the Internet to store them on disk.
+Since there will always be only one stream opened at a time (assuming that people only watch one film at the same time),
+this class is designed according to the Singleton pattern.
+
+\subsection{DownloadManager}
+The DownloadManager, as the name implies, holds a list of Downloads and manages them. It can be accessed by the HttpServer, which controls this class whenever needed.
+It retrieves information from all Downloads and calls the methods of the correct Download. The DownloadManager also manages the Stream class.
+In order to save bandwidth, all Downloads are paused when a stream is opened. This is why the Stream class is also managed by the DownloadManager,
+ because that way the DownloadManager is able to access both the Stream class and the Download class. For similar reasons as the HttpServer class, 
+ the DownloadManager is designed to be a static class.
+
+\subsection{SearchEngine}
+This class serves as the interface to the search functionality developed by the Tribler team. It starts dispersie and DHT,
+with which files can be sought on the net by calling the methods in the dispersie module. For similar reasons as the HttpServer class and DownloadManager class, 
+this class is designed to be a static class.
+
+\section{Dynamic models}
 

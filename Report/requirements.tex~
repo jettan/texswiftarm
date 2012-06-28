@@ -1,26 +1,21 @@
 \chapter{Requirements Analysis}
-\label{sec:requirements}
-This chapter discusses the design process of our application. First, it was needed to know what the user requirements are.
-For this, we interviewed our supervisor who also acts as our client. These requirements were also acquired through brainstorming.
-Then, use cases for our application were designed, which corresponds with the user requirements.
-In this phase, a business class diagram was also made which is easier to understand for the client than the complete class diagram of the whole application. 
-After researching the framework present on the Samsung Smart TV and the possibilities of libswift, a design for the software architecture could be made. 
-Lastly, implementation models such as sequence diagrams and class diagrams were made, which serve as blueprints for the application.
+
+This chapter discusses the design process of our application. First, it was needed to know what the user requirements are. For this, we interviewed our supervisor who also acts as our client. These requirements were also acquired through brainstorming. Then, use cases for our application were designed, which corresponds with the user requirements. In this phase, a business class diagram was also made which is easier to understand for the client than the complete class diagram of the whole application. After researching the framework present on the Samsung Smart TV and the possibilities of libswift, a design for the software architecture could be made. Lastly, implementation models such as sequence diagrams and class diagrams were made, which serve as blueprints for the application.
 
 \section{Requirements}
 The requirements can be split in two kinds, functional and non-functional requirements. These requirements  correspond to the use cases as mentioned in section \hyperref[sec:use_cases]{\ref*{sec:use_cases}} The non-functional requirements can then again be split in quality and platform requirements. In this section, the constraints the application has to deal with are also discussed.
 
-\subsection{Functional requirements}
+\subsection{Functional requirements} 
 Functional requirements specify the core functionality of the application. These requirements are covered by the use cases in the next section. The functional requirements are as follows:
 
 \begin{itemize}
-\item[1.] By using the swift protocol, given two peers \textit{A} and \textit{B}:
+\item[1.] Given two peers \textit{A} and \textit{B}:
 	\begin{itemize}
 	\item[1.1.] \textit{A} is able to download from \textit{B} (UC 12);
 	\item[1.2.] \textit{A} is able to upload to \textit{B} (Should happen automatically after download is finished);
 	\item[1.3.] \textit{A} is able to stream to/from \textit{B} (UC 11);
-	\end{itemize}
-\item[2.] The users should be able to search for files other peers own by using dispersie (UC 9, 10);
+	\end{itemize}	
+\item[2.] The users should be able to search for files other peers own (UC 9, 10);
 \item[3.] The users should be able to search/browse files they own themselves (UC 2, 8, 10);
 \item[4.] The users should be able to playback media content. 
 		  Media in this context means any kind of video or audio file (UC 6);
@@ -68,42 +63,106 @@ To see whether a Samsung TV is rootable or not, please check \url{http://www.sam
 
 \subsection{Constraints}
 The constraints specify what our own limitations are we have to take into account when implementing the application. 
-These can be limitations put by the software we use,
+These can be limitations put by the software we use, 
 or put by ourselves to reduce the application\textquotesingle s complexity.
 
 \begin{itemize}
-\item[1.] Due to the limited memory available on the TV, it is not
-possible to download and store great amounts of data on the TV.
-Therefore, usage of external storage devices is mandatory to make use
+\item[1.] Due to the limited memory available on the TV, it is not 
+possible to download and store great amounts of data on the TV. 
+Therefore, usage of external storage devices is mandatory to make use 
 of the application;
 
-\item[2.] The application must be integrated with the Samsung
-framework, meaning that it should be recognised by the TV as
+\item[2.] The application must be integrated with the Samsung 
+framework, meaning that it should be recognised by the TV as 
 JavaScript app developed with the Samsung SDK.
 \end{itemize}
 
 \section{Use Cases}
 \label{sec:use_cases}
-The use case models describe interactions between one or more actors and the system.
+The use case models describe interactions between one or more actors and the system. 
 The models are used to depict what the users can do with the system and how they  should operate it.
 In our case, we only have one actor, which is the user who watches TV. This is because our application should always
-maintain the same behaviour for everyone who uses it; everyone using the application has the same rights, privileges
-and use cases of the system. The use cases are shown in figure \ref{fig:use_case_diagram},
-in which the relations between them are also shown. The user should be able to carry out all the use cases,
-these relations are left out for clarity. The use cases in figure \ref{fig:use_case_diagram}
-are explained in further detail in their descriptions and with the use of UML sequence diagrams in sections
-\hyperref[sec:use_case_descriptions]{\ref*{sec:use_case_descriptions}} and
+maintain the same behaviour for everyone who uses it; everyone using the application has the same rights, privileges 
+and use cases of the system. The use cases are shown in figure \ref{fig:use_case_diagram}, 
+in which the relations between them are also shown. The user should be able to carry out all the use cases, 
+these relations are left out for clarity. The use cases in figure \ref{fig:use_case_diagram} 
+are explained in further detail in their descriptions and with the use of UML sequence diagrams in sections 
+\hyperref[sec:use_case_descriptions]{\ref*{sec:use_case_descriptions}} and 
 \hyperref[sec:req_dynamic_models]{\ref*{sec:req_dynamic_models}} respectively.
 
+\begin{comment}
+
 \begin{center}
-\begin{figure}[h]
-	\centering
-	\mbox{\includegraphics[width=1.2\textwidth]{Images/use_case.png}}
-	\label{fig:use_case_diagram}
-	\caption{Use case diagram of the application to be built.
-	Note that the associations from the user to the use cases are left out in order to keep the diagram clear.}
+\begin{figure}[h!]
+\begin{tikzpicture}
+\begin{umlsystem}[fill=red!10]{The system}
+
+\umlusecase[x=6, width=4cm]{1.Limit upload/download speed}
+\umlusecase[x=-2, y=-4, width=1.5cm]{3.Update Files}
+\umlusecase[x=1, y=-3, width=1.5cm]{4.Delete Files}
+\umlusecase[x=7, y=-2, width=3cm]{6.Play Media File}
+\umlusecase[width=3cm]{2.Browse File System}
+\umlusecase[x=4, y=-4, width=1.5cm]{5.Move Files}
+\umlusecase[x=7, y=-9, width =1.5cm]{11.Stream File}
+\umlusecase[x=7, y=-11, width =1.5cm]{12.Download File}
+\umlusecase[x=8, y=-4, width=3cm]{7.Change File Visibility}
+\umlusecase[y=-10, width=1.5cm]{13.Sort Files}
+\umlusecase[x=-1, y=-7, width=1.5cm]{8.Search locally}
+\umlusecase[x=2, y=-7, width=1.5cm]{9.Search on the net}
+\umlusecase[x=3, y=-10, width=1.5cm]{10.Search File}
+\umlusecase[x=-2, y=-14, width=1.5cm]{14.Sort by date}
+\umlusecase[x=0, y=-14, width=1.5cm]{15.Sort by type}
+\umlusecase[x=2, y=-14, width=1.5cm]{16.Sort by name}
+\umlusecase[x=4, y=-14, width=1.5cm]{17.Sort by size}
+
+\end{umlsystem}
+
+\umlactor[x=-4.5, y=-5]{User}
+
+\umlinclude[name=incl]{usecase-7}{usecase-12}
+\umlinclude[name=incl]{usecase-8}{usecase-12}
+
+\umlinclude[name=incl]{usecase-9}{usecase-5}
+\umlinclude[name=incl]{usecase-2}{usecase-5}
+\umlinclude[name=incl]{usecase-3}{usecase-5}
+\umlinclude[name=incl]{usecase-4}{usecase-5}
+\umlinclude[name=incl]{usecase-6}{usecase-5}
+\umlHVinclude[name=incl]{usecase-10}{usecase-5}
+\umlVHinclude[name=incl]{usecase-4}{usecase-11}
+
+\umlinclude[name=incl]{usecase-2}{usecase-11}
+\umlinclude[name=incl]{usecase-3}{usecase-11}
+\umlinclude[name=incl]{usecase-6}{usecase-11}
+\umlinclude[name=incl]{usecase-9}{usecase-11}
+
+\umlVHVinherit{usecase-14}{usecase-10}
+\umlVHVinherit{usecase-15}{usecase-10}
+\umlVHVinherit{usecase-16}{usecase-10}
+\umlVHVinherit{usecase-17}{usecase-10}
+
+\umlVHVinherit{usecase-11}{usecase-13}
+\umlVHVinherit{usecase-12}{usecase-13}
+
+\end{tikzpicture}
+\label{fig:use_case_diagram}
+\caption{Use case diagram of the application to be built.
+Note that the associations from the user to the use cases are left out in order to keep the diagram clear.}
 \end{figure}
 \end{center}
+
+\end{comment}
+
+\begin{figure}[h]
+	\centering
+	\mbox{\includegraphics[width=0.25\textwidth]{Images/use_case.png}}
+	\caption{Aldebaran\textquotesingle s NAO}
+	\label{fig:naorobot}
+\end{figure}
+
+\caption{Use case diagram of the application to be built.
+Note that the associations from the user to the use cases are left out in order to keep the diagram clear.}
+\label{fig:use_case_diagram}
+\end{figure}
 
 \clearpage
 \subsection{Use Case Descriptions}
@@ -869,12 +928,6 @@ Download continuation without loss of data (req 12); \\
 Download continuation at start up (req 13); \\ \hline
 \end{tabular}
 \caption{List of priorities.}
-\label{tab:MosCoW}
+\label{tab:UC18}
 \end{table}
-
-The list shown in table \ref{tab:MosCoW} consists mainly of requirements as specified in the 
-\hyperref[sec:requirements]{requirements\ref*{sec:requirements}}.
-However, some features were also added to ``Would have'' because of their potential usefulness, but which would
-not be feasible within the current time or with use of the current technology. We recommend to add these features in the future if possible,
- since it would improve the user-friendliness of the application. These features are explained in more detail in chapter \hyperref[sec:recommendations]{Recommendations\ref*{sec:recommendations}}.
 
