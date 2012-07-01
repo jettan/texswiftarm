@@ -1,17 +1,16 @@
 \chapter{Design}
-This chapter describes the design of the application to be built, this design is based on the requirements gathered previously.
-Class diagrams are used to depict the structure of the application and sequence diagrams are used to show the flow of the program.
-Also, the architecture of the appplication is discussed here.
+This chapter describes the design of the application to be built, this design is based on the requirements gathered previously. The design has to incorporate solutions to the problems mentioned in section Problems. %reference
+This means the design has to include classes for a C++ backend using swift, a Javascript front end, a sandbox workaround and a means for inter-tv communication. First we'll discuss the current software archictecture on the tv. Then we'll discuss an extended version of this architecture which will allow us to implement solutions for the aforementioned problems. Finally the class diagram and other UML models will be discussed.
 
 \section{Software Architecture}
-The Samsung Smart TV uses webapplications, so we had to build a web interface to our application in order to integrate the application in the Smart TV.
-However, it was not possible to develop the application by merely using web technology, since web technology limits the developer in accessing core functionality of the machine.
-This is especially a problem to us since low-level control was required in order to make use of the swift download engine. This is why we chose for a client-server architecture,
-simply because there was no other choice if the application had to be integrated in the TV\textquotesingle s framework, while still being able to use low-level functionality.
+As mentioned before in section Problems % hier reference 
+the Samsung SDK for the Smart TV only allows programmers to create applications using HTML, CSS, Javascript and Flash.
+All operations to be performed in the root file system will go via the SDK as a middle layer between our app and the root file system.
+% Hier plaatje van standaard situatie
 
-The webinterface can communicate with the application by using HTTP requests, meaning that the application will act as an HTTP server.
-The web interface also serves as the user interface of our application. Whenever the user interacts with the system,
-an HTTP request will be sent to the server. This server listens to these requests constantly and handles them accordingly.
+\section{Extended Software architecture}
+The solution for being able to run C++ code has already been mentioned, namely getting root acces to the tv. This was already done in the orientation fase of this project. This leaves only one problem, the sandbox. The frontend and backend of our application need a way to communicate. Since one can't perform direct calls from Javascript to C++, we decided to use a networking approach. In Javascript it is possible to send HTTP GET messages to any server and since we already have root access we implemented our own HTTP web server written in C++. This way one can make a bridge between Javascript and C++ resulting in the ability to do C++ function calls from Javascript. Since the TV does not support HTML5 we weren't able to use websockets who provide an open connection in which a reply can be received asynchronously at any time. We are restricted to a client-server architecture where you have to keep polling for an update value for example. This however is sufficient for out matter. % Hier vertellen over dispery
+%Hier plaatje van onze software architecture
 
 \section{Class Diagram}
 Figure \ref{fig:class_server} shows the class diagram for the webserver. These classes are then explained in more detail.
