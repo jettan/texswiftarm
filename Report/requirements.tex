@@ -5,7 +5,7 @@ After researching the framework present on the Samsung SmartTV and the possibili
 Lastly, implementation models such as sequence diagrams and class diagrams were made, which serve as blueprints for the application. Also a MosCoW model was made where the priority off the features to be implemented are stated.
 
 \section{Requirements}
-The requirements can be split in two kinds, functional and non-functional requirements. These requirements  correspond to the use cases as mentioned in section \hyperref[sec:use_cases]{\ref*{sec:use_cases}} The non-functional requirements can then again be split in quality and platform requirements. In this section, the constraints the application has to deal with are also discussed.
+The requirements can be split in two kinds, functional and non-functional requirements. These requirements  correspond to the use cases as mentioned in section \hyperref[sec:use_cases]{\ref*{sec:use_cases}}. The non-functional requirements can then again be split in quality and platform requirements. In this section, the constraints the application has to deal with are also discussed.
 
 \subsection{Functional requirements}
 Functional requirements specify the core functionality of the application. These requirements are covered by the use cases in the next section. The functional requirements are as follows:
@@ -90,7 +90,7 @@ in which the relations between them are also shown. The user should be able to c
 these relations are left out for clarity. The use cases in figure \ref{fig:use_case_diagram}
 are explained in further detail in their descriptions and with the use of UML sequence diagrams in sections
 \hyperref[sec:use_case_descriptions]{\ref*{sec:use_case_descriptions}} and
-\hyperref[sec:req_dynamic_models]{\ref*{sec:req_dynamic_models}} respectively.
+\hyperref[sec:req_dynamic_models]{appendix} respectively.
 
 \begin{center}
 \begin{figure}[h]
@@ -123,7 +123,7 @@ Steps &  1. User clicks the settings button; \\
 Postconditions & Downloads and uploads will never exceed the new speeds.
 \\ \hline
 \end{tabular}
-\caption{Use Case 1: Limit upload/download speeds}
+\caption{Use Case 1: Limit upload/download speeds. See \hyperref[fig:req_seq1]{appendix} for the sequence diagram.}
 \label{tab:UC1}
 \end{table}
 
@@ -143,7 +143,7 @@ Steps &  1. User selects the device to browse; \\
 Postconditions & -
 \\ \hline
 \end{tabular}
-\caption{Use Case 2: Browse File System}
+\caption{Use Case 2: Browse File System. See \hyperref[fig:req_seq2]{appendix} for the sequence diagram.}
 \label{tab:UC2}
 \end{table}
 
@@ -164,7 +164,7 @@ Steps &  1. User selects the file to update; \\
 Postconditions & File properties are changed locally and if uploading, also online.
 \\ \hline
 \end{tabular}
-\caption{Use Case 3: Update Files}
+\caption{Use Case 3: Update Files. See \hyperref[fig:req_seq2]{appendix} for the sequence diagram.}
 \label{tab:UC3}
 \end{table}
 
@@ -185,7 +185,7 @@ Steps &  1. User selects the files to delete; \\
 Postconditions & Files are deleted locally and if uploading, also online.
 \\ \hline
 \end{tabular}
-\caption{Use Case 4: Delete Files}
+\caption{Use Case 4: Delete Files. See \hyperref[fig:req_seq2]{appendix} for the sequence diagram.}
 \label{tab:UC4}
 \end{table}
 
@@ -205,7 +205,7 @@ Steps &  1. User selects the files or directories to move; \\
 Postconditions & Files are moved to another directory.
 \\ \hline
 \end{tabular}
-\caption{Use Case 5: Move Files}
+\caption{Use Case 5: Move Files. See \hyperref[fig:req_seq2]{appendix} for the sequence diagram.}
 \label{tab:UC5}
 \end{table}
 
@@ -224,7 +224,7 @@ Steps &  1. User selects the file to play; \\
 Postconditions & File is opened and is viewable/listenable.
 \\ \hline
 \end{tabular}
-\caption{Use Case 6: Play Media File}
+\caption{Use Case 6: Play Media File. See \hyperref[fig:req_seq2]{appendix} for the sequence diagram.}
 \label{tab:UC6}
 \end{table}
 
@@ -247,7 +247,7 @@ Steps &  1. User checks or unchecks the visibility box of a file; \\
 Postconditions & File is uploaded or removed from the Upload Manager.
 \\ \hline
 \end{tabular}
-\caption{Use Case 7: Change File Visibility}
+\caption{Use Case 7: Change File Visibility. See \hyperref[fig:req_seq3]{appendix} for the sequence diagram.}
 \label{tab:UC7}
 \end{table}
 
@@ -272,7 +272,7 @@ Steps &  1. User presses Search button; \\
 Postconditions & A list of found files is returned together with the number of found files.
 \\ \hline
 \end{tabular}
-\caption{Use Case 8: Search locally}
+\caption{Use Case 8: Search locally. See \hyperref[fig:req_seq4]{appendix} for the sequence diagram.}
 \label{tab:UC8}
 \end{table}
 
@@ -296,7 +296,7 @@ Steps &  1. User presses Search button; \\
 Postconditions & A list of found files is returned together with the number of found files.
 \\ \hline
 \end{tabular}
-\caption{Use Case 9: Search on the net}
+\caption{Use Case 9: Search on the net. See \hyperref[fig:req_seq4]{appendix} for the sequence diagram.}
 \label{tab:UC9}
 \end{table}
 
@@ -316,7 +316,7 @@ Steps &  1. User inputs a keyword; \\
 Postconditions & A list and number of found files is returned.
 \\ \hline
 \end{tabular}
-\caption{Use Case 10: Search File}
+\caption{Use Case 10: Search File. See \hyperref[fig:req_seq4]{appendix} for the sequence diagram.}
 \label{tab:UC10}
 \end{table}
 
@@ -341,7 +341,7 @@ Postconditions & A stream is opened and played by the videoplayer. \\
 & Temporary files are removed after playing the stream.
 \\ \hline
 \end{tabular}
-\caption{Use Case 11: Stream File}
+\caption{Use Case 11: Stream File. See \hyperref[fig:req_seq5]{appendix} for the sequence diagram.}
 \label{tab:UC11}
 \end{table}
 
@@ -365,7 +365,7 @@ Steps &  1. Selects an uploaded file; \\
 Postconditions & A file is retrieved from the Internet and stored on the file system.
 \\ \hline
 \end{tabular}
-\caption{Use Case 12: Download File}
+\caption{Use Case 12: Download File. See \hyperref[fig:req_seq6]{appendix} for the sequence diagram.}
 \label{tab:UC12}
 \end{table}
 
@@ -385,7 +385,7 @@ Steps &  1. User clicks on attribute ``type'', ``name'', ``date'' or ``size''; \
 Postconditions & A sorted list is returned.
 \\ \hline
 \end{tabular}
-\caption{Use Case 13: Sort Files}
+\caption{Use Case 13: Sort Files. See \hyperref[fig:req_seq7]{appendix} for the sequence diagram.}
 \label{tab:UC13}
 \end{table}
 
@@ -408,7 +408,7 @@ Steps &  1. User clicks on attribute ``date''; \\
 Postconditions & A list sorted by date is returned.
 \\ \hline
 \end{tabular}
-\caption{Use Case 14: Sort by date}
+\caption{Use Case 14: Sort by date. See \hyperref[fig:req_seq7]{appendix} for the sequence diagram.}
 \label{tab:UC14}
 \end{table}
 
@@ -431,7 +431,7 @@ Steps &  1. User clicks on attribute ``type''; \\
 Postconditions & A list sorted by type is returned.
 \\ \hline
 \end{tabular}
-\caption{Use Case 15: Sort by type}
+\caption{Use Case 15: Sort by type. See \hyperref[fig:req_seq7]{appendix} for the sequence diagram.}
 \label{tab:UC15}
 \end{table}
 
@@ -454,7 +454,7 @@ Steps &  1. User clicks on attribute ``name''; \\
 Postconditions & A list sorted by name is returned.
 \\ \hline
 \end{tabular}
-\caption{Use Case 16: Sort by name}
+\caption{Use Case 16: Sort by name. See \hyperref[fig:req_seq7]{appendix} for the sequence diagram.}
 \label{tab:UC16}
 \end{table}
 
@@ -479,115 +479,15 @@ Steps &  1. User clicks on attribute ``size''; \\
 Postconditions & A list sorted by size is returned.
 \\ \hline
 \end{tabular}
-\caption{Use Case 17: Sort by size}
+\caption{Use Case 17: Sort by size. See \hyperref[fig:req_seq7]{appendix} for the sequence diagram.}
 \label{tab:UC17}
 \end{table}
 
 \clearpage
 
-\section{Business Class Diagram}
-
-\begin{center}
-\begin{figure}[h!]
-\begin{tikzpicture}
-%\begin{umlpackage}{p}
-%\begin{umlpackage}{sp1}
-
-\umlclass[x=-5]{Sendable}{
-  - trackers : list<tracker> \\
-  - seeders  : list<seeder> \\
-  - speed	   : double
-}{
-  + start() : void \\
-  + stop() : void \\
-  + pause() : void \\
-  + resume() : void
-}
-
-\umlclass[x=3]{FileManager}{
-  - list<File>
-}{
-  + remove(File file) : void \\
-  + add(File file) : File \\
-  + rename(File file) : File \\
-  + sort() : void \\
-  + search(File file) : list<File> \\
-}
-
-\umlclass[x=3, y=-6]{File}{
-  - name : String \\
-  - date : String \\
-  - extension : String \\
-  - size : double \\
-  - visible : bool \\
-}{
-  + setVisibility(bool value) : void \\
-  + isVisible() : bool \\
-  + setName(String name) : void \\
-  + getSize() : double \\
-  + getDate() : String \\
-  + getName() : String
-}
-
-\umlclass[x=4, y=-11]{Media}{
-  - length : double \\
-}{}
-
-\umlclass[x=-7, y=-4]{Download}{
-  - percentage : double
-}{}
-
-\umlclass[x=-3, y=-4]{Upload}{
-  - amount : double
-}{}
-
-\umlclass[x=-5, y=-6]{Stream}{
-  - length : double
-}{}
-
-\umlclass[x=-5, y=-10.5]{DownloadManager}{
-  - downloaded : double \\
-  - uploaded : double \\
-  - downloads : list<Download> \\
-  - uploads : list<Uploads>
-}{
-  + startDownload(String link) : void \\
-  + stopDownload(String link) : void \\
-  + pauseDownload(String link) : void \\
-  + resumeDownload(String link) : void \\
-  + startUpload(String name) : void \\
-  + stopUpload(String name) : void
-}
-
-\umlclass[x=2, y=-14]{MediaPlayer}{
-}{
-  + open(Media file) : void \\
-  + open(Stream stream) : void
-}
-
-\umlaggreg[mult1=1, mult2=1, pos=0.8, angle1=30, angle2=60]{Sendable}{File}
-\umlaggreg[mult1=1, mult2=*]{FileManager}{File}
-
-\umlinherit{Download}{Sendable}
-\umlinherit{Upload}{Sendable}
-\umlinherit{Stream}{Sendable}
-
-\umlinherit{Media}{File}
-
-\umlVHVaggreg[mult1=1, mult2=*]{DownloadManager}{Upload}
-\umlVHVaggreg[mult1=1, mult2=*]{DownloadManager}{Download}
-
-\umlVHassoc{MediaPlayer}{Stream}
-\umlVHassoc{Media}{MediaPlayer}
-
-\end{tikzpicture}
-\caption{Part of the class diagram. This part only shows the business classes comprehensible for end-users.}
-\end{figure}
-\end{center}
-\clearpage
-
+\section{Business Class diagram}
 The business class diagram is meant to explain the structure of the system to be built. It depicts the components of the system
-and their relationships. This section explains the classes of the business class diagram in more detail.
+and their relationships, the diagram can be found in the \hyperref[fig:business_class]{appendix}. This section explains the classes of the business class diagram in more detail.
 
 \subsection{FileManager}
 As the name implies, the FileManager class manages files. With this, users are able to browse and search for files.
@@ -626,252 +526,6 @@ do not own, such as the length of the streamed file. Also, this class is made so
 A manager for all Sendable classes, except for Streams. This class holds all downloaded and uploaded files and is able to excercise the methods 
 of a specific Download or Upload. This class is also one of the more important classes, since the project revolves around the libswift engine, which
 is meant for sharing files over the Internet.
-
-\section{Dynamic Models}
-\label{sec:req_dynamic_models}
-\begin{figure}[h!]
-\scalebox{1}{
-\begin{tikzpicture}
-\begin{umlseqdiag}
-\umlactor{User}
-\umlobject[x=5]{Samsung App Interface}
-\umlobject[x=10]{DownloadManager}
-\begin{umlcall}[op={goToSettings()}, with return, padding=3]{User}{Samsung App Interface}
-\begin{umlcall}[op={getSettings()}, with return]{Samsung App Interface}{DownloadManager}
-\end{umlcall}
-\end{umlcall}
-\begin{umlcall}[op={setSpeeds(dspeed, uspeed)}, padding=3, with return]{User}{Samsung App Interface}
-
-\begin{umlcall}[op={setSpeeds(dspeed, uspeed)}, padding=3, with return]{Samsung App Interface}{DownloadManager}
-\end{umlcall}
-\end{umlcall}
-\end{umlseqdiag}
-\end{tikzpicture}
-}
-\label{fig:req_seq1}
-\caption{Use Case 1: Limit upload/download speeds.}
-\end{figure}
-
-\begin{figure}[h!]
-\scalebox{0.8}{
-\begin{tikzpicture}
-\begin{umlseqdiag}
-\umlactor{User}
-\umlobject{Samsung App Interface}
-\umlobject{FileManager}
-\umlobject{MediaPlayer}
-\umlmulti{File}
-
-\begin{umlcall}[op={browse}, with return, padding=3]{User}{Samsung App Interface}
-	\begin{umlcall}[op={getFiles()}, with return, padding=3]{Samsung App Interface}{FileManager}
-		\begin{umlcall}[op={get()}, with return, padding=3]{FileManager}{File}
-		\end{umlcall}
-	\end{umlcall}
-\end{umlcall}
-
-\begin{umlfragment}[type=alt, label=Update, inner xsep=5]
-\begin{umlcall}[op={update}, with return]{User}{Samsung App Interface}
-	\begin{umlcall}[op={update(int file\_id)}, with return]{Samsung App Interface}{FileManager}
-		\begin{umlcall}[op={update()}, with return]{FileManager}{File}
-		\end{umlcall}
-	\end{umlcall}
-\end{umlcall}
-
-\umlfpart [Delete]
-\begin{umlcall}[op={delete}, with return]{User}{Samsung App Interface}
-	\begin{umlcall}[op={delete(int file\_id)}, with return]{Samsung App Interface}{FileManager}
-		\begin{umlcall}[op={destroy()}, with return]{FileManager}{File}
-		\end{umlcall}
-	\end{umlcall}
-\end{umlcall}
-
-\umlfpart[Move]
-\begin{umlcall}[op={move}, with return]{User}{Samsung App Interface}
-	\begin{umlcall}[op={move(string location, int file\_id)}, with return]{Samsung App Interface}{FileManager}
-		\begin{umlcall}[op={changeLocation(string location)}, with return]{FileManager}{File}
-		\end{umlcall}
-	\end{umlcall}
-\end{umlcall}
-
-\umlfpart[Play]
-\begin{umlcall}[op={play}, with return]{User}{Samsung App Interface}
-	\begin{umlcall}[op={play(int file\_id)}, with return]{Samsung App Interface}{MediaPlayer}
-		\begin{umlcall}[op={play()}, with return]{MediaPlayer}{File}
-		\end{umlcall}
-	\end{umlcall}
-\end{umlcall}
-
-\end{umlfragment}
-\end{umlseqdiag}
-\end{tikzpicture}
-}
-\label{fig:req_seq2}
-\caption{Use Cases 2 to 6: Basic browsing and file manipulation}
-\end{figure}
-
-\begin{figure}[h!]
-\scalebox{0.9}{
-\begin{tikzpicture}
-\begin{umlseqdiag}
-\umlactor[y=1]{User}
-\umlobject[y=1, x=3]{Samsung App Interface}
-\umlobject[y=1, x=7]{FileManager}
-\umlmulti[y=1, x=12]{File}
-
-\begin{umlcall}[op={change visbility}]{User}{Samsung App Interface}
-\end{umlcall}
-
-\begin{umlfragment}[type=alt, label=visible, inner xsep=5]
-
-\begin{umlcall}[op={changeVisibility(file, true)}, with return]{Samsung App Interface}{FileManager}
-		\begin{umlcall}[op={visible(true)}, with return]{FileManager}{File}
-		\end{umlcall}
-\end{umlcall}
-
-\umlfpart[invisible]
-
-\begin{umlcall}[op={changeVisibility(file, false)}, with return]{Samsung App Interface}{FileManager}
-		\begin{umlcall}[op={visible(false)}, with return]{FileManager}{File}
-		\end{umlcall}
-\end{umlcall}
-
-\end{umlfragment}
-
-\end{umlseqdiag}
-\end{tikzpicture}
-}
-\label{fig:req_seq3}
-\caption{Use Case 7: Change File Visibility}
-\end{figure}
-
-\begin{figure}[h!]
-\scalebox{0.8}{
-\begin{tikzpicture}
-\begin{umlseqdiag}
-\umlactor{User}
-\umlobject{Samsung App Interface}
-\umlobject{FileManager}
-\umlobject{DownloadManager}
-\umlmulti{File}
-
-\begin{umlcall}[op={goToSearch}, with return, padding=3]{User}{Samsung App Interface}
-\end{umlcall}
-
-	\begin{umlfragment}[type=alt, label=Local, inner xsep=5]
-		\begin{umlcall}[op={searchLocal(file)}, with return]{User}{Samsung App Interface}
-			\begin{umlcall}[op={search(file)}, with return]{Samsung App Interface}{FileManager}
-				\begin{umlcall}[op={get()}, with return]{FileManager}{File}
-				\end{umlcall}	
-			\end{umlcall}
-		\end{umlcall}
-
-	\umlfpart [Online]
-\begin{umlcall}[op={searchOnline(file)}, with return]{User}{Samsung App Interface}
-	\begin{umlcall}[op={search(file)}, with return]{Samsung App Interface}{DownloadManager}
-		\begin{umlcall}[op={get()}, with return]{DownloadManager}{File}
-		\end{umlcall}
-	\end{umlcall}
-\end{umlcall}
-
-	
-	\end{umlfragment}
-
-\end{umlseqdiag}
-\end{tikzpicture}
-}
-\label{fig:req_seq4}
-\caption{Use Cases 8 to 10: Search.}
-\end{figure}
-
-\begin{figure}[h!]
-\scalebox{1}{
-\begin{tikzpicture}
-\begin{umlseqdiag}
-\umlactor{User}
-\umlobject{Samsung App Interface}
-\umlobject{DownloadManager}
-\umlobject{Stream}
-
-\begin{umlcall}[op={play}]{User}{Samsung App Interface}
-\end{umlcall}
-
-\begin{umlcall}[op={playStream(string tracker)}]{Samsung App Interface}{DownloadManager} 
-	\begin{umlcall}[op={start()}]{DownloadManager}{Stream} 
-	\end{umlcall}
-\end{umlcall}
-
-\end{umlseqdiag}
-\end{tikzpicture}
-}
-\label{fig:req_seq5}
-\caption{Use Case 11: Stream File.}
-\end{figure}
-
-\begin{figure}[h!]
-\scalebox{1}{
-\begin{tikzpicture}
-\begin{umlseqdiag}
-\umlactor{User}
-\umlobject{Samsung App Interface}
-\umlobject{DownloadManager}
-
-\begin{umlcall}[op={download}]{User}{Samsung App Interface}  
-\end{umlcall}
-
-\umlcreatecall[class=Download]{Samsung App Interface}{download} 
-
-\begin{umlcall}[op={add(download)}]{Samsung App Interface}{DownloadManager} 
-	\begin{umlcall}[op={start()}]{DownloadManager}{download} 
-	\end{umlcall} 
-\end{umlcall}
-
-\end{umlseqdiag} 
-\end{tikzpicture}
-}
-\label{fig:req_seq6}
-\caption{Use Case 12: Download File.}
-\end{figure}
-
-\begin{figure}[h!]
-\scalebox{1}{
-\begin{tikzpicture}
-\begin{umlseqdiag}
-\umlactor{User}
-\umlobject{Samsung App Interface}
-\umlobject{FileManager}
-
-	\begin{umlcall}[op={sortName()}, with return]{User}{Samsung App Interface}
-		\begin{umlcall}[op={sortName()}, with return]{Samsung App Interface}{FileManager}
-		\end{umlcall}
-	\end{umlcall}
-	
-\begin{umlfragment}[type=alt, label=Size, inner xsep=5]
-	\begin{umlcall}[op={sortSize(), with return}]{User}{Samsung App Interface}
-		\begin{umlcall}[op={sortSize()}, with return]{Samsung App Interface}{FileManager}
-		\end{umlcall}
-	\end{umlcall}
-		
-	\umlfpart [Type]
-	\begin{umlcall}[op={sortType(), with return}]{User}{Samsung App Interface}
-		\begin{umlcall}[op={sortType()}, with return]{Samsung App Interface}{FileManager}
-		\end{umlcall}
-	\end{umlcall}
-		
-	\umlfpart [Date]
-	\begin{umlcall}[op={sortDate(), with return}]{User}{Samsung App Interface}
-		\begin{umlcall}[op={sortDate()}, with return]{Samsung App Interface}{FileManager}
-		\end{umlcall}
-	\end{umlcall}
-\end{umlfragment}
-
-\end{umlseqdiag}
-\end{tikzpicture}
-}
-\label{fig:req_seq7}
-\caption{Use Cases 13 to 17: Sort Files.}
-\end{figure}
-
-\clearpage
 
 \section{MosCoW}
 

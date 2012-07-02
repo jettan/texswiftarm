@@ -1,0 +1,102 @@
+\chapter{Appendix}
+
+\section{Business Class Diagram}
+
+\begin{center}
+\begin{figure}[h!]
+\begin{tikzpicture}
+%\begin{umlpackage}{p}
+%\begin{umlpackage}{sp1}
+
+\umlclass[x=-5]{Sendable}{
+  - trackers : list<tracker> \\
+  - seeders  : list<seeder> \\
+  - speed    : double
+}{
+  + start() : void \\
+  + stop() : void \\
+  + pause() : void \\
+  + resume() : void
+}
+
+\umlclass[x=3]{FileManager}{
+  - list<File>
+}{
+  + remove(File file) : void \\
+  + add(File file) : File \\
+  + rename(File file) : File \\
+  + sort() : void \\
+  + search(File file) : list<File> \\
+}
+
+\umlclass[x=3, y=-6]{File}{
+  - name : String \\
+  - date : String \\
+  - extension : String \\
+  - size : double \\
+  - visible : bool \\
+}{
+  + setVisibility(bool value) : void \\
+  + isVisible() : bool \\
+  + setName(String name) : void \\
+  + getSize() : double \\
+  + getDate() : String \\
+  + getName() : String
+}
+
+\umlclass[x=4, y=-11]{Media}{
+  - length : double \\
+}{}
+
+\umlclass[x=-7, y=-4]{Download}{
+  - percentage : double
+}{}
+
+\umlclass[x=-3, y=-4]{Upload}{
+  - amount : double
+}{}
+
+\umlclass[x=-5, y=-6]{Stream}{
+  - length : double
+}{}
+
+\umlclass[x=-5, y=-10.5]{DownloadManager}{
+  - downloaded : double \\
+  - uploaded : double \\
+  - downloads : list<Download> \\
+  - uploads : list<Uploads>
+}{
+  + startDownload(String link) : void \\
+  + stopDownload(String link) : void \\
+  + pauseDownload(String link) : void \\
+  + resumeDownload(String link) : void \\
+  + startUpload(String name) : void \\
+  + stopUpload(String name) : void
+}
+
+\umlclass[x=2, y=-14]{MediaPlayer}{
+}{
+  + open(Media file) : void \\
+  + open(Stream stream) : void
+}
+
+\umlaggreg[mult1=1, mult2=1, pos=0.8, angle1=30, angle2=60]{Sendable}{File}
+\umlaggreg[mult1=1, mult2=*]{FileManager}{File}
+
+\umlinherit{Download}{Sendable}
+\umlinherit{Upload}{Sendable}
+\umlinherit{Stream}{Sendable}
+
+\umlinherit{Media}{File}
+
+\umlVHVaggreg[mult1=1, mult2=*]{DownloadManager}{Upload}
+\umlVHVaggreg[mult1=1, mult2=*]{DownloadManager}{Download}
+
+\umlVHassoc{MediaPlayer}{Stream}
+\umlVHassoc{Media}{MediaPlayer}
+
+\end{tikzpicture}
+\caption{Part of the class diagram. This part only shows the business classes comprehensible for end-users.}
+\end{figure}
+\end{center}
+\clearpage
