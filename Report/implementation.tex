@@ -1,6 +1,6 @@
 \chapter{Implementation}
 
-The implementation of the application required the use of three different programming languages each with their own specific task. In order to create a GUI we were forced to use javascript as this is the only option Samsung has made available for creating apps. However, the peer-to-peer engine, swift, is written in C++ which meant that no matter what, we would also have to run C++ code in harmony with javascript. As we would be running C++ anyway and due to the complexity of the core of the application we decided to build the core, which manages downloads, uploads and streams, in C++ as well. This made managing the swift library easier than it would have been from javascript.
+The implementation of the application required the use of three different programming languages each with their own specific task. In order to create a GUI we were forced to use javascript as this is the only option Samsung has made available for creating apps. However, the peer-to-peer engine, libswift, is written in C++ which meant that no matter what, we would also have to run C++ code in harmony with javascript. As we would be running C++ anyway and due to the complexity of the core of the application we decided to build the core, which manages downloads, uploads and streams, in C++ as well. This made managing the libswift library easier than it would have been from javascript.
 
 The link between javascript and C++ was made using HTTP requests with javascript being the client  and C++ running a local server. This allowed us to send commands to C++ from javascript and also retrieve data to be displayed in the GUI by using XML.
 
@@ -10,7 +10,24 @@ In order to implement search functionality we made use of dispersy and DHT (dist
 
 \section{C++}
 
-The implementation of the C++ part ended up being quite different from the business class diagram, which can be found in the requirements chapter. The main reason for this is that the functionality of the filemanager could be done in javascript and as a result the necessity for that functionality in C++ dissapeared. There was also no need for a seperate download and upload class because in swift a download and an upload are essentially the same thing. When you are downloading you are also automatically uploading and an upload is just a download at 100\% completion. These changes meant that the end product looks a lot like the the class diagram in the design chapter.
+The implementation of the C++ part ended up being quite different from the business class diagram, which can be found in the requirements chapter. The main reason for this is that the functionality of the filemanager could be done in javascript and as a result the necessity for that functionality in C++ dissapeared. There was also no need for a seperate download and upload class because in libswift a download and an upload are essentially the same thing. When you are downloading you are also automatically uploading and an upload is just a download at 100\% completion. These changes meant that the end product looks a lot like the the class diagram in the design chapter.
 
 \section{Python}
 
+\section{Changes during development}
+
+During development it is almost inevitable that there will be changes from the original design. In this part we will discuss the largest changes we decided to make or were forced to make.
+
+\subsection{Upload visibility}
+
+There were a number of options when it came to choosing how to decide which files would be uploaded. In the design we chose for a setting per file which could be set to true or false by the user which determined whether the file would be shared with others. Due to limited time and the fact that FileManager was no longer going to be implemented in C++ we decided to change the way users determine what should be uploaded.
+\\\\
+All files in the default dowload folder automatically start uploading on startup. The user can browse to files on the tv and choose to upload them. Any files in the list of uploads and downloads can also be stopped and removed by the user to stop them from uploading. This implementation saved us some time by using functionality that was already implemented rather than needing to add another setting and having to remember whether a file has been set to visible or not.
+
+\subsection{Number of downloads}
+
+In the original design the plan was to allow the user to be able to download multiple files at the same time. This would be possible in principle and could be implemented in our application fairly easily. However, in order to save processor power on the TV we decided to limit the user to one download at a time. The user is able to switch between downloads and the application automatically starts downloading the next download in the list after it has finished.
+
+\subsection{Excluded features}
+
+Due to limited time and hardware some features were not implemented at all so that we could focus more on the features we believed to be most important.
