@@ -1,15 +1,34 @@
 \chapter{Design}
-This chapter describes the design of the application to be built, this design is based on the requirements gathered previously. The design has to incorporate solutions to the problems mentioned in section Problems. %reference
-This means the design has to include classes for a C++ backend using swift, a Javascript front end, a sandbox workaround and a means for inter-tv communication. First we'll discuss the current software archictecture on the tv. Then we'll discuss an extended version of this architecture which will allow us to implement solutions for the aforementioned problems. Finally the class diagram and other UML models will be discussed.
+This chapter describes the design of the application to be built, this design is based on the requirements gathered previously. The design has to
+incorporate solutions to the problems mentioned in section \hyperref[sec:problems]{Problems}.
+This means the design has to include classes for a backend using swift, a frontend using Samsung\textquotesingle s SDK, a sandbox workaround and a
+ means for inter-tv communication. First we will discuss the current software archictecture on the tv. Then we will discuss an extended version of
+ this architecture
+which will allow us to implement solutions for the aforementioned problems. Finally the class diagram and other UML models will be discussed.
 
-\section{Software Architecture}
-As mentioned before in section Problems % hier reference 
+\section{Standard Samsung Software Architecture}
+As mentioned before in section \hyperref[sec:problems]{Problems}
 the Samsung SDK for the SmartTV only allows programmers to create applications using HTML, CSS, Javascript and Flash.
-All operations to be performed in the root file system will go via the SDK as a middle layer between our app and the root file system.
-% Hier plaatje van standaard situatie
+All operations to be performed in the root file system will go via the SDK as a middle layer between our app and the root file system. This is
+because the Samsung SDK provides a set of methods in which this can be realised.
+%Hier plaatje van standaard situatie
 
-\section{Extended Software architecture}
-The solution for being able to run C++ code has already been mentioned, namely getting root acces to the tv. This was already done in the orientation fase of this project. This leaves only one problem, the sandbox. The frontend and backend of our application need a way to communicate. Since one can't perform direct calls from Javascript to C++, we decided to use a networking approach. In Javascript it is possible to send HTTP GET messages to any server and since we already have root access we implemented our own HTTP web server written in C++. This way one can make a bridge between Javascript and C++ resulting in the ability to do C++ function calls from Javascript. Since the TV does not support HTML5 we weren't able to use websockets who provide an open connection in which a reply can be received asynchronously at any time. We are restricted to a client-server architecture where you have to keep polling for an update value for example. This however is sufficient for out matter. % Hier vertellen over dispery
+\section{Extended Software Architecture}
+The solution for being able to run custom made code has already been mentioned, namely getting root acces to the tv.
+This was already done in the orientation phase of this project. This leaves only one problem, the sandbox.
+The frontend and backend of our application need a way to communicate. It is not possible to perform direct calls to the backend, because the 
+Samsung SDK is completely sandboxed. Therefore we decided to use a networking approach, so the frontend and backend will act as seperate 
+applications, communicating via a network (client-server architecture).
+
+In the Samsung SDK it is possible to send HTTP GET messages to any server and since we already have root access, it is possible to implement
+our own HTTP web server. This way one can create a bridge between the client software using Samsung\textquotesingle s framework and our own made 
+HTTP Server. Since the TV does not support HTML5 we were not able to use websockets who provide an open connection in which a reply can be 
+received asynchronously at any time. Thus, we are restricted to the client-server architecture where you have to keep polling for example an 
+update value.
+
+The server is seperated in two subsystems. These are the HTTP server, which handles HTTP requests and acts as a controller and the Search Engine, 
+which makes use of dispersy and DHT implemented by the tribler team. This can also be seen in figure \ref{fig:architecture}.
+
 %Hier plaatje van onze software architecture
 
 \section{Class Diagram}
@@ -17,13 +36,14 @@ Figure \ref{fig:class_server} shows the class diagram for the webserver. These c
 
 \begin{center}
 \begin{figure}[h!]
-\scalebox{0.8}{
+\scalebox{0.7}{
 \begin{tikzpicture}
 %\begin{umlpackage}{p}
 %\begin{umlpackage}{sp1}
 
 \umlclass[x=-10]{Download}{
   - tracker : char* \\
+  - id : int \\
   - seeders : int \\
   - peers : int \\
   - ratio : double \\
@@ -32,6 +52,7 @@ Figure \ref{fig:class_server} shows the class diagram for the webserver. These c
   - upload\_speed : double \\
   - download\_percentage : double \\
   - upload\_amount : double \\
+  - is\_visible : bool \\
   - status : Status
 }{
   + start() : void \\
@@ -69,7 +90,6 @@ Figure \ref{fig:class_server} shows the class diagram for the webserver. These c
   + sendResponse() : void \\
   + sendXMLResponse() : void \\
   + handle\_request(struct evhttp\_request *req, void *arg) : void \\
-  + init() : void
 }
 
 \umlclass[x=-0.5, y = 2]{SearchEngine}{
@@ -86,8 +106,10 @@ Figure \ref{fig:class_server} shows the class diagram for the webserver. These c
 \umlaggreg[mult1=1, mult2=1]{DownloadManager}{Stream}
 
 \end{tikzpicture}}
+\label{fig:class_server}
 \end{figure}
 \end{center}
+\clearpage
 
 \subsection{Download}
 data structure to store all information regarding downloads from the swift engine and as an interface to the swift methods.
@@ -96,22 +118,123 @@ the HttpServer class. This information can be retrieved by using swift methods. 
 In that sense, it is a wrapper class which makes use of swift methods.
 
 \subsection{Stream}
-This class serves as a data structure to store all information regarding streams from the swift engine and as interface to the swift methods. It is in
-essence the live-on-demand counterpart of the Download class, which is used to retrieve files from the Internet to store them on disk.
+This class serves as a data structure to store all information regarding streams from the swift engine and as interface to the swift methods. It 
+is in essence the live-on-demand counterpart of the Download class, which is used to retrieve files from the Internet to store them on disk.
 Since there will always be only one stream opened at a time (assuming that people only watch one film at the same time),
 this class is designed according to the Singleton pattern.
 
 \subsection{DownloadManager}
-The DownloadManager, as the name implies, holds a list of Downloads and manages them. It can be accessed by the HttpServer, which controls this class whenever needed.
-It retrieves information from all Downloads and calls the methods of the correct Download. The DownloadManager also manages the Stream class.
-In order to save bandwidth, all Downloads are paused when a stream is opened. This is why the Stream class is also managed by the DownloadManager,
- because that way the DownloadManager is able to access both the Stream class and the Download class. For similar reasons as the HttpServer class, 
- the DownloadManager is designed to be a static class.
+The DownloadManager, as the name implies, holds a list of Downloads and manages them. It can be accessed by the HttpServer, which controls this
+class whenever needed. It retrieves information from all Downloads and calls the methods of the correct Download. The DownloadManager also manages
+ the Stream class. In order to save bandwidth, all Downloads are paused when a stream is opened. This is why the Stream class is also managed by
+ the DownloadManager, because that way the DownloadManager is able to access both the Stream class and the Download class. For similar reasons as
+ the HttpServer class, the DownloadManager is designed to be a static class.
 
 \subsection{SearchEngine}
-This class serves as the interface to the search functionality developed by the Tribler team. It starts dispersie and DHT,
-with which files can be sought on the net by calling the methods in the dispersie module. For similar reasons as the HttpServer class and DownloadManager class, 
-this class is designed to be a static class.
+This class serves as the interface to the search functionality developed by the Tribler team. It starts dispersy and DHT,
+with which files can be sought on the net by calling the methods in the dispersy module. For similar reasons as the HttpServer class and
+DownloadManager class, this class is designed to be a static class.
 
+\newpage
 \section{Dynamic models}
 
+\begin{figure}[h!]
+\scalebox{1}{
+\begin{tikzpicture}
+\begin{umlseqdiag}
+\umlactor{Samsung SDK client}
+\umlobject[x=5]{HttpServer}
+\umlobject[x=8]{DownloadManager}
+\begin{umlcall}[op={sendRequest(add download)}, with return, padding=3]{Samsung SDK client}{HttpServer}
+	\begin{umlcall}[op={add(download)}, with return, padding=3]{HttpServer}{DownloadManager}
+		\umlcreatecall[class=Download]{DownloadManager}{download}
+		\begin{umlcall}[op={setStatus(READY)}, padding=3]{DownloadManager}{download}
+		\end{umlcall}
+		\begin{umlcall}[op={push(download)}, padding=3]{DownloadManager}{DownloadManager}
+		\end{umlcall}
+	\end{umlcall}
+\end{umlcall}
+\end{umlseqdiag}
+\end{tikzpicture}
+}
+\label{fig:seq1}
+\caption{Add download}
+\end{figure}
+
+\begin{figure}[h!]
+\scalebox{0.7}{
+\begin{tikzpicture}
+\begin{umlseqdiag}
+\umlactor{Samsung SDK client}
+\umlobject[x=5]{HttpServer}
+\umlobject[x=8]{DownloadManager}
+\umlobject[x=12]{Download}
+\umlobject[x=18]{Swift}
+\begin{umlcall}[op={sendRequest(start download)}, with return, padding=3]{Samsung SDK client}{HttpServer}
+	\begin{umlcall}[op={start(download)}, with return, padding=3]{HttpServer}{DownloadManager}
+		\begin{umlcall}[op={get(download)}, padding=3]{DownloadManager}{DownloadManager}
+		\end{umlcall}
+		
+		\begin{umlcall}[op={start(download)}, with return, padding=3]{DownloadManager}{Download}
+			\begin{umlcall}[op={setStatus(DOWNLOADING)}, padding=3]{Download}{Download}
+			\end{umlcall}
+			
+			\begin{umlcall}[op={getTrackerAddress()}, with return, padding=3]{Download}{Swift}
+			\end{umlcall}
+			
+			\begin{umlcall}[op={getRootHash()}, with return, padding=3]{Download}{Swift}
+			\end{umlcall}
+			
+			\begin{umlcall}[op={Open(filename, root\_hash, tracker\_address)}, padding=3]{Download}{Swift}
+			\end{umlcall}
+			
+		\end{umlcall}
+		
+		
+	\end{umlcall}
+\end{umlcall}
+\end{umlseqdiag}
+\end{tikzpicture}
+}
+\label{fig:seq2}
+\caption{Start download}
+\end{figure}
+
+\begin{figure}[h!]
+\scalebox{0.7}{
+\begin{tikzpicture}
+\begin{umlseqdiag}
+\umlactor{Samsung SDK client}
+\umlobject[x=5]{HttpServer}
+\umlobject[x=8]{DownloadManager}
+\umlobject[x=12]{Download}
+\umlobject[x=18]{Swift}
+\begin{umlcall}[op={sendRequest(pause download)}, with return, padding=3]{Samsung SDK client}{HttpServer}
+	\begin{umlcall}[op={pause(download)}, with return, padding=3]{HttpServer}{DownloadManager}
+		\begin{umlcall}[op={get(download)}, padding=3]{DownloadManager}{DownloadManager}
+		\end{umlcall}
+		
+		\begin{umlcall}[op={pause(download)}, with return, padding=3]{DownloadManager}{Download}
+			\begin{umlcall}[op={setStatus(PAUSED)}, padding=3]{Download}{Download}
+			\end{umlcall}
+			
+			\begin{umlcall}[op={getID()}, padding=3]{Download}{Download}
+			\end{umlcall}
+			
+			\begin{umlcall}[op={Checkpoint(id)}, padding=3]{Download}{Swift}
+			\end{umlcall}
+			
+			\begin{umlcall}[op={Close(id)}, padding=3]{Download}{Swift}
+			\end{umlcall}
+			
+		\end{umlcall}
+		
+		
+	\end{umlcall}
+\end{umlcall}
+\end{umlseqdiag}
+\end{tikzpicture}
+}
+\label{fig:seq3}
+\caption{Pause download}
+\end{figure}

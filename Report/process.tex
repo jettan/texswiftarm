@@ -32,7 +32,7 @@ We contacted SamyGO to ask whether there was any way to downgrade to an older fi
 \subsection{Installing missing dependencies}
 Even though the SmartTV runs a linux kernel, not everything was available from the start, so we had to install a great number of packages on the TV.
 For this purpose, we used cross-compiling toolchains to build executables compatible with the ARM \cite{arm} processors which resides in the TV. However, we failed
-to fully compile some of these packages, of which the Python interpreter is one of the most important. The Python interpreter was needed because the dispersie and DHT modules 
+to fully compile some of these packages, of which the Python interpreter is one of the most important. The Python interpreter was needed because the dispersy and DHT modules 
 developed by the Tribler team were written in Python. Since we had to use these modules in our application, we also needed to install Python on the TV. 
 \\\\
 We succeeded in cross-compiling and running the interpreter on the TV, but not in cross-compiling the standard Python-modules we need to run simple Python executables.

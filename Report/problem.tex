@@ -1,19 +1,16 @@
 \chapter{Problem}
-
+\label{sec:problems}
 The goal of this project is to create an application that runs on a Samsung SmartTV and uses the libswift peer-to-peer engine to download, upload and stream files. To create an application for a Samsung SmartTV a software development kit has been provided which allows programmers to create apps using Javascript, HTML, CSS and Flash.\\
 A Samsung SmartTV however is built on top of a linux root file system in which we can properly run our download-engine which is written in C++. To be able to do this we must gain root access to the tv, to be able operate in the linux environment. A problem that arises here is that the SDK frontend will be completely separated from the backend where libswift will run. To espace from this sandboxed environment a solution has to developed. Other problems to be solved to be able to fullfill the goal of a peer-to-peer television application is a communication mechanism between TV's that run the app for the purpose of being able to search content.\\
 
 Problems to be solved
 \begin{itemize}
 \item Root a Samsung television
-\item Create a c++ backend with swift
+\item Create a C++ backend with swift
 \item Break out of the sandbox
-\item Create a Javascript frontend
+\item Create a JavaScript frontend
 \item Inter-tv communication
 \end{itemize}
 
-This application will be a proof of concept to show that televisions are capable of running peer-to-peer software natively, without any attached devices, in this case with the help of the libswift download-endinge. Therefore usability is not the primary goal of this application.
-
-% Note: Gebruiken we swift of libswift, in inleiding staat swift en volgens mij heeft pouwelse een hekel aan het woord libswift
-% hij verbeterde ons telkens als we libswift zeiden xD
-% O ja ik realiseer me net dat je in linux waarschijnlijk windows enters te zien zal krijgen.. jethro..het spijt me
+This application will be a proof of concept to show that televisions are capable of running peer-to-peer software natively, without any attached
+devices, in this case with the help of the libswift download-endinge. Therefore usability is not the primary goal of this application.
