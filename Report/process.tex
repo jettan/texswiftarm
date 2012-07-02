@@ -3,11 +3,11 @@
 \section{Planning}
 
 In the orientation report we proposed a planning where the workload was divided into different phases. We were able to keep up with this planning and 
-
+\\\\
 The first step was to create an environment in which to develop and test the application. This meant gaining root access to a Samsung television and cross compiling the necessary libraries for it. This was achieved before the project had officially started which allowed us to begin development immediately.
-
+\\\\
 Our application heavily depends on swift so the first goal was to be able to call swift and use the library to stream and download files. This was achieved fairly quickly which meant we could start developing the fully functioning application. At the same time we also started development of the GUI in javascript. The main issue was creating the link between javascript and C++. Once we had settled for HTTP requests the development of the GUI and C++ side could be done in parallel although in the beginning the focus was on creating a command line controlled C++ application.
-
+\\\\
 As soon as there was a basic C++ application we also began writing tests using gtest. This made further development easier and bug tracking faster. Once the C++ part of the application was as good as finished, the last phase was to implement search functionality which required python to be run on the television in order to run dispersy and DHT. We managed to get python, including all the required modules, working on the television fairly quickly. Soon after that we were able to use dispersy and DHT to return search results.
 \\\\
 Once that all elements had been completed it was a matter of connecting them to create a fully functioning application.
@@ -17,16 +17,15 @@ Once that all elements had been completed it was a matter of connecting them to 
 We only wrote tests for C++ as this was the core of our application. We made use of the google test library which allowed for easy implementation of unit tests. The tests were developed in parallel with the development of the application which allowed for constant checking for bugs with every change. This way most bugs were immediatly discovered and removed as soon as they appeared. Writing the tests also helped making the system robust and able to handle unexpected input and calls without crashing. 
 
 \section{Problems encountered}
-
-\subsection{Rooting the television}
 This section focusses on all the important problems we encountered while developing the application for the TV.
 A brief explanation will be given per problem together with the solution we came up with.
 
+\subsection{Rooting the television}
 The first hurdle before we could even start developing was gaining root access to the television. We needed this to be able to install libraries and execute code. Rooting the television should not have been an issue as there are tutorials and an app that roots the television for you from SamyGO\cite{SamyGO}. The problem we ran into is that the televisions we got had a new firmware for which there was no way to root yet.
 \\\\
 We had a quick look into finding a vulnerability in the new firmware that would allow us to execute arbitrary code and gain root access. We did find a possible vulnerability in ffmpeg, in the part used to decode matroska video files, but developing an exploit for this would have taken too long as we did not have any experience in this field.
 \\\\
-Another option was to downgrade the firmware to a previous version that would allow us to use the SamyGO app to gain root access. Samsung has not made any the option of downgrading available, it is only possible to upgrade, so we had to trick the tv into thinking it was upgrading while actually it was installing old firmware. It is possible to install new firmware via a USB device which is what we initially tried. We took some old firmware, unpacked it, changed the version numbers inside, repacked it and recalculated the MD5 hash and changed that too so that they would match. Sadly, this is when we found out that the firmware also required a signiture from Samsung which is something we did not have. This made downgrading via a USB device impossible.
+Another option was to downgrade the firmware to a previous version that would allow us to use the SamyGO app to gain root access. Samsung has not made the option of downgrading available, it is only possible to upgrade, so we had to trick the tv into thinking it was upgrading while actually it was installing old firmware. It is possible to install new firmware via a USB device which is what we initially tried. We took some old firmware, unpacked it, changed the version numbers inside, repacked it and recalculated the MD5 hash and changed that too so that they would match. Sadly, this is when we found out that the firmware also required a signiture from Samsung which is something we did not have. This made downgrading via a USB device impossible.
 \\\\
 We contacted SamyGO to ask whether there was any way to downgrade to an older firmware. Initially the answer was no but after some prodding they allowed us to make use of a server they had set up which pretends to be the Samsung firmware update server. Apparently the online firmware update did not require a SamyGO signiture or they had access to it. Either way, we now had a television with an old firmware which allowed us to run the SamyGO app and root the tv.
 
@@ -35,11 +34,11 @@ Even though the Smart TV runs a linux kernel, not everything was available from 
 For this purpose, we used cross-compiling toolchains to build executables compatible with the ARM \cite{arm} processors which resides in the TV. However, we failed
 to fully compile some of these packages, of which the Python interpreter is one of the most important. The Python interpreter was needed because the dispersie and DHT modules 
 developed by the Tribler team were written in Python. Since we had to use these modules in our application, we also needed to install Python on the TV. 
-
+\\\\
 We succeeded in cross-compiling and running the interpreter on the TV, but not in cross-compiling the standard Python-modules we need to run simple Python executables.
 Our solution was to emulate the ARMv7 processor with QEMU \cite{qemu}. Within this emulation, we installed a copy of Ubuntu, \cite{ubuntu} in which we were able to install the Python package with the apt tool.
 To achieve this, it was also needed to enable networking within QEMU. \cite{qemu-network} Then we copied the binary files to the TV, after which we could succesfully run the Python interpreter together with all its dependencies.
-
+\\\\
 Aside from Python, we also installed other applications via QEMU such as bash, sshd etc. to make it easier to work on the TV to accelerate the development.
 
 \subsection{TCP Reset packages}

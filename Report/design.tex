@@ -98,13 +98,13 @@ is sent or the return value of the called methods is sent. The class can be seen
 since all logic happens here. This class is designed to be a static class since it is not desirable to have multiple controllers.
 
 \subsection{Download}
-This class serves as a datatype to store all information regarding downloads from the swift engine and as an interface to the swift methods.
+This class serves as a datatype to store all information regarding downloads from the libswift engine and as an interface to the libswift methods.
 This information can be accessed by the DownloadManager, which publishes the information of all Downloads to the web interface via
-the HttpServer class. This information can be retrieved by using swift methods. Core functionality of this class is based on the swift engine.
-In that sense, it is a wrapper class which makes use of swift methods.
+the HttpServer class. This information can be retrieved by using libswift methods. Core functionality of this class is based on the libswift engine.
+In that sense, it is a wrapper class which makes use of libswift methods.
 
 \subsection{Stream}
-This class serves as a datatype to store all information regarding streams from the swift engine and as interface to the swift methods. It is in
+This class serves as a datatype to store all information regarding streams from the swift engine and as interface to the libswift methods. It is in
 essence the live-on-demand counterpart of the Download class, which is used to retrieve files from the Internet to store them on disk.
 Since there will always be only one stream opened at a time (assuming that people only watch one film at the same time),
 this class is designed according to the Singleton pattern.
