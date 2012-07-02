@@ -26,6 +26,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.3}Business Class Diagram}{16}{section.3.3}
 \defcounter {refsection}{0}\relax 
+<<<<<<< Updated upstream
 \contentsline {section}{\numberline {3.4}Dynamic Models}{17}{section.3.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.5}MosCoW}{22}{section.3.5}
@@ -81,3 +82,76 @@
 \contentsline {chapter}{\numberline {7}Conclusion}{34}{chapter.7}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {8}Recommendations}{35}{chapter.8}
+=======
+\contentsline {subsection}{\numberline {3.3.1}FileManager}{17}{subsection.3.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.2}File}{17}{subsection.3.3.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.3}Media}{17}{subsection.3.3.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.4}MediaPlayer}{17}{subsection.3.3.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.5}Sendable}{17}{subsection.3.3.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.6}Download}{17}{subsection.3.3.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.7}Upload}{18}{subsection.3.3.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.8}Stream}{18}{subsection.3.3.8}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.9}DownloadManager}{18}{subsection.3.3.9}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.4}Dynamic Models}{18}{section.3.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.5}MosCoW}{23}{section.3.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {4}Design}{24}{chapter.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.1}Software Architecture}{24}{section.4.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.2}Extended Software architecture}{24}{section.4.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.3}Class Diagram}{25}{section.4.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.1}Download}{26}{subsection.4.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.2}Stream}{26}{subsection.4.3.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.3}DownloadManager}{26}{subsection.4.3.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.4}SearchEngine}{26}{subsection.4.3.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.4}Dynamic models}{26}{section.4.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {5}Implementation}{27}{chapter.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.1}Javascript}{27}{section.5.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.2}C++}{27}{section.5.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.3}Python}{28}{section.5.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {6}Process}{29}{chapter.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.1}Planning}{29}{section.6.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.2}Testing}{30}{section.6.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.3}Problems encountered}{30}{section.6.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.3.1}Rooting the television}{30}{subsection.6.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.3.2}Installing missing dependencies}{31}{subsection.6.3.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.3.3}TCP Reset packages}{31}{subsection.6.3.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.3.4}Classical fork() and thread problem}{31}{subsection.6.3.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.3.5}Communication between javascript and C++}{31}{subsection.6.3.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.3.6}Starting the HTTP server}{32}{subsection.6.3.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {7}Conclusion}{33}{chapter.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {8}Recommendations}{34}{chapter.8}
+>>>>>>> Stashed changes

@@ -30,7 +30,7 @@ Another option was to downgrade the firmware to a previous version that would al
 We contacted SamyGO to ask whether there was any way to downgrade to an older firmware. Initially the answer was no but after some prodding they allowed us to make use of a server they had set up which pretends to be the Samsung firmware update server. Apparently the online firmware update did not require a SamyGO signiture or they had access to it. Either way, we now had a television with an old firmware which allowed us to run the SamyGO app and root the tv.
 
 \subsection{Installing missing dependencies}
-Even though the Smart TV runs a linux kernel, not everything was available from the start, so we had to install a great number of packages on the TV.
+Even though the SmartTV runs a linux kernel, not everything was available from the start, so we had to install a great number of packages on the TV.
 For this purpose, we used cross-compiling toolchains to build executables compatible with the ARM \cite{arm} processors which resides in the TV. However, we failed
 to fully compile some of these packages, of which the Python interpreter is one of the most important. The Python interpreter was needed because the dispersie and DHT modules 
 developed by the Tribler team were written in Python. Since we had to use these modules in our application, we also needed to install Python on the TV. 

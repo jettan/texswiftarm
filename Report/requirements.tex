@@ -1,7 +1,7 @@
 \chapter{Requirements Analysis}
 \label{sec:requirements}
 In this chapter our requirement elicitation is provided. Here we discuss the elements the client wants to see back in the end-product. For this purpose the client, who also took the role of supervisor upon himself together with the Tribler team, was interviewed. The requirements that were gathered from this interview were supplemented with additional requirements from our side to complete the product. The requirements were separated into functional and non-functional requirements. Then, use cases for our application were designed, which correspond with the clients wishes. In this phase, a business class diagram was also made which is easier to understand for the client than the complete class diagram of the whole application. 
-After researching the framework present on the Samsung Smart TV and the possibilities of libswift, a design for the software architecture could be made. 
+After researching the framework present on the Samsung SmartTV and the possibilities of libswift, a design for the software architecture could be made. 
 Lastly, implementation models such as sequence diagrams and class diagrams were made, which serve as blueprints for the application. Also a MosCoW model was made where the priority off the features to be implemented are stated.
 
 \section{Requirements}
@@ -11,7 +11,7 @@ The requirements can be split in two kinds, functional and non-functional requir
 Functional requirements specify the core functionality of the application. These requirements are covered by the use cases in the next section. The functional requirements are as follows:
 
 \begin{itemize}
-\item[1.] By using the swift protocol, given two peers \textit{A} and \textit{B}:
+\item[1.] By using the libswift protocol, given two peers \textit{A} and \textit{B}:
 	\begin{itemize}
 	\item[1.1.] \textit{A} is able to download from \textit{B} (UC 12);
 	\item[1.2.] \textit{A} is able to upload to \textit{B} (Should happen automatically after download is finished);
@@ -31,7 +31,7 @@ Functional requirements specify the core functionality of the application. These
 \item[6.] Users should be able to sort files by name, size, date and type (UC 13, 14, 15, 16, 17); 
 \item[7.] Users should be able to separate private files from public files (UC 7);
 \item[8.] Users should be able to limit the upload/download speed (UC 1). 
-\end{itemize} 
+\end{itemize}
 
 \subsection{Non-functional requirements}
 Non-functional requirements are those requirements that have to do with the operation of the system. 
@@ -59,7 +59,7 @@ even when no Internet connection is available.
 \begin{itemize}
 \item[1.] The C++ back-end which makes use of the libswift library should be implemented so 
 that it is reusable for other systems that work with other front-ends (such as Android);
-\item[2.] The application is made to run on a rooted Samsung Smart TV.
+\item[2.] The application is made to run on a rooted Samsung SmartTV.
 To see whether a Samsung TV is rootable or not, please check \url{http://www.samygo.tv/};
 \end{itemize}
 
@@ -140,7 +140,7 @@ Related Cases & Play Media File, Move File, Update File, Delete File, \\
 Steps &  1. User selects the device to browse; \\
       &  2. \textit{System} shows list of files and directories of the selected device. 
         \\ \hline
-Postconditions & Downloads and uploads will never exceed the new speeds.
+Postconditions & -
 \\ \hline
 \end{tabular}
 \caption{Use Case 2: Browse File System}
@@ -498,8 +498,10 @@ Postconditions & A list sorted by size is returned.
   - seeders  : list<seeder> \\
   - speed	   : double
 }{
+  + start() : void \\
   + stop() : void \\
   + pause() : void \\
+  + resume() : void
 }
 
 \umlclass[x=3]{FileManager}{
@@ -533,23 +535,15 @@ Postconditions & A list sorted by size is returned.
 
 \umlclass[x=-7, y=-4]{Download}{
   - percentage : double
-}{
-  + start() : void \\
-  + resume() : void
-}
+}{}
 
 \umlclass[x=-3, y=-4]{Upload}{
   - amount : double
-}{
-  + start() : void \\
-  + resume() : void
-}
+}{}
 
 \umlclass[x=-5, y=-6]{Stream}{
-  - amount : double
-}{
-  + play() : void
-}
+  - length : double
+}{}
 
 \umlclass[x=-5, y=-10.5]{DownloadManager}{
   - downloaded : double \\
@@ -574,11 +568,11 @@ Postconditions & A list sorted by size is returned.
 \umlaggreg[mult1=1, mult2=1, pos=0.8, angle1=30, angle2=60]{Sendable}{File}
 \umlaggreg[mult1=1, mult2=*]{FileManager}{File}
 
-\umlVHVinherit{Download}{Sendable}
-\umlVHVinherit{Upload}{Sendable}
+\umlinherit{Download}{Sendable}
+\umlinherit{Upload}{Sendable}
 \umlinherit{Stream}{Sendable}
 
-\umlVHVinherit{Media}{File}
+\umlinherit{Media}{File}
 
 \umlVHVaggreg[mult1=1, mult2=*]{DownloadManager}{Upload}
 \umlVHVaggreg[mult1=1, mult2=*]{DownloadManager}{Download}
@@ -591,6 +585,47 @@ Postconditions & A list sorted by size is returned.
 \end{figure}
 \end{center}
 \clearpage
+
+The business class diagram is meant to explain the structure of the system to be built. It depicts the components of the system
+and their relationships. This section explains the classes of the business class diagram in more detail.
+
+\subsection{FileManager}
+As the name implies, the FileManager class manages files. With this, users are able to browse and search for files.
+Also, users will be able to add and manipulate them. The FileManager holds a list containing all files and their data, which can be sorted either
+by date, file name, file type or size.
+
+\subsection{File}
+Files are being managed by the FileManager, as mentioned earlier. They are data structures for files on the disk, containing all necessary 
+information about them. Files can be wrapped into a Sendable class, after which it can be published online. Also, files can be media files which
+can be opened by the MediaPlayer class.
+
+\subsection{Media}
+A special case of a File, which can be opened and played by the MediaPlayer. Media can be any kind of video or music file.
+
+\subsection{MediaPlayer}
+Is able to open Media files and Streams, which can then be showed on the TV. This is one of the more important classes since we are working 
+on a TV, which is meant for displaying videos and such.
+
+\subsection{Sendable}
+Wrapper class for Files, so that the user is able to transfer the Files over the Internet. Contains basic data about the peers and the transfer speed.
+Sendables can be started, paused, stopped or resumed. A Sendable can then be either an Upload, Download or a Stream.
+
+\subsection{Download}
+Data structure for all incoming transfers, extends from the Sendable class. This class is made to hold special data its siblings (Upload and Stream)
+do not own, such as the download percentage. Also, this class is made so that it is easier to distinguish the different kinds of Sendable classes.
+
+\subsection{Upload}
+Data structure for all outgoing transfers, extends from the Sendable class. This class is made to hold special data its siblings (Download and Stream)
+do not own, such as the upload amount. Also, this class is made so that it is easier to distinguish the different kinds of Sendable classes.
+
+\subsection{Stream}
+Data structure for all files being streamed, extends from the Sendable class. This class is made to hold special data its siblings (Download and Upload)
+do not own, such as the length of the streamed file. Also, this class is made so that it is easier to distinguish the different kinds of Sendable classes.
+
+\subsection{DownloadManager}
+A manager for all Sendable classes, except for Streams. This class holds all downloaded and uploaded files and is able to excercise the methods 
+of a specific Download or Upload. This class is also one of the more important classes, since the project revolves around the libswift engine, which
+is meant for sharing files over the Internet.
 
 \section{Dynamic Models}
 \label{sec:req_dynamic_models}
@@ -870,8 +905,23 @@ Download continuation at start up (req 13); \\ \hline
 \end{table}
 
 The list shown in table \ref{tab:MosCoW} consists mainly of requirements as specified in the 
-\hyperref[sec:requirements]{requirements}
+\hyperref[sec:requirements]{requirements}.
 However, some features were also added to ``Would have'' because of their potential usefulness, but which would
 not be feasible within the current time or with use of the current technology. We recommend to add these features in the future if possible,
  since it would improve the user-friendliness of the application. These features are explained in more detail in chapter \hyperref[sec:recommendations]{\ref{sec:recommendations}}.
+
+Stream functionality and media playback are the reasons to build this application on a smart TV rather than on a pc.
+TV\textquotesingle s are machines specialised in displaying media content, so it would only be appropriate to make use of this ``power'' of the TV.
+Moreover, it would be wasted not to use this feature of TV\textquotesingle s, because then we could just develop a normal application for the pc (which saves a lot of trouble, such as cross compiling).
+
+Since we are building a peer-to-peer application for the Samsung SmartTV, download and upload functionality are also must haves for our application.
+
+The ``Should haves'' are things we have to implement, but which are less important than the core features mentioned in the must haves. These are
+supporting features to make the application more user friendly and more advanced. For example, if the user downloaded a file (which is a must have feature),
+ then it would also be nice if the user could browse to that file.
+
+The only ``Could have'' we have is the ability to sort the files. This feature is less important because the application will not be rendered useless
+if this feature was not to be implemented. It will of course add more user friendliness to the application, but it is not that the users
+ will not be able to use the application without this feature. Thus, sorting files is one of the less important features which we could consider
+ implementing if we time left.
 

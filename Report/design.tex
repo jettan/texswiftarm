@@ -4,7 +4,7 @@ This means the design has to include classes for a C++ backend using swift, a Ja
 
 \section{Software Architecture}
 As mentioned before in section Problems % hier reference 
-the Samsung SDK for the Smart TV only allows programmers to create applications using HTML, CSS, Javascript and Flash.
+the Samsung SDK for the SmartTV only allows programmers to create applications using HTML, CSS, Javascript and Flash.
 All operations to be performed in the root file system will go via the SDK as a middle layer between our app and the root file system.
 % Hier plaatje van standaard situatie
 
@@ -17,6 +17,7 @@ Figure \ref{fig:class_server} shows the class diagram for the webserver. These c
 
 \begin{center}
 \begin{figure}[h!]
+\scalebox{0.8}{
 \begin{tikzpicture}
 %\begin{umlpackage}{p}
 %\begin{umlpackage}{sp1}
@@ -84,27 +85,18 @@ Figure \ref{fig:class_server} shows the class diagram for the webserver. These c
 \umlaggreg[mult1=1, mult2=*]{DownloadManager}{Download}
 \umlaggreg[mult1=1, mult2=1]{DownloadManager}{Stream}
 
-\end{tikzpicture}
-\label{fig:class_server}
-\caption{Class diagram for the server.}
+\end{tikzpicture}}
 \end{figure}
 \end{center}
-\clearpage
-
-\subsection{HttpServer}
-This class listens to the requests coming from the web application.
-It will then call methods from either SearchEngine or DownloadManager, depending on what the request is. As response, either a confirmation
-is sent or the return value of the called methods is sent. The class can be seen as the main controller of the system
-since all logic happens here. This class is designed to be a static class since it is not desirable to have multiple controllers.
 
 \subsection{Download}
-This class serves as a datatype to store all information regarding downloads from the libswift engine and as an interface to the libswift methods.
+data structure to store all information regarding downloads from the swift engine and as an interface to the swift methods.
 This information can be accessed by the DownloadManager, which publishes the information of all Downloads to the web interface via
-the HttpServer class. This information can be retrieved by using libswift methods. Core functionality of this class is based on the libswift engine.
-In that sense, it is a wrapper class which makes use of libswift methods.
+the HttpServer class. This information can be retrieved by using swift methods. Core functionality of this class is based on the swift engine.
+In that sense, it is a wrapper class which makes use of swift methods.
 
 \subsection{Stream}
-This class serves as a datatype to store all information regarding streams from the swift engine and as interface to the libswift methods. It is in
+This class serves as a data structure to store all information regarding streams from the swift engine and as interface to the swift methods. It is in
 essence the live-on-demand counterpart of the Download class, which is used to retrieve files from the Internet to store them on disk.
 Since there will always be only one stream opened at a time (assuming that people only watch one film at the same time),
 this class is designed according to the Singleton pattern.
