@@ -16,29 +16,6 @@
   {}
 \endgroup
 
-\entry{thread}{online}{}
-  \name{author}{2}{}{%
-    {{}%
-     {B.}{B.}%
-     {Barney}{B.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {L.}{L.}%
-     {Livermore}{L.}%
-     {}{}%
-     {}{}}%
-  }
-  \strng{namehash}{BBLL1}
-  \strng{fullhash}{BBLL1}
-  \field{sortinit}{B}
-  \field{title}{POSIX Threads Programming}
-  \verb{url}
-  \verb https://computing.llnl.gov/tutorials/pthreads/
-  \endverb
-  \field{year}{2012}
-\endentry
-
 \entry{qemu}{online}{}
   \name{author}{1}{}{%
     {{}%
@@ -214,24 +191,6 @@
   \field{year}{2008}
 \endentry
 
-\entry{iptables}{online}{}
-  \name{author}{1}{}{%
-    {{}%
-     {Russel}{R.}%
-     {Paul}{P.}%
-     {}{}%
-     {}{}}%
-  }
-  \strng{namehash}{RP1}
-  \strng{fullhash}{RP1}
-  \field{sortinit}{R}
-  \field{title}{The netfilter.org ``iptables'' project}
-  \verb{url}
-  \verb http://www.netfilter.org/projects/iptables/index.html
-  \endverb
-  \field{year}{2012}
-\endentry
-
 \entry{qemu-network}{online}{}
   \name{author}{1}{}{%
     {{}%
@@ -247,24 +206,6 @@
   \verb{url}
   \verb http://technology-shettyprasad.blogspot.nl/2009/01/qemu-tap-network-set
   \verb up.html
-  \endverb
-  \field{year}{2012}
-\endentry
-
-\entry{libevent}{online}{}
-  \name{author}{1}{}{%
-    {{}%
-     {team}{t.}%
-     {}{}%
-     {libevent~developers}{l.~d.}%
-     {}{}}%
-  }
-  \strng{namehash}{tld1}
-  \strng{fullhash}{tld1}
-  \field{sortinit}{T}
-  \field{title}{libevent – an event notification library}
-  \verb{url}
-  \verb http://libevent.org/
   \endverb
   \field{year}{2012}
 \endentry

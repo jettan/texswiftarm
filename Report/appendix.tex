@@ -523,6 +523,7 @@
 		\end{umlcall}
 		
 		
+		
 	\end{umlcall}
 \end{umlcall}
 \end{umlseqdiag}
@@ -688,3 +689,20 @@ padding=3]{Stream}{Stream}
 \label{fig:seq7}
 \caption{Stop streaming}
 \end{figure}
+
+\clearpage
+
+\section*{Init scripts}
+
+These scripts are already available in the TV when it is rooted. These files are provided by the SamyGO community and are loaded at startup. We edited these files and added the code snippets below to start certain applications and set up certain rules.
+
+\subsection*{01\_01\_catch\_crap.init}
+\scalebox{0.6}{
+\lstinputlisting{Images/01_01_catch_crap.init}
+}
+
+\subsection*{02\_04\_vusb.init}
+\label{sec:vusb_init}
+\scalebox{0.6}{
+\lstinputlisting{Images/02_04_vusb.init}
+}
