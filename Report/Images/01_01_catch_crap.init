@@ -1,0 +1,12 @@
+# Bash shell for the TV.	
+$SYSROOT/bin/busybox nc -l -l -p 1024 -e /mtd_down/widgets/user/SamyGO/SamyGO/bin/bash -i &
+
+cp -fa /dtv/usb/sd*/smb_userdata /mtd_rwarea/smb_userdata
+
+# Start sshd to enable sftp mounting of the whole system.
+cp /mtd_down/widgets/user/SamyGO/SamyGO/modules/ssh_host_* /dtv/
+chmod 600 /dtv/ssh_host_dsa_key
+chmod 600 /dtv/ssh_host_rsa_key
+sleep 1
+
+/mtd_down/widgets/user/SamyGO/SamyGO/bin/sshd -f /mtd_down/widgets/user/SamyGO/SamyGO/sshd_config
