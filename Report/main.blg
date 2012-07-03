@@ -18,10 +18,11 @@ Database file #2: main.bib
 Warning--I didn't find a database entry for "iptables"
 Warning--I didn't find a database entry for "thread"
 Warning--I didn't find a database entry for "libevent"
-Biblatex version: 1.4
+Biblatex version: 1.7
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 You've used 8 entries,
-            5995 wiz_defined-function locations,
-            1167 strings with 9017 characters,
+            6019 wiz_defined-function locations,
+            1171 strings with 9035 characters,
 and the built_in function-call counts, 22144 in all, are:
 = -- 791
 > -- 759
