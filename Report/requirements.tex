@@ -523,7 +523,7 @@ Data structure for all files being streamed, extends from the Sendable class. Th
 do not own, such as the length of the streamed file. Also, this class is made so that it is easier to distinguish the different kinds of Sendable classes.
 
 \subsection{DownloadManager}
-A manager for all Sendable classes, except for Streams. This class holds all downloaded and uploaded files and is able to excercise the methods 
+A manager for all Sendable classes, except for Streams. This class holds all downloaded and uploaded files and is able to exercise the methods 
 of a specific Download or Upload. This class is also one of the more important classes, since the project revolves around the libswift engine, which
 is meant for sharing files over the Internet.
 
@@ -558,24 +558,41 @@ Download continuation at start up (req 13); \\ \hline
 \label{tab:MosCoW}
 \end{table}
 
-The list shown in table \ref{tab:MosCoW} consists mainly of requirements as specified in the 
-\hyperref[sec:requirements]{requirements}.
-However, some features were also added to ``Would have'' because of their potential usefulness, but which would
-not be feasible within the current time or with use of the current technology. We recommend to add these features in the future if possible,
- since it would improve the user-friendliness of the application. These features are explained in more detail in chapter \hyperref[sec:recommendations]{\ref{sec:recommendations}}.
+Stream functionality and media playback are the reasons to build this application on a smart 
+TV rather than on a pc.
+TV\textquotesingle s are machines specialised in displaying media content, so it would only 
+be appropriate to make use of this ``power'' of the TV.
+Moreover, it would be wasted not to use this feature of TV\textquotesingle s, because then we 
+could just develop a normal application for the pc (which saves a lot of trouble, such as 
+cross compiling).
 
-Stream functionality and media playback are the reasons to build this application on a smart TV rather than on a pc.
-TV\textquotesingle s are machines specialised in displaying media content, so it would only be appropriate to make use of this ``power'' of the TV.
-Moreover, it would be wasted not to use this feature of TV\textquotesingle s, because then we could just develop a normal application for the pc (which saves a lot of trouble, such as cross compiling).
+Since we are building a peer-to-peer application for the Samsung SmartTV, download and upload 
+functionality are also must haves for our application.
 
-Since we are building a peer-to-peer application for the Samsung SmartTV, download and upload functionality are also must haves for our application.
-
-The ``Should haves'' are things we have to implement, but which are less important than the core features mentioned in the must haves. These are
-supporting features to make the application more user friendly and more advanced. For example, if the user downloaded a file (which is a must have feature),
+The ``Should haves'' are things we have to implement, but which are less important than the 
+core features mentioned in the must haves. These are
+supporting features to make the application more user friendly and more advanced. For 
+example, if the user downloaded a file (which is a must have feature),
  then it would also be nice if the user could browse to that file.
 
-The only ``Could have'' we have is the ability to sort the files. This feature is less important because the application will not be rendered useless
-if this feature was not to be implemented. It will of course add more user friendliness to the application, but it is not that the users
- will not be able to use the application without this feature. Thus, sorting files is one of the less important features which we could consider
+The only ``Could have'' we have is the ability to sort the files. This feature is less 
+important because the application will not be rendered useless
+if this feature was not to be implemented. It will of course add more user friendliness to 
+the application, but it is not that the users
+ will not be able to use the application without this feature. Thus, sorting files is one of 
+ the less important features which we could consider
  implementing if we have time left.
+ 
+The list shown in table \ref{tab:MosCoW} consists mainly of requirements as specified in the 
+\hyperref[sec:requirements]{requirements}.
+However, some features were also added to ``Would have'' because of their potential 
+usefulness, but which would not be feasible within the current time or with use of the 
+current technology. We recommend to add these features in the future if possible, since it 
+would improve the user-friendliness of the application.
 
+\textbf{External access to application}
+Our system runs a HTTP webserver on the TV, so external devices can access our application by as a web application. This means that devices such as tablets, laptops and smart phones can interact with our application via HTTP. A use case scenario would for example be that the user searches for a video on a tablet and then streams it to the TV. This provides a lot more features which can improve the usability of the system.
+
+\textbf{Possibility to minimise app}
+
+\textbf{Regulation of upload/download speeds by ratio}
