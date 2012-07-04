@@ -5,19 +5,13 @@ year    = {2012},
 url     = {https://wiki.ubuntu.com/}
 }
 
-@ONLINE{thread,
-author = {Nick Mathewson and Niels Provos},
+@ONLINE{threads,
+author = {Blaise Barney and Lawrence Livermore},
 title  = {POSIX Threads Programming},
 year   = {2012},
 url    = {https://computing.llnl.gov/tutorials/pthreads/}
 }
 
-@ONLINE{libevent,
-author = {Blaise Barney and Lawrence Livermore},
-title  = {libevent – an event notification library},
-year   = {2012},
-url    = {http://libevent.org/}
-}
 
 @ONLINE{iptables,
 author = {The netfilter core team},
