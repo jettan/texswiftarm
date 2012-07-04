@@ -230,11 +230,21 @@ This did require us to be running an HTTP server in C++ which needs to be runnin
 
 \subsection{Starting the HTTP server}
 
-Sending HTTP requests was the only way to communicate between javascript and C++ but there was no way to start the HTTP server in C++ from javascript. We needed to start the HTTP server as soon as the television was switched on. In principle it would have been possible to run the HTTP server as a daemon on start-up but it was not possible to edit the Samsung init scripts. SamyGO, however, also uses init scripts when they root the television which we could edit. Now whenever you root the television using SamyGO you also automatically start running the HTTP server for our application. This does mean that running SamyGO is required to be able to use our application.
+Sending HTTP requests was the only way to communicate between javascript and C++ but there 
+was no way to start the HTTP server in C++ from javascript. We needed to start the HTTP 
+server as soon as the television was switched on. In principle it would have been possible 
+to run the HTTP server as a daemon on start-up but it was not possible to edit the Samsung 
+init scripts. SamyGO, however, also uses init scripts when they root the television which 
+we could edit. Now whenever you root the television using SamyGO you also automatically 
+start running the HTTP server for our application. This does mean that running SamyGO is 
+required to be able to use our application.
 
 \subsection{USB write speed}
-<<<<<<< Updated upstream
-Initially we were planning to use a USB storage device to store downloads and streams. As it turned out, the write speed of the TV to the USB device was so slow that streaming was not possible when using it to store the data. Downloading to an external USB device was also so slow that it was not practical to do so. This left us with only the internal memory of the TV for downloads and streams which is a very limited amount. This caused large files to be impossible to stream as they would fill the memory and cause the TV to hang. The maximum file size that can be downloaded is also very low as a result of this.
-=======
-Initially we were planning to use a USB storage device to store downloads and streams. As it turned out, the write speed of the TV to the USB device was so slow that streaming was not possible when using it to store the data. Downloading to an external USB device was also so slow that it was not practical to do so. This left us with only the internal memory of the TV for downloads and streams which is a very limited amount. This caused large files to be impossible to stream as they would fill the memory and cause the TV to hang. The maximum file size that can be downloaded is also very low as a result of this.
->>>>>>> Stashed changes
+
+Initially we were planning to use a USB storage device to store downloads and streams. 
+As it turned out, the write speed of the TV to the USB device was so slow that streaming 
+was not possible when using it to store the data. Downloading to an external USB device was 
+also so slow that it was not practical to do so. This left us with only the internal 
+memory of the TV for downloads and streams which is a very limited amount. This caused 
+large files to be impossible to stream as they would fill the memory and cause the TV to 
+hang. The maximum file size that can be downloaded is also very low as a result of this.
