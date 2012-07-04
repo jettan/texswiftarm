@@ -605,7 +605,7 @@
 \end{figure}
 
 \begin{figure}[h!]
-\scalebox{0.7}{
+\scalebox{0.6}{
 
 \begin{tikzpicture}
 \begin{umlseqdiag}
@@ -626,18 +626,18 @@
 			\end{umlcall}
 		
 			\begin{umlcall}[op={start()}, with return, padding=3]{DownloadManager}{Stream}
-
+			
 				\begin{umlcall}[op={evtimer\_assign(event, evbase, closeCallback, this)}, 
 padding=3]{Stream}{Stream}
-		
+			
 				\end{umlcall}
-
+			
 				\begin{umlcall}[op={evtimer\_add(event, swift::tint2tv(TINT\_SEC)}, 
 padding=3]{Stream}{Stream}
-		
+			
 				\end{umlcall}
-
-
+			
+			
 				\begin{umlcall}[op={event\_base\_dispatch(evbase)}, padding=3]{Stream}
 {Stream}
 		
@@ -645,7 +645,7 @@ padding=3]{Stream}{Stream}
 		
 			\end{umlcall}
 		
-	\end{umlcall}	
+	\end{umlcall}
 	
 \end{umlcall}
 \end{umlseqdiag}
@@ -679,7 +679,7 @@ padding=3]{Stream}{Stream}
 		
 			\end{umlcall}
 		
-		\end{umlcall}	
+		\end{umlcall}
 	
 \end{umlcall}
 \end{umlseqdiag}
@@ -692,6 +692,7 @@ padding=3]{Stream}{Stream}
 
 \clearpage
 
+\chapter*{Appendix B}
 \section*{Init scripts}
 
 These scripts are already available in the TV when it is rooted. These files are provided by the SamyGO community and are loaded at startup. We edited these files and added the code snippets below to start certain applications and set up certain rules.
@@ -706,3 +707,8 @@ These scripts are already available in the TV when it is rooted. These files are
 \scalebox{0.6}{
 \lstinputlisting{Images/02_04_vusb.init}
 }
+
+\chapter*{Appendix C}
+\section*{Orientation Report}
+\label{sec:orientation}
+\includepdf[pages={1-13}]{Images/orientation.pdf}

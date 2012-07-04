@@ -9,55 +9,55 @@ A level-1 auxiliary file: requirements.aux
 A level-1 auxiliary file: design.aux
 A level-1 auxiliary file: implementation.aux
 A level-1 auxiliary file: process.aux
+A level-1 auxiliary file: results.aux
 A level-1 auxiliary file: conclusion.aux
 A level-1 auxiliary file: further_recommendations.aux
 A level-1 auxiliary file: appendix.aux
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Database file #1: main-blx.bib
 Database file #2: main.bib
-Warning--I didn't find a database entry for "iptables"
 Warning--I didn't find a database entry for "thread"
 Warning--I didn't find a database entry for "libevent"
 Biblatex version: 1.4
-You've used 9 entries,
+You've used 12 entries,
             5995 wiz_defined-function locations,
-            1171 strings with 9101 characters,
-and the built_in function-call counts, 24631 in all, are:
-= -- 874
-> -- 837
-< -- 229
-+ -- 254
-- -- 319
-* -- 1780
-:= -- 1646
+            1184 strings with 9414 characters,
+and the built_in function-call counts, 32100 in all, are:
+= -- 1123
+> -- 1074
+< -- 303
++ -- 299
+- -- 397
+* -- 2247
+:= -- 2063
 add.period$ -- 0
-call.type$ -- 9
-change.case$ -- 94
-chr.to.int$ -- 34
-cite$ -- 16
-duplicate$ -- 2770
-empty$ -- 2638
-format.name$ -- 535
-if$ -- 5554
+call.type$ -- 12
+change.case$ -- 121
+chr.to.int$ -- 35
+cite$ -- 22
+duplicate$ -- 3666
+empty$ -- 3508
+format.name$ -- 679
+if$ -- 7278
 int.to.chr$ -- 0
-int.to.str$ -- 17
+int.to.str$ -- 23
 missing$ -- 0
-newline$ -- 234
-num.names$ -- 351
-pop$ -- 2600
+newline$ -- 287
+num.names$ -- 474
+pop$ -- 3546
 preamble$ -- 1
-purify$ -- 115
+purify$ -- 145
 quote$ -- 0
-skip$ -- 1479
+skip$ -- 1949
 stack$ -- 0
-substring$ -- 379
-swap$ -- 878
-text.length$ -- 235
-text.prefix$ -- 8
+substring$ -- 425
+swap$ -- 1144
+text.length$ -- 308
+text.prefix$ -- 11
 top$ -- 1
-type$ -- 330
+type$ -- 444
 warning$ -- 0
-while$ -- 190
+while$ -- 241
 width$ -- 0
-write$ -- 224
-(There were 3 warnings)
+write$ -- 274
+(There were 2 warnings)

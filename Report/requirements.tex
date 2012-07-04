@@ -20,7 +20,7 @@ Functional requirements specify the core functionality of the application. These
 \item[2.] The users should be able to search for files other peers own by using dispersy (UC 9, 10);
 \item[3.] The users should be able to search/browse files they own themselves (UC 2, 8, 10);
 \item[4.] The users should be able to playback media content. 
-		  Media in this context means any kind of video or audio file (UC 6);
+		  Media in this context means any kind of video or audio file supported by the TV (UC 6);
 \item[5.] Users should be able to:
 	\begin{itemize}
 	\item[5.1.] Move files on the file system (UC 5);
@@ -111,7 +111,7 @@ are explained in further detail in their descriptions and with the use of UML se
 \begin{tabular}{|l|l|}
 \hline
 Name & Limit upload/download speeds\\ \hline
-Goal & Save bandwidth.\\ \hline
+Goal & Save bandwidth and memory.\\ \hline
 Preconditions & -- \\ \hline
 Summary & The user adjusts the upload or download speed.\\ \hline
 Steps &  1. User clicks the settings button; \\
@@ -598,6 +598,6 @@ This provides a lot more features which can improve the usability of the system.
 \textbf{Possibility to minimise app} \\
 It could be useful to be able to minimise to the application while downloading content, so other things can be done in the meantime.
 There are two main reasons we did not implement this. The first is that the TV is not powerful enough to support this. It takes too much
-processing power to run the application we built (mainly because of the Dispersy and DHT modules), so let alone running something else alongside.
+processing power to run the application we built (mainly because Dispersy\cite{dispersy} and DHT\cite{dht} are fairly heavy modules), so let alone running something else alongside.
 The second reason is that the Samsung framework does not provide this functionality; it is not possible to minimise a web application in the Samsung 
 framework. If this becomes supported in the future -and if the TV\textquotesingle s become more powerful-, this would be a nice feature to add.

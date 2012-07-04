@@ -10,7 +10,17 @@ As mentioned before in section \hyperref[sec:problems]{Problems}
 the Samsung SDK for the SmartTV only allows programmers to create applications using HTML, CSS, Javascript and Flash.
 All operations to be performed in the root file system will go via the SDK as a middle layer between our app and the root file system. This is
 because the Samsung SDK provides a set of methods in which this can be realised.
-%Hier plaatje van standaard situatie
+
+\begin{center}
+\begin{figure}[h]
+	\centering
+	\mbox{\includegraphics[width=1\textwidth]{Images/original_architecture.png}}
+	\label{fig:original_architecture}
+	\caption{The original architecture created by Samsung.}
+\end{figure}
+\end{center}
+
+\clearpage
 
 \section{Extended Software Architecture}
 The solution for being able to run custom made code has already been mentioned, namely getting root acces to the TV.
@@ -28,7 +38,16 @@ update value.
 The server is seperated in two subsystems. These are the HTTP server, which handles HTTP requests and acts as a controller and the Search Engine, 
 which makes use of dispersy and DHT implemented by the tribler team. This can also be seen in figure \ref{fig:architecture}.
 
-%Hier plaatje van onze software architecture
+\begin{center}
+\begin{figure}[h]
+	\centering
+	\mbox{\includegraphics[width=1\textwidth]{Images/architecture.png}}
+	\label{fig:architecture}
+	\caption{The adjusted architecture with our application. Our application is injected as a webserver daemon, here seen in red. 
+	The purple part is developed by the Tribler team, with which we have to communicate.}
+\end{figure}
+\end{center}
+\clearpage
 
 \section{Class Diagram}
 Figure \ref{fig:class_server} shows the class diagram for the webserver. These classes are then explained in more detail.

@@ -88,6 +88,22 @@
   \field{year}{2012}
 \endentry
 
+\entry{dht}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Kaluszka}{K.}%
+     {Aaron}{A.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{KA1}
+  \strng{fullhash}{KA1}
+  \field{sortinit}{K}
+  \field{title}{Distributed Hash Tables}
+  \field{year}{2010}
+  \warn{\item Invalid format of field 'month'}
+\endentry
+
 \entry{swift}{online}{}
   \name{author}{3}{}{%
     {{}%
@@ -191,6 +207,25 @@
   \field{year}{2008}
 \endentry
 
+\entry{dispersy}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Schoon}{S.}%
+     {Boudewijn}{B.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{SB1}
+  \strng{fullhash}{SB1}
+  \field{sortinit}{S}
+  \field{title}{Dispersy: Distributed Permission System}
+  \verb{url}
+  \verb http://www.scribd.com/doc/81170037/Boudewijn-Dispersy-Documentation-DRA
+  \verb FT-2010
+  \endverb
+  \field{year}{2010}
+\endentry
+
 \entry{qemu-network}{online}{}
   \name{author}{1}{}{%
     {{}%
@@ -206,6 +241,24 @@
   \verb{url}
   \verb http://technology-shettyprasad.blogspot.nl/2009/01/qemu-tap-network-set
   \verb up.html
+  \endverb
+  \field{year}{2012}
+\endentry
+
+\entry{iptables}{online}{}
+  \name{author}{1}{}{%
+    {{}%
+     {team}{t.}%
+     {The}{T.}%
+     {netfilter~core}{n.~c.}%
+     {}{}}%
+  }
+  \strng{namehash}{tTnc1}
+  \strng{fullhash}{tTnc1}
+  \field{sortinit}{T}
+  \field{title}{The netfilter.org "iptables" project}
+  \verb{url}
+  \verb http://www.netfilter.org/projects/iptables/index.html
   \endverb
   \field{year}{2012}
 \endentry
