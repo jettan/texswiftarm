@@ -65,20 +65,11 @@ Once that all elements had been completed it was a matter of connecting them to 
 		5 & 28-05-2012 &		\begin{itemize}
 								\item Start implementing application as designed
 								\item Create DownloadManager
-								\item Makew Streaming work as singleton
+								\item Make Streaming work as singleton
 								\item Create tests for Download.cpp
 							\end{itemize} \\
 		\hline
-		6 & 04-06-2012 &		\begin{itemize}
-								\item Add exceptions
-								\item Handle mutliple downloads
-								\item make pasuing downloads possible
-								\item Add ability to build XML files
-								\item Add pseudo search functionality
-								\item Add mutex in DownloadManager
-								\item prepare code for SIG
-								\item Continue adding testcases
-							\end{itemize} \\
+		
 		\hline
 \end{tabular}
 \caption{Order of events}
@@ -91,6 +82,17 @@ Once that all elements had been completed it was a matter of connecting them to 
 		\hline
 		Week & Date & Tasks completed \\
 		\hline
+		\hline
+		6 & 04-06-2012 &		\begin{itemize}
+								\item Add exceptions
+								\item Handle mutliple downloads
+								\item make pasuing downloads possible
+								\item Add ability to build XML files
+								\item Add pseudo search functionality
+								\item Add mutex in DownloadManager
+								\item prepare code for SIG
+								\item Continue adding testcases
+							\end{itemize} \\
 		\hline
 		7 & 11-06-2012 &		\begin{itemize}
 								\item Add speedlimiting
@@ -116,6 +118,18 @@ Once that all elements had been completed it was a matter of connecting them to 
 								\item Continue adding testcases
 							\end{itemize} \\
 		\hline
+\end{tabular}
+\caption{Order of events}
+\label{tab:planning}
+\end{table}
+
+\begin{table}
+\centering
+	\begin{tabular}{| l | l | p{8 cm} |}
+		\hline
+		Week & Date & Tasks completed \\
+		\hline
+		\hline
 		9 & 25-06-2012 &		\begin{itemize}
 								\item Create progress bar in JavaScript
 								\item Clean JavaScript code
@@ -130,7 +144,6 @@ Once that all elements had been completed it was a matter of connecting them to 
 								\item Finish final report
 							\end{itemize} \\
 		\hline
-
 \end{tabular}
 \caption{Order of events}
 \label{tab:planning}
@@ -220,4 +233,8 @@ This did require us to be running an HTTP server in C++ which needs to be runnin
 Sending HTTP requests was the only way to communicate between javascript and C++ but there was no way to start the HTTP server in C++ from javascript. We needed to start the HTTP server as soon as the television was switched on. In principle it would have been possible to run the HTTP server as a daemon on start-up but it was not possible to edit the Samsung init scripts. SamyGO, however, also uses init scripts when they root the television which we could edit. Now whenever you root the television using SamyGO you also automatically start running the HTTP server for our application. This does mean that running SamyGO is required to be able to use our application.
 
 \subsection{USB write speed}
+<<<<<<< Updated upstream
 Initially we were planning to use a USB storage device to store downloads and streams. As it turned out, the write speed of the TV to the USB device was so slow that streaming was not possible when using it to store the data. Downloading to an external USB device was also so slow that it was not practical to do so. This left us with only the internal memory of the TV for downloads and streams which is a very limited amount. This caused large files to be impossible to stream as they would fill the memory and cause the TV to hang. The maximum file size that can be downloaded is also very low as a result of this.
+=======
+Initially we were planning to use a USB storage device to store downloads and streams. As it turned out, the write speed of the TV to the USB device was so slow that streaming was not possible when using it to store the data. Downloading to an external USB device was also so slow that it was not practical to do so. This left us with only the internal memory of the TV for downloads and streams which is a very limited amount. This caused large files to be impossible to stream as they would fill the memory and cause the TV to hang. The maximum file size that can be downloaded is also very low as a result of this.
+>>>>>>> Stashed changes
