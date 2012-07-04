@@ -13,6 +13,8 @@ In order to implement search functionality we made use of dispersy and DHT (dist
 The implementation of the C++ part ended up being quite different from the business class diagram, which can be found in the requirements chapter. The main reason for this is that the functionality of the filemanager could be done in JavaScript and as a result the necessity for that functionality in C++ dissapeared. There was also no need for a seperate download and upload class because in libswift a download and an upload are essentially the same thing. When you are downloading you are also automatically uploading and an upload is just a download at 100\% completion. These changes meant that the end product looks a lot like the the class diagram in the design chapter.
 
 \section{Python}
+Implementing the python part was as easy as it should be, since everything is already available from Tribler. The only thing needed to do is to call the methods we need and disable all other parts we don't use. Some patches were required in Tribler code, but were very easy to do.
+The only file we made is the DispersyInterface, which actually starts a Tribler session with only DHT and dispersy. To save resources, we were recommended to disable all other parts such as BuddyCast, torrent collecting, internal tracker, swift and such. Additionally, we do not join the AllChannelCommunity for the same reason.
 
 \section{Changes during development}
 
