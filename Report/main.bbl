@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex version 1.7 $
+% $ biblatex version 1.4 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -206,6 +206,24 @@
   \verb{url}
   \verb http://technology-shettyprasad.blogspot.nl/2009/01/qemu-tap-network-set
   \verb up.html
+  \endverb
+  \field{year}{2012}
+\endentry
+
+\entry{4g}{online}{}
+  \name{author}{1}{}{%
+    {{}%
+     {team}{t.}%
+     {Tribler}{T.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{tT1}
+  \strng{fullhash}{tT1}
+  \field{sortinit}{T}
+  \field{title}{4th Generation of P2P}
+  \verb{url}
+  \verb http://www.tribler.org/trac/wiki/4thGenerationP2P
   \endverb
   \field{year}{2012}
 \endentry

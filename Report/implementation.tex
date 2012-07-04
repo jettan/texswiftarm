@@ -1,16 +1,16 @@
 \chapter{Implementation}
 
-The implementation of the application required the use of three different programming languages each with their own specific task. In order to create a GUI we were forced to use javascript as this is the only option Samsung has made available for creating apps. However, the peer-to-peer engine, libswift, is written in C++ which meant that no matter what, we would also have to run C++ code in harmony with javascript. As we would be running C++ anyway and due to the complexity of the core of the application we decided to build the core, which manages downloads, uploads and streams, in C++ as well. This made managing the libswift library easier than it would have been from javascript.
+The implementation of the application required the use of three different programming languages each with their own specific task. In order to create a GUI we were forced to use JavaScript as this is the only option Samsung has made available for creating apps. However, the peer-to-peer engine, libswift, is written in C++ which meant that no matter what, we would also have to run C++ code in harmony with javascript. As we would be running C++ anyway and due to the complexity of the core of the application we decided to build the core, which manages downloads, uploads and streams, in C++ as well. This made managing the libswift library easier than it would have been from javascript.
 
-The link between javascript and C++ was made using HTTP requests with javascript being the client  and C++ running a local server. This allowed us to send commands to C++ from javascript and also retrieve data to be displayed in the GUI by using XML.
+The link between JavaScript and C++ was made using HTTP requests with javascript being the client  and C++ running a local server. This allowed us to send commands to C++ from javascript and also retrieve data to be displayed in the GUI by using XML.
 
 In order to implement search functionality we made use of dispersy and DHT (distributed hash table), both of which are written in python. In order to initialise both services and execute searches we needed a small amount of python to manage dispersy and DHT. This also required a link between C++ and python which was easily achieved using the standard python library for C++.
 
-\section{Javascript}
+\section{JavaScript}
 
 \section{C++}
 
-The implementation of the C++ part ended up being quite different from the business class diagram, which can be found in the requirements chapter. The main reason for this is that the functionality of the filemanager could be done in javascript and as a result the necessity for that functionality in C++ dissapeared. There was also no need for a seperate download and upload class because in libswift a download and an upload are essentially the same thing. When you are downloading you are also automatically uploading and an upload is just a download at 100\% completion. These changes meant that the end product looks a lot like the the class diagram in the design chapter.
+The implementation of the C++ part ended up being quite different from the business class diagram, which can be found in the requirements chapter. The main reason for this is that the functionality of the filemanager could be done in JavaScript and as a result the necessity for that functionality in C++ dissapeared. There was also no need for a seperate download and upload class because in libswift a download and an upload are essentially the same thing. When you are downloading you are also automatically uploading and an upload is just a download at 100\% completion. These changes meant that the end product looks a lot like the the class diagram in the design chapter.
 
 \section{Python}
 

@@ -18,47 +18,46 @@ Database file #2: main.bib
 Warning--I didn't find a database entry for "iptables"
 Warning--I didn't find a database entry for "thread"
 Warning--I didn't find a database entry for "libevent"
-Biblatex version: 1.7
-Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
-You've used 8 entries,
-            6019 wiz_defined-function locations,
-            1171 strings with 9035 characters,
-and the built_in function-call counts, 22144 in all, are:
-= -- 791
-> -- 759
-< -- 204
-+ -- 239
-- -- 293
-* -- 1626
-:= -- 1507
+Biblatex version: 1.4
+You've used 9 entries,
+            5995 wiz_defined-function locations,
+            1171 strings with 9101 characters,
+and the built_in function-call counts, 24631 in all, are:
+= -- 874
+> -- 837
+< -- 229
++ -- 254
+- -- 319
+* -- 1780
+:= -- 1646
 add.period$ -- 0
-call.type$ -- 8
-change.case$ -- 85
+call.type$ -- 9
+change.case$ -- 94
 chr.to.int$ -- 34
-cite$ -- 14
-duplicate$ -- 2471
-empty$ -- 2348
-format.name$ -- 487
-if$ -- 4980
+cite$ -- 16
+duplicate$ -- 2770
+empty$ -- 2638
+format.name$ -- 535
+if$ -- 5554
 int.to.chr$ -- 0
-int.to.str$ -- 15
+int.to.str$ -- 17
 missing$ -- 0
-newline$ -- 216
-num.names$ -- 310
-pop$ -- 2285
+newline$ -- 234
+num.names$ -- 351
+pop$ -- 2600
 preamble$ -- 1
-purify$ -- 105
+purify$ -- 115
 quote$ -- 0
-skip$ -- 1322
+skip$ -- 1479
 stack$ -- 0
-substring$ -- 364
-swap$ -- 790
-text.length$ -- 210
-text.prefix$ -- 7
+substring$ -- 379
+swap$ -- 878
+text.length$ -- 235
+text.prefix$ -- 8
 top$ -- 1
-type$ -- 292
+type$ -- 330
 warning$ -- 0
-while$ -- 173
+while$ -- 190
 width$ -- 0
-write$ -- 207
+write$ -- 224
 (There were 3 warnings)

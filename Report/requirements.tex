@@ -550,7 +550,6 @@ Sort files by name/date/size/type (req. 6); \\ \hline
 \textbf{Would have}\\ \hline
 External access to application; \\
 Possibility to minimise app; \\
-Regulation of upload/download speeds by ratio; \\
 Download continuation without loss of data (req 12); \\
 Download continuation at start up (req 13); \\ \hline
 \end{tabular}
@@ -590,9 +589,15 @@ usefulness, but which would not be feasible within the current time or with use 
 current technology. We recommend to add these features in the future if possible, since it 
 would improve the user-friendliness of the application.
 
-\textbf{External access to application}
-Our system runs a HTTP webserver on the TV, so external devices can access our application by as a web application. This means that devices such as tablets, laptops and smart phones can interact with our application via HTTP. A use case scenario would for example be that the user searches for a video on a tablet and then streams it to the TV. This provides a lot more features which can improve the usability of the system.
-
-\textbf{Possibility to minimise app}
-
-\textbf{Regulation of upload/download speeds by ratio}
+\textbf{External access to application} \\
+Our system runs a HTTP webserver on the TV, so external devices can access our application by as a web application.
+This means that devices such as tablets, laptops and smart phones can interact with our application via HTTP.
+A use case scenario would for example be that the user searches for a video on a tablet and then streams it to the TV.
+This provides a lot more features which can improve the usability of the system.
+\\\\
+\textbf{Possibility to minimise app} \\
+It could be useful to be able to minimise to the application while downloading content, so other things can be done in the meantime.
+There are two main reasons we did not implement this. The first is that the TV is not powerful enough to support this. It takes too much
+processing power to run the application we built (mainly because of the Dispersy and DHT modules), so let alone running something else alongside.
+The second reason is that the Samsung framework does not provide this functionality; it is not possible to minimise a web application in the Samsung 
+framework. If this becomes supported in the future -and if the TV\textquotesingle s become more powerful-, this would be a nice feature to add.

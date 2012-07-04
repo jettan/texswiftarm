@@ -1,10 +1,9 @@
 \chapter{Design}
 This chapter describes the design of the application to be built, this design is based on the requirements gathered previously. The design has to
 incorporate solutions to the problems mentioned in section \hyperref[sec:problems]{Problems}.
-This means the design has to include classes for a backend using swift, a frontend using Samsung\textquotesingle s SDK, a sandbox workaround and a
- means for inter-tv communication. First we will discuss the current software archictecture on the tv. Then we will discuss an extended version of
- this architecture
-which will allow us to implement solutions for the aforementioned problems. Finally the class diagram and other UML models will be discussed.
+This means the design has to include classes for a back-end using swift, a frontend using Samsung\textquotesingle s SDK, a sandbox workaround and a
+ means for inter-TV communication. First we will discuss the current software archictecture on the TV. Then we will discuss an extended version of
+ this architecture which will allow us to implement solutions for the aforementioned problems. Finally the class diagram and other UML models will be discussed.
 
 \section{Standard Samsung Software Architecture}
 As mentioned before in section \hyperref[sec:problems]{Problems}
@@ -14,10 +13,10 @@ because the Samsung SDK provides a set of methods in which this can be realised.
 %Hier plaatje van standaard situatie
 
 \section{Extended Software Architecture}
-The solution for being able to run custom made code has already been mentioned, namely getting root acces to the tv.
+The solution for being able to run custom made code has already been mentioned, namely getting root acces to the TV.
 This was already done in the orientation phase of this project. This leaves only one problem, the sandbox.
-The frontend and backend of our application need a way to communicate. It is not possible to perform direct calls to the backend, because the 
-Samsung SDK is completely sandboxed. Therefore we decided to use a networking approach, so the frontend and backend will act as seperate 
+The frontend and back-end of our application need a way to communicate. It is not possible to perform direct calls to the back-end, because the 
+Samsung SDK is completely sandboxed. Therefore we decided to use a networking approach, so the frontend and back-end will act as seperate 
 applications, communicating via a network (client-server architecture).
 
 In the Samsung SDK it is possible to send HTTP GET messages to any server and since we already have root access, it is possible to implement
