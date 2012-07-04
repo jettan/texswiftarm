@@ -1,10 +1,10 @@
 \chapter{Implementation}
 
-The implementation of the application required the use of three different programming languages each with their own specific task. In order to create a GUI we were forced to use JavaScript as this is the only option Samsung has made available for creating apps. However, the peer-to-peer engine, libswift, is written in C++ which meant that no matter what, we would also have to run C++ code in harmony with javascript. As we would be running C++ anyway and due to the complexity of the core of the application we decided to build the core, which manages downloads, uploads and streams, in C++ as well. This made managing the libswift library easier than it would have been from javascript.
-
-The link between JavaScript and C++ was made using HTTP requests with javascript being the client  and C++ running a local server. This allowed us to send commands to C++ from javascript and also retrieve data to be displayed in the GUI by using XML.
-
-In order to implement search functionality we made use of dispersy and DHT (distributed hash table), both of which are written in Python. In order to initialise both services and execute searches we needed a small amount of Python to manage dispersy and DHT. This also required a link between C++ and Python which was easily achieved using the standard Python library for C++.
+The implementation of the application required the use of three different programming languages each with their own specific task. In order to create a GUI we were forced to use JavaScript as this is the only option Samsung has made available for creating apps. However, the peer-to-peer engine, libswift, is written in C++ which meant that no matter what, we would also have to run C++ code in harmony with JavaScript. As we would be running C++ anyway and due to the complexity of the core of the application we decided to build the core, which manages downloads, uploads and streams, in C++ as well. This made managing the libswift library easier than it would have been from JavaScript.
+\\\\
+The link between JavaScript and C++ was made using HTTP requests with JavaScript being the client  and C++ running a local server. This allowed us to send commands from JavaScript to C++ and also retrieve data to be displayed in the GUI by using XML.
+\\\\
+In order to implement search functionality we made use of dispersy and DHT (distributed hash table), both of which are written in python. In order to initialise both services and execute searches we needed a small amount of python to manage dispersy and DHT. This also required a link between C++ and Python which was easily achieved using the standard Python library for C++.
 
 \section{JavaScript}
 
@@ -26,8 +26,10 @@ All files in the default dowload folder automatically start uploading on startup
 
 \subsection{Number of downloads}
 
-In the original design the plan was to allow the user to be able to download multiple files at the same time. This would be possible in principle and could be implemented in our application fairly easily. However, in order to save processor power on the TV we decided to limit the user to one download at a time. The user is able to switch between downloads and the application automatically starts downloading the next download in the list after it has finished.
+In the original design the plan was to allow the user to be able to download multiple files at the same time. This would be possible in principle and could easily be implemented in our application. However, in order to save processor power on the TV we decided to limit the user to one download at a time. The user is able to switch between downloads and the application automatically starts downloading the next download in the list after it has finished.
 
 \subsection{Excluded features}
 
-Due to limited time and hardware some features were not implemented at all so that we could focus more on the features we believed to be most important.
+Due to limited time and hardware some features were not implemented at all so that we could focus more on the features we believed to be most important. One of these features was the ability to rename files which was a should have according to our design. However, we decided to drop this functionality as it is a very minor feature which would take a relatively large amount of time to implement. At the time there were more major features that needed to be implemented.
+\\\\
+Another feature that was not implemented was sorting files by name, date, size and type. Just like renaming files this feature was not worth spending a lot of time on as it would not be a significant improvement to the application. Both of these features would be more important for a finished product but because we were focussing on creating a proof of concept other features took priority.
