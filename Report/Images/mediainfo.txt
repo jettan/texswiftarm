@@ -1,0 +1,64 @@
+General
+Complete name                            : sintel_360p.mp4
+Format                                   : MPEG-4
+Format profile                           : Base Media / Version 2
+Codec ID                                 : mp42
+File size                                : 62.1 MiB
+Duration                                 : 14mn 48s
+Overall bit rate mode                    : Variable
+Overall bit rate                         : 587 Kbps
+Encoded date                             : UTC 2010-09-29 13:12:54
+Tagged date                              : UTC 2010-09-29 13:12:54
+gsst                                     : 0
+gstd                                     : 888510
+gssd                                     : B4A7D0FC4HH1340707962860946
+gshh                                     : o-o.preferred.ams03s11.v14.lscache2.c.youtube.com
+
+Video
+ID                                       : 2
+Format                                   : AVC
+Format/Info                              : Advanced Video Codec
+Format profile                           : Baseline@L2.0
+Format settings, CABAC                   : No
+Format settings, ReFrames                : 1 frame
+Format settings, GOP                     : M=1, N=30
+Codec ID                                 : avc1
+Codec ID/Info                            : Advanced Video Coding
+Duration                                 : 14mn 48s
+Bit rate                                 : 480 Kbps
+Maximum bit rate                         : 1 915 Kbps
+Width                                    : 480 pixels
+Height                                   : 204 pixels
+Display aspect ratio                     : 2.35:1
+Frame rate mode                          : Constant
+Frame rate                               : 24.000 fps
+Color space                              : YUV
+Chroma subsampling                       : 4:2:0
+Bit depth                                : 8 bits
+Scan type                                : Progressive
+Bits/(Pixel*Frame)                       : 0.204
+Stream size                              : 50.9 MiB (82%)
+Title                                    : (C) 2007 Google Inc. v08.13.2007.
+Encoded date                             : UTC 2010-09-29 13:12:54
+Tagged date                              : UTC 2010-09-29 13:12:55
+
+Audio
+ID                                       : 1
+Format                                   : AAC
+Format/Info                              : Advanced Audio Codec
+Format profile                           : LC
+Codec ID                                 : 40
+Duration                                 : 14mn 47s
+Bit rate mode                            : Variable
+Bit rate                                 : 104 Kbps
+Maximum bit rate                         : 187 Kbps
+Channel(s)                               : 2 channels
+Channel positions                        : Front: L R
+Sampling rate                            : 44.1 KHz
+Compression mode                         : Lossy
+Stream size                              : 11.0 MiB (18%)
+Title                                    : (C) 2007 Google Inc. v08.13.2007.
+Encoded date                             : UTC 2010-09-29 13:12:54
+Tagged date                              : UTC 2010-09-29 13:12:55
+
+

@@ -6,50 +6,94 @@ Also, graphs will be used to show the performance of our application.
 Since we built a download and stream application for the Samsung SmartTV based on libswift, we dubbed our application SwiftTV.
 The name is kept simple because other existing applications based on libswift have similar names. This section explains how SwiftTV works.
 \\\\
-// Screenshot of main menu here 
+// Screenshot of main menu here
 \\\\
 The main menu points to the four different pages in the application, browse, downloads, player and settings. When selecting one of these pages the main menu remains visible.
 \\\\
-// Screenshot of browse here 
+// Screenshot of browse here
 \\\\
-Browse is where you can either browse your local filesystem to play a media file or search the internet for files to download or stream. Browsing the local filesystem is done with features included in the Samsung API and is therefor all done in JavaScript. When choosing a file from the browser it can be added to the playlist in the player page to be played. The search functionality sends a "/search:searchTerm" request to the HTTP server which in turn starts a search using Dispersy. After some time the search results are requested by JavaScript using a "/results" request. The results are returned in the form of an XML file and shown on screen. 
+Browse is where you can either browse your local filesystem to play a media file or search the internet for files to download or stream. Browsing the local filesystem is done with features included in the Samsung API and is therefor all done in JavaScript. When choosing a file from the browser it can be added to the playlist in the player page to be played. The search functionality sends a "/search:searchTerm" request to the HTTP server which in turn starts a search using Dispersy. After some time the search results are requested by JavaScript using a ``/results'' request. The results are returned in the form of an XML file and shown on screen. 
 \\\\
-The user can select one of these results and choose to either download ot stream it. JavaScript either sends a "/add:hash" or "/stream:hash request" depending on the choice. If download is chosen the the download is added to the list in DownloadManager and start downloading. If stream is chosen a stream is opened and is added to the playlist on the player page.
+The user can select one of these results and choose to either download ot stream it. JavaScript either sends a ``/add:hash'' or ``/stream:hash request'' depending on the choice. If download is chosen the the download is added to the list in DownloadManager and start downloading. If stream is chosen a stream is opened and is added to the playlist on the player page.
 \\\\
-// Screenshot of player here 
+// Screenshot of player here
 \\\\
 Player is where videos and streams can be viewed. To view videos or streams they must first be added to the playlist while in the browser. Videos will start playing in the small screen but full screen can be enabled afterwards.
 \\\\
-// Screenshot of downloads here 
+// Screenshot of downloads here
 \\\\
-Downloads is where the current list of downloads can be viewed. Downloads can be paused, stopped and resumed. JavasScript will send "/pause:hash", "/remove:hash" and "/resume:hash" requests to do this. When stopping a download it will be removed from the list. 
+Downloads is where the current list of downloads can be viewed. Downloads can be paused, stopped and resumed. JavasScript will send ``/pause:hash'', ``/remove:hash'' and ``/resume:hash'' requests to do this.
+When stopping a download it will be removed from the list.
 \\\\
-// Screenshot of settings here 
+// Screenshot of settings here
 \\\\
-In the settings page users can set their maximum download and upload speed as well as the download location. These settings are saved in memory and loaded on startup. When the settings are changed JavaScript sends a "/settings:upspeed:downspeed:downloadpath" request to the HTTP server.
-
+In the settings page users can set their maximum download and upload speed as well as the download location. These settings are saved in memory and loaded on startup. 
+When the settings are changed JavaScript sends a ``/settings:upspeed:downspeed:downloadpath'' request to the HTTP server.
 
 \section{Measurements}
-For this section, we measured the CPU and memory usage of the application. We measured these values against time and the download speed.
+For this section, we measured the CPU and memory usage of the application against the time.
+This way, we can see how much resources our application needs. The measurements were done on a Samsung D7000
+TV, \footnote{\url{http://www.samsung.com/uk/consumer/tv-audio-video/television/led-tv/UE40D7000LUXXU}} while playing a stream.
+The Sintel video\ref{fig:sintel} was used for the tests. Several measurements were made, where we varied the download speed limits for the streams.
+Then the same measurements were done for the total CPU and memory usage, so we can see how much resources the TV needs in total while running
+our application. Also, measurements were taken while the TV was being idle, to show the exact differences between normal circumstances and situations
+that require more CPU and memory resources.
 
-\newpage
-\subsection{Memory/CPU usage while idle}
+\begin{center}
+\begin{figure}[h]
+	\centering
+	\mbox{\includegraphics[width=0.8\textwidth]{Images/sintel.jpg}}
+	\caption{Screenshot of the video used. Video and screenshot are made by the developers of the Sintel project.}
+	\label{fig:sintel}
+\end{figure}
+
+\end{center}
+\scalebox{0.6}{
+\lstinputlisting{Images/mediainfo.txt}
+}
+
+\subsection{Memory/CPU usage of SwiftTV}
 
 \begin{center}
 \begin{figure}[h]
 	\centering
 	\mbox{\includegraphics[width=1.2\textwidth]{Images/idle.png}}
+	\caption{CPU and memory usage of the application, while being idle.}
 	\label{graph:idle}
-	\caption{CPU and memory usage while the TV is only running the application, not doing anything else.}
 \end{figure}
 \end{center}
 
+Figure \ref{graph:idle} shows the CPU and memory usage of only the application, while being idle.
+The peak in the beginning depicts the initialisation of the application, where modules such as Dispersy are start up.
+Figure \ref{graph:500kbs} shows the CPU and memory usage while streaming the video at 500 kb/s. It can be seen that the CPU usage is
+always under 16\%, while this upper limit grows with the bitrate we set, as shown in \ref{700kbs) and \ref{1Mb/s}.
+
+\begin{center}
+\begin{figure}[h]
+	\centering
+	\mbox{\includegraphics[width=1.2\textwidth]{Images/500kbs.png}}
+	\caption{CPU and memory usage while streaming at 500 kb/s.}
+	\label{graph:500kbs}
+\end{figure}
+\end{center}
 
 \begin{center}
 \begin{figure}[h]
 	\centering
 	\mbox{\includegraphics[width=1.2\textwidth]{Images/700kbs.png}}
-	\label{graph:700kbs}
 	\caption{CPU and memory usage while streaming at 700 kb/s.}
+	\label{graph:700kbs}
 \end{figure}
 \end{center}
+
+\begin{center}
+\begin{figure}[h]
+	\centering
+	\mbox{\includegraphics[width=1.2\textwidth]{Images/1000kbs.png}}
+	\caption{CPU and memory usage while streaming at 1 MB/s.}
+	\label{graph:1Mbs}
+\end{figure}
+\end{center}
+
+\clearpage
+\subsection{Total Memory/CPU usage}
