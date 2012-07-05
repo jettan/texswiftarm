@@ -73,7 +73,7 @@ Once that all elements had been completed it was a matter of connecting them to 
 		\hline
 \end{tabular}
 \caption{Order of events}
-\label{tab:planning}
+\label{tab:planning1}
 \end{table}
 
 \begin{table}
@@ -120,7 +120,7 @@ Once that all elements had been completed it was a matter of connecting them to 
 		\hline
 \end{tabular}
 \caption{Order of events}
-\label{tab:planning}
+\label{tab:planning2}
 \end{table}
 
 \begin{table}
@@ -146,9 +146,10 @@ Once that all elements had been completed it was a matter of connecting them to 
 		\hline
 \end{tabular}
 \caption{Order of events}
-\label{tab:planning}
+\label{tab:planning3}
 \end{table}
 
+See \url{http://www.youtube.com/watch?v=yP4QkMENqX4} to view the development process of the application. In the beginning, we committed everything under one name since we were working together closely. Also, Jethro and Anass commited using the same account.
 
 \section{Testing}
 
@@ -177,7 +178,7 @@ to fully compile some of these packages, of which the Python interpreter is one 
 developed by the Tribler team were written in Python. Since we had to use these modules in our application, we also needed to install Python on the TV. 
 \\\\
 We succeeded in cross-compiling and running the interpreter on the TV, but not in cross-compiling the standard Python-modules we need to run simple Python executables.
-Our solution was to emulate the ARMv7 processor with QEMU \cite{qemu}. Within this emulation, we installed a copy of Ubuntu, \cite{ubuntu} in which we were able to install the Python package with the apt tool.
+Our solution was to emulate the ARMv7 processor with QEMU \cite{qemu}. Within this emulator, we installed a copy of Ubuntu, \cite{ubuntu} which functioned as a binary compatible development platform and with which we were able to install the Python package with the apt tool.
 To achieve this, it was also needed to enable networking within QEMU. \cite{qemu-network} Then we copied the binary files to the TV, after which we could succesfully run the Python interpreter together with all its dependencies.
 \\\\
 Aside from Python, we also installed other applications via QEMU such as bash, sshd etc. to make it easier to work on the TV to accelerate the development.
@@ -190,7 +191,7 @@ We solved this problem by cross-compiling iptables\cite{iptables} for the TV, so
 \begin{center}
 \begin{figure}[h]
 	\centering
-	\mbox{\includegraphics[width=1.2\textwidth]{Images/tcp_rst.png}}
+	\mbox{\includegraphics[width=1\textwidth]{Images/tcp_rst.png}}
 	\caption{Screenshot of wireshark. The RST package is highlighted in orange. Also, in the lower part of the screen it can be seen that the RST flag is set.}
 	\label{fig:TCP_RST}
 \end{figure}
@@ -224,14 +225,14 @@ In the end, we solved this problem by implementing a new HTTP server by ourselve
 \end{center}
 
 \subsection{Communication between JavaScript and C++}
-One of the first issues we encountered was how to link javascript to C++ so that we could call C++ functions from within the GUI and get return values back. Initially we wanted to use a language binder like SquirrelFish or a javascript engine for C++ like google V8. However due to the restrictions set by Samsung you are forced to develop the javascript app using their SDK and it is impossible to add any additional tools. This left us with the standard javascript functionality and the Samsung API. As Samsung does not allow any development outside of javascript there was no support for calling C++ applications in their API either. The only remaining option was to use HTTP requests which is part of the standard functionality in javascript.
+One of the first issues we encountered was how to link JavaScript to C++ so that we could call C++ functions from within the GUI and get return values back. Initially we wanted to use a language binder like SquirrelFish or a JavaScript engine for C++ like google V8. However due to the restrictions set by Samsung you are forced to develop the JavaScript app using their SDK and it is impossible to add any additional tools. This left us with the standard JavaScript functionality and the Samsung API. As Samsung does not allow any development outside of JavaScript there was no support for calling C++ applications in their API either. The only remaining option was to use HTTP requests which is part of the standard functionality in JavaScript.
 \\\\
-This did require us to be running an HTTP server in C++ which needs to be running before the javascript app had even been started. Newer version of the firmware also support HTML5 and websockets. This would allow for better two way communication betweem javascript and C++ rather than javascript constantly polling the HTTP server when it needs updates. The downside of this newer firmware is that there is no known way to gain root access yet which is why we could not use it.
+This did require us to be running an HTTP server in C++ which needs to be running before the Javascript app had even been started. Newer version of the firmware also support HTML5 and websockets. This would allow for better two way communication betweem JavaScript and C++ rather than JavaScript constantly polling the HTTP server when it needs updates. The downside of this newer firmware is that there is no known way to gain root access yet which is why we could not use it.
 
 \subsection{Starting the HTTP server}
 
-Sending HTTP requests was the only way to communicate between javascript and C++ but there 
-was no way to start the HTTP server in C++ from javascript. We needed to start the HTTP 
+Sending HTTP requests was the only way to communicate between JavaScript and C++ but there 
+was no way to start the HTTP server in C++ from JavaScript. We needed to start the HTTP 
 server as soon as the television was switched on. In principle it would have been possible 
 to run the HTTP server as a daemon on start-up but it was not possible to edit the Samsung 
 init scripts. SamyGO, however, also uses init scripts when they root the television which 
