@@ -4,7 +4,7 @@ The implementation of the application required the use of three different progra
 \\\\
 A language wrapper between C++ and JavaScript was not found, and could not have been used anyway because of the sandboxed environment. A solution we found to connect the JavaScript front-end with the C++ back-end was to use HTTP GET requests. By running an HTTP web server written in C++, a client-server communication mechanism could be built between the two languages. The JavaScript client can send HTTP requests to the server, and the server can perform the necessary function calls to the libswift engine and the other code necessary for the project. A small drawback is that the current firmware version of the tv does not have HTML5, which has support for websockets. Websockets remove the need of continuous polling, and allow the server to send responses(results) back whenever he's ready, without blocking the client. 
 \\\\
-In order to implement search functionality we made use of dispersy(message handling system used in Tribler) and a DHT (distributed hash table), both of which are written in python. In order to initialise both services and execute searches we needed a small amount of Python to manage dispersy and DHT. For this purpose a language wrapper was sufficient.The link between C++ and Python was provided by the Python/C API\footnote{http://docs.python.org/c-api/}.
+In order to implement search functionality we made use of dispersy(message handling system used in Tribler) and a DHT (distributed hash table), both of which are written in python. In order to initialise both services and execute searches we needed a small amount of Python to manage dispersy and DHT. For this purpose a language wrapper was sufficient.The link between C++ and Python was provided by the Python/C API\footnote{\url{http://docs.python.org/c-api/}}.
 
 \section{JavaScript}
 The JavaScript front-end consists of 5 scenes (classes), namely Main, Browse, Downloads, Player and Settings.
@@ -16,16 +16,23 @@ In the Settings scene some settings can be set, like the download path and limit
 Most of this functionality is actually done by the C++ code, but in the scenes HTTP GET requests are sent to the webserver to execute the functions.
 
 \section{C++}
-
 The implementation of the C++ part ended up being quite different from the business class diagram, which can be found in the requirements chapter. The main reason for this is that the functionality of the filemanager could be done in JavaScript and as a result the necessity for that functionality in C++ dissapeared. There was also no need for a seperate download and upload class because in libswift a download and an upload are essentially the same thing. When you are downloading you are also automatically uploading and an upload is just a download at 100\% completion. These changes meant that the end product looks a lot like the the class diagram in the design chapter.
 
 \section{Python}
-Implementing the python part was as easy as it should be, since everything is already available from Tribler. The only thing needed to do is to call the methods we need and disable all other parts we don't use. Some patches were required in Tribler code, but were very easy to do.
-The only file we made is the DispersyInterface, which actually starts a Tribler session with only DHT and dispersy. To save resources, we were recommended to disable all other parts such as BuddyCast, torrent collecting, internal tracker, swift and such. Additionally, we do not join the AllChannelCommunity for the same reason.
+Implementing the Python part was as easy as it should be, since everything was already available from Tribler. The only thing needed to do was to call the methods we need and disable all other parts we do not use. 
+Some patches were required in Tribler code, but were very easy to apply. The only file we made in Python was the DispersyInterface, which actually starts a Tribler session with only DHT and dispersy. 
+To save resources, we were recommended to disable all the other parts of Tribler, since they are not used in our software.
 
 \section{Changes during development}
-
 During development it is almost inevitable that there will be changes from the original design. In this part we will discuss the largest changes we decided to make or were forced to make.
+
+\subsection{Software Improvement Group}
+Our code was evaluated by the Software Improvement Group\footnote{\url{http://www.sig.eu/nl/}}, which checks the overall quality of software projects such as ours. 
+During this project, we sent them our code twice. In general, they were satisfied with the quality of our code and documentation, meaning that our
+code is maintained well. Our only flaw was that certain methods were implemented in too many lines, making them complex.
+The solution to this was to break these methods up in submethods, which are then called in the original method. Also, we were not aware that the testsuite 
+had to be sent as well, so they were not able to check our testsuite. At the time we sent our code to SIG, however, we already had a test suite testing
+the crucial parts of our system. Their feedback can be found in the \hyperref[sec:sig]{appendix}.
 
 \subsection{Upload visibility}
 

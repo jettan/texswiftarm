@@ -1,10 +1,11 @@
-\chapter*{Appendix A}
+\appendix
+\chapter{UML Models}
 
-\section*{Business Class Diagram}
+\section{Business Class Diagram}
 
 \begin{center}
 \begin{figure}[h!]
-\scalebox{0.75}{
+\scalebox{0.65}{
 \begin{tikzpicture}
 %\begin{umlpackage}{p}
 %\begin{umlpackage}{sp1}
@@ -102,7 +103,7 @@
 \end{figure}
 \end{center}
 
-\section*{Use Case Dynamic Models}
+\section{Use Case Dynamic Models}
 \label{sec:req_dynamic_models}
 \begin{figure}[h!]
 \scalebox{1}{
@@ -348,7 +349,7 @@
 
 \clearpage
 
-\section*{Class diagram}
+\section{Class diagram}
 
 \begin{center}
 \begin{figure}[h!]
@@ -430,7 +431,7 @@
 \end{figure}
 \end{center}
 
-\section*{Dynamic models}
+\section{Dynamic models}
 
 \begin{figure}[h!]
 \scalebox{1}{
@@ -693,23 +694,35 @@ padding=3]{Stream}{Stream}
 
 \clearpage
 
-\chapter*{Appendix B}
-\section*{Init scripts}
+\chapter{SIG feedback}
+\label{sec:sig}
+\section{First feedback}
+De code van het systeem scoort vier sterren op ons onderhoudbaarheidsmodel, wat betekent dat de code bovengemiddeld onderhoudbaar is. De hoogste score is niet behaald door een lagere score voor Unit Size en de Unit Complexity.
 
+Voor Unit Size wordt er gekeken naar het percentage code dat bovengemiddeld lang is. Het opsplitsen van dit soort methodes in kleinere stukken zorgt ervoor dat elk onderdeel makkelijker te begrijpen, te testen en daardoor eenvoudiger te onderhouden wordt. Binnen de extreem lange methodes in dit systeem, zoals bijvoorbeeld de 'HttpServer::handleRequest'-methode, zijn aparte stukken functionaliteit te vinden welke ge-refactored kunnen worden naar aparte methodes. Commentaarregels zoals bijvoorbeeld '// Message will look like: "/pause:roothash"' en ' // Some garbage collecting.' zijn een goede indicatie dat er een autonoom stuk functionaliteit te ontdekken is. Ook aan de kant van de 'swift\_p2ptv' zijn langere methoden te vinden, bijvoorbeeld 'ScenePlayer.prototype.handleKeyDown'. In dit type methoden is het aan te raden om de afhandeling van een bepaalde 'keyCode' in een aparte methode te zetten, dit maak het makkelijker om de afzonderlijke stukken functionaliteit te begrijpen en te testen. Het is aan te raden kritisch te kijken naar de langere methodes binnen dit systeem en deze waar mogelijk op te splitsen.
+
+Voor Unit Complexity wordt er gekeken naar het percentage code dat bovengemiddeld complex is. Ook hier geldt dat het opsplitsen van dit soort methodes in kleinere stukken ervoor zorgt dat elk onderdeel makkelijker te begrijpen, makkelijker te testen en daardoor eenvoudiger te onderhouden wordt. In dit geval komen de meest complexe methoden ook naar voren als de langste methoden, waardoor het oplossen van het eerste probleem ook dit probleem zal verhelpen.
+
+Over het algemeen scoort de code bovengemiddeld, hopelijk lukt het om dit niveau te behouden tijdens de rest van de ontwikkelfase. Als laatste nog de opmerking dat er geen (unit)test-code is gevonden in de code-upload. Het is sterk aan te raden om in ieder geval voor de belangrijkste delen van de functionaliteit automatische tests gedefinieerd te hebben om ervoor te zorgen dat eventuele aanpassingen niet voor ongewenst gedrag zorgen.
+
+\chapter{Scripts}
 These scripts are already available in the TV when it is rooted. These files are provided by the SamyGO community and are loaded at startup. We edited these files and added the code snippets below to start certain applications and set up certain rules.
 
-\subsection*{01\_01\_catch\_crap.init}
+\subsection{01\_01\_catch\_crap.init}
 \scalebox{0.6}{
 \lstinputlisting{Images/01_01_catch_crap.init}
 }
 
-\subsection*{02\_04\_vusb.init}
+\subsection{02\_04\_vusb.init}
 \label{sec:vusb_init}
 \scalebox{0.6}{
 \lstinputlisting{Images/02_04_vusb.init}
 }
 
-\chapter*{Appendix C}
-\section*{Orientation Report}
+\chapter{Terms of reference}
+\label{sec:terms}
+\includepdf[pages={1-2}]{Images/terms.pdf}
+
+\chapter{Orientation Report}
 \label{sec:orientation}
 \includepdf[pages={1-13}]{Images/orientation.pdf}
