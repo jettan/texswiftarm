@@ -102,7 +102,7 @@ that require more CPU and memory resources.
 \begin{figure}[h]
 	\centering
 	\mbox{\includegraphics[width=1.2\textwidth]{Images/500kbs.png}}
-	\caption{CPU and memory usage while streaming at 500 kB/s.}
+	\caption{CPU and memory usage while streaming at 500 kB/s. The stream was stopped around 140 s.}
 	\label{graph:500kbs}
 \end{figure}
 \end{center}
@@ -111,7 +111,8 @@ that require more CPU and memory resources.
 \begin{figure}[h]
 	\centering
 	\mbox{\includegraphics[width=1.2\textwidth]{Images/700kbs.png}}
-	\caption{CPU and memory usage while streaming at 700 kB/s. This is also the bitrate of the video used. \ref{fig:sintel}}
+	\caption{CPU and memory usage while streaming at 700 kB/s. This is approximately the bitrate of the video used. \ref{fig:sintel}
+	The stream was stopped around 110 s.}
 	\label{graph:700kbs}
 \end{figure}
 \end{center}
@@ -120,30 +121,28 @@ that require more CPU and memory resources.
 \begin{figure}[h]
 	\centering
 	\mbox{\includegraphics[width=1.2\textwidth]{Images/1000kbs.png}}
-	\caption{CPU and memory usage while streaming at 1 MB/s.}
+	\caption{CPU and memory usage while streaming at 1 MB/s. The stream was stopped around 110 s.}
 	\label{graph:1Mbs}
 \end{figure}
 \end{center}
 \clearpage
 
-Figure \ref{graph:idle} shows the CPU and memory usage of only the application, while being 
+Figure \ref{graph:idle} shows the CPU and memory usage of only the application, while being
 idle.
-The peak in the beginning depicts the initialisation of the application, where modules such 
+The peak in the beginning depicts the initialisation of the application, where modules such
 as Dispersy are started up.
-Figure \ref{graph:500kbs} shows the CPU and memory usage while streaming the video at 500 
+Figure \ref{graph:500kbs} shows the CPU and memory usage while streaming the video at 500
 kB/s. It can be seen that the CPU usage is
-always under 16\%, while this upper limit grows with the bitrate we set, as shown in 
+always under 16\%, while this upper limit grows with the bitrate we set, as shown in
 \ref{graph:700kbs} and \ref{graph:1Mbs}.
 
-As expected, the lower the bitrate, the lower the CPU usage. However, the memory usage 
-always stays the same, even when the application is idle. This goes against our 
-expectations of memory usage of getting progressively higher the faster you stream. This 
-means that our goal of limiting the memory usage to 256 MB has been achieved, since the TV 
-has 350 MB of RAM, while we are only using 10\% of it. Our goal of having a response time 
-of 300 ms has not been achieved, however. From our own experience, we see that the 
-application responds too slow (between 1 and 2 seconds). Even though we allowed the 
-program to use 100\% of CPU resources, we see that this was not even necessary since it 
+As expected, the lower the bitrate, the lower the CPU usage. However, the memory usage
+always stays the same, even when the application is idle. This goes against our
+expectations of memory usage of getting progressively higher the faster you stream. This
+means that our goal of limiting the memory usage to 256 MB has been achieved, since the TV
+has 350 MB of RAM, while we are only using 10\% of it. Our goal of having a response time
+of 300 ms has not been achieved, however. From our own experience, we see that the
+application responds too slow (between 1 and 2 seconds). Even though we allowed the
+program to use 100\% of CPU resources, we see that this was not even necessary since it
 only uses up to 23\% when streaming at 1 MB/s.
 
-\subsection{Total CPU/Memory usage}
-TODO: The same graphs, but then for the total CPU/Memory usage of the TV while running the application.
