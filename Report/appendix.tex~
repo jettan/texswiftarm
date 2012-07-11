@@ -708,7 +708,7 @@ Over het algemeen scoort de code bovengemiddeld, hopelijk lukt het om dit niveau
 
 \section{Second feedback}
 [Hermeting]
-In de tweede upload zien we dat de omvang van het systeem fors is gestegen, maar dat daarbij de score voor onderhoudbaarheid vrijwel gelijk is gebleven. Er is een lichte stijging te zien in de scores voor Unit Size en Unit Complexity, met name aan de kant van de 'swift\_p2ptv' lijken de units iets korter gemaakt te zijn. Door een daling van de score voor Module Coupling, welke het percentage van code wat relatief vaak wordt aangeroepen meet, blijft de score voor onderhoudbaarheid gelijk. Als laatste zien we in deze aanlevering ook test-code voor de server-kant.
+In de tweede upload zien we dat de omvang van het systeem fors is gestegen, maar dat daarbij de score voor onderhoudbaarheid vrijwel gelijk is gebleven. Er is een lichte stijging te zien in de scores voor Unit Size en Unit Complexity, met name aan de kant van de 'swift_p2ptv' lijken de units iets korter gemaakt te zijn. Door een daling van de score voor Module Coupling, welke het percentage van code wat relatief vaak wordt aangeroepen meet, blijft de score voor onderhoudbaarheid gelijk. Als laatste zien we in deze aanlevering ook test-code voor de server-kant.
 
 Uit deze observaties kunnen we concluderen dat de aanbevelingen van de vorige evaluatie zijn meegenomen in het ontwikkeltraject. Mochten er nog aanpassingen worden gedaan dan is het aan te raden kritisch naar 'Settings.cpp' te kijken en de functionaliteit die specifiek is voor de settings los te trekken van algemenere helper-functies.
 

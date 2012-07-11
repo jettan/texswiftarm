@@ -31,8 +31,17 @@ Our code was evaluated by the Software Improvement Group\footnote{\url{http://ww
 During this project, we sent them our code twice. In general, they were satisfied with the quality of our code and documentation, meaning that our
 code is maintained well. Our only flaw was that certain methods were implemented in too many lines, making them complex.
 The solution to this was to break these methods up in submethods, which are then called in the original method. Also, we were not aware that the testsuite 
-had to be sent as well, so they were not able to check our testsuite. At the time we sent our code to SIG, however, we already had a test suite testing
-the crucial parts of our system. Their feedback can be found in the \hyperref[sec:sig]{appendix}.
+had to be sent as well, so they were not able to check our testsuite. At the time we sent our code for the first time to SIG, however, we already had a test suite testing
+the crucial parts of our system.
+
+The second feedback confirmed our efforts in improving the code according to the guidelines the group gave us the first time.
+Even though our code scored better at some parts, it also scored less on other parts. Compared to the code we gave the first time,
+the code for the second feedback contained a lot of code which depend on each other. In other words, the coupling was a bit tighter than before.
+One of the reasons for this is that we extracted duplicate code from different files and implemented them in Settings.cpp, making Settings.cpp
+a generic file containing helper-functions. The result was that most files depend on Settings.cpp, because it contains a lot of generic functions.
+Even though our code grew a lot, we still managed to maintain the code well in general.
+
+Their feedback can be found in the \hyperref[sec:sig]{appendix}.
 
 \subsection{Upload visibility}
 
