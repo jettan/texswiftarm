@@ -32,11 +32,9 @@ applications, communicating via a network (client-server architecture).
 In the Samsung SDK it is possible to send HTTP GET messages to any server and since we already have root access, it is possible to implement
 our own HTTP web server. This way one can create a bridge between the client software using Samsung\textquotesingle s framework and our own made 
 HTTP Server. Since the TV does not support HTML5 we were not able to use websockets which provide an open connection in which a reply can be 
-received asynchronously at any time. Thus, we are restricted to the client-server architecture where you have to keep polling for example an 
-update value.
+received asynchronously at any time. Thus, we are restricted to the client-server architecture where you have to keep polling to obtain an updated value for the progress of a download for example or an updated list of search results. 
 
-The server is seperated in two subsystems. These are the HTTP server, which handles HTTP requests and acts as a controller and the Search Engine, 
-which makes use of dispersy and DHT implemented by the tribler team. This can also be seen in figure \ref{fig:architecture}.
+The server is seperated in three subsystems. These are the HTTP server, which handles HTTP requests and acts as a controller, the Download Engine and the Search Engine, which makes use of dispersy and DHT implemented by the tribler team. This can also be seen in figure \ref{fig:architecture}.
 
 \begin{center}
 \begin{figure}[h]
