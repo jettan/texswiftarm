@@ -5,6 +5,7 @@ Also, graphs will be used to show the performance of our application.
 \section{SwiftTV}
 Since we built a download and stream application for the Samsung SmartTV based on libswift, we dubbed our application SwiftTV.
 The name is kept simple because other existing applications based on libswift have similar names. This section explains how SwiftTV works.
+Bigger screenshots can be found in the \hyperref[sec:screenshots]{appendix}.
 
 \begin{center}
 \begin{figure}[h!]
@@ -22,7 +23,7 @@ The \hyperref[fig:main]{main menu} points to the four different pages in the app
 	\centering
 	\mbox{\includegraphics[width=0.8\textwidth]{Images/BrowseScene.jpg}}
 	\label{fig:browse}
-	\caption{Screenshot of the Browse scene.}
+	\caption{Screenshot of the Browse/Search scene.}
 \end{figure}
 \end{center}
 
@@ -68,11 +69,11 @@ In the \hyperref[fig:settings]{settings page} users can set their maximum downlo
 For this section, we measured the CPU and memory usage of the application against the time.
 This way, we can see how much resources our application needs. The measurements were done on a Samsung D7000
 TV, \footnote{\url{http://www.samsung.com/uk/consumer/tv-audio-video/television/led-tv/UE40D7000LUXXU}} while playing a stream.
-The Sintel video\ref{fig:sintel} was used for the tests. Several measurements were made, where we varied the download speed limits for the streams.
+The Sintel video\ref{sec:sintel} was used for the tests. Several measurements were made, where we varied the download speed limits for the streams.
 Then the same measurements were done for the total CPU and memory usage, so we can see how much resources the TV needs in total while running
 our application. Also, measurements were taken while the TV was being idle, to show the exact differences between normal circumstances and situations
 that require more CPU and memory resources.
-\clearpage
+
 \begin{center}
 \begin{figure}[h!]
 	\centering
@@ -82,9 +83,6 @@ that require more CPU and memory resources.
 \end{figure}
 \end{center}
 
-\scalebox{0.6}{
-\lstinputlisting{Images/mediainfo.txt}
-}
 \clearpage
 
 \subsection{Memory/CPU usage of SwiftTV}

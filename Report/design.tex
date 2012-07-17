@@ -34,7 +34,7 @@ our own HTTP web server. This way one can create a bridge between the client sof
 HTTP Server. Since the TV does not support HTML5 we were not able to use websockets which provide an open connection in which a reply can be 
 received asynchronously at any time. Thus, we are restricted to the client-server architecture where you have to keep polling to obtain an updated value for the progress of a download for example or an updated list of search results. 
 
-The server is seperated in three subsystems. These are the HTTP server, which handles HTTP requests and acts as a controller, the Download Engine and the Search Engine, which makes use of dispersy and DHT implemented by the tribler team. This can also be seen in figure \ref{fig:architecture}.
+The server is seperated in three subsystems. These are the HTTP server, which handles HTTP requests and acts as a controller, the Download Engine and the Search Engine, which makes use of dispersy and DHT implemented by the tribler team (which are, like libswift, fully-organised). This can also be seen in figure \ref{fig:architecture}.
 
 \begin{center}
 \begin{figure}[h]
@@ -45,7 +45,6 @@ The server is seperated in three subsystems. These are the HTTP server, which ha
 	\label{fig:architecture}
 \end{figure}
 \end{center}
-\clearpage
 
 \section{Class Diagram}
 Figure \ref{fig:class_server} shows the class diagram for the webserver. These classes are then explained in more detail.

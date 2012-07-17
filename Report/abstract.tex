@@ -1,0 +1,31 @@
+\chapter*{Summary}
+Since their invention, TV\textquotesingle s have become one of the most popular media devices and can be found in almost every livingroom in the 
+world. For a long time, the functionality of the TV stayed the same: the ability to view television programs at certain fixed times of the day.
+Recently there has been development in the television market adding computing power and internet connectability to televisions.
+These new features open a whole new world of possibilities.
+
+The goal of this project was to create an application that runs on a Samsung SmartTV and uses the libswift peer-to-peer engine to download, upload 
+and stream files. To create an application for a Samsung SmartTV a software development kit has been provided which allows programmers to create 
+apps using JavaScript, HTML, CSS and Flash. This software development kit was used to create the front-end of our application. 
+The front-end consists of an internal media player to handle streaming content and media playback found
+ on an external USB device.
+
+A Samsung SmartTV runs a linux kernel in which we can properly run our download-engine which is written in C++.
+To be able to do this we gained root access to the TV, so it became possible to operate in the linux environment. After this was done, the back-end for our application was implemented in C++. In order to make the front-end communicate with the back-end, we used the client-server architecture where the front-end acts as a client and the back-end as a server.
+
+It was also needed to provide a communication mechanism between TV\textquotesingle s, so that content could be found and shared between TV\textquotesingle s. This was achieved by using the Dispersy and DHT modules developed by the
+tribler team. These modules were, however, implemented in Python. In order to make use of this, a part of our application is implemented in Python.
+
+Several steps were taken in order to develop this application. An analysis of requirements was made, which serves as the foundation of the design
+of our application. A design following the client-server pattern was made, after which class and sequence diagrams were created.
+
+During development we encountered a lot of problems, mostly because the TV runs a stripped version of the linux kernel. The consequence was that a
+lot of things were not available on the TV, so we had to cross-compile the necessities for the TV or use a binary compatible development platform. 
+Other problems we encountered were for example that the TV sends TCP RST packages to itself. Also, problems during implementation occured when we 
+used threads for the implementation of the HTTP server.
+
+Even though we encountered these problems, we were still able to maintain our schedule and develop everything in time.
+By doing several things together and by dividing the work correctly we were able to overcome the mentioned problems.
+ The result is the first fourth generation peer-to-peer application in the world running natively on a Samsung SmartTV.
+ Even though this is an achievement we are proud of, the application is still a proof of concept since current TV\textquotesingle s are not strong enough to run the application smoothly.
+ This might change in the future, when TV\textquotesingle s become more powerful.

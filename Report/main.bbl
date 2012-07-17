@@ -327,6 +327,27 @@
   \field{year}{2012}
 \endentry
 
+\entry{tribler2}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Zeilemaker}{Z.}%
+     {Niels}{N.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Pouwelse}{P.}%
+     {Johan}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{ZNPJ1}
+  \strng{fullhash}{ZNPJ1}
+  \field{sortinit}{Z}
+  \field{title}{Tribler: P2P Search, Share and Stream}
+  \field{year}{2012}
+  \warn{\item Invalid format of field 'month'}
+\endentry
+
 \lossort
 \endlossort
 

@@ -149,7 +149,34 @@ Once that all elements had been completed it was a matter of connecting them to 
 \label{tab:planning3}
 \end{table}
 
-See \url{http://www.youtube.com/watch?v=yP4QkMENqX4} to view the development process of the application. In the beginning, we committed everything under one name since we were working together closely. Also, Jethro and Anass commited using the same account.
+See \url{http://youtu.be/cNaLfay73TE?hd=1} to view the development process of the application.
+Up until week 4, we committed everything under one name since we did everything together.
+Also, Jethro and Anass commited using the same account.
+
+\section{Division of work}
+In week 4, we had a simple, working application with the basic features. This was a good basis to further develop our application on,
+so we began to build the real application. In order to speed up the development, we started to divide the tasks so that we could work in parallel.
+Each time we encountered a problem or something we still had to implement,
+ we wrote it down on sticky notes and put it on the whiteboard. \ref{fig:board} Whenever someone was done with his task, he could then take another task from the board.
+
+Most of the time, we worked in groups of two people, but there were also times that we worked individually.
+As so, Anass led the development of the client side of the application. The server side was mostly implemented by Samuel and Wilson, while Jethro
+ worked on different things (wherever help was needed). For example, even though we fixed the platform dependent problems together,
+ Jethro was often the one in charge of fixing these problems.
+
+\begin{center}
+\begin{figure}[h]
+	\centering
+	\mbox{\includegraphics[width=1\textwidth]{Images/process.jpg}}
+	\caption{The whiteboard used to keep track of tasks.}
+	\label{fig:board}
+\end{figure}
+\end{center}
+
+\section{Decision taking}
+The way we decided to implement certain features was rather simple. We first determined whether it was possible to implement the feature for the TV.
+If multiple solutions were proposed by the group, the complexity of the solution and the time it would take to implement it were taken into consideration.
+If all conditions were met, we just started to implement as much as possible.
 
 \section{Testing}
 
@@ -161,6 +188,7 @@ We chose not to fully test SearchEngine, the reason being that SearchEngine reli
 
 \section{Problems encountered}
 This section focusses on all the important problems we encountered while developing the application for the TV. A brief explanation will be given per problem together with the solution we came up with.
+ Some of these solutions were found with the help of the tribler team.
 
 \subsection{Rooting the television}
 The first hurdle before we could even start developing was gaining root access to the television. We needed this to be able to install libraries and execute code. Rooting the television should not have been an issue as there are tutorials and an app that roots the television for you from SamyGO\cite{SamyGO}. The problem we ran into is that the televisions we got had a new firmware for which there was no way to root yet.
@@ -186,7 +214,7 @@ Aside from Python, we also installed other applications via QEMU such as bash, s
 \subsection{TCP RST packages}
 It appeared that the Samsung TV sent TCP RST packages to itself after each HTTP request. TCP RST packages can be distinguished by looking at the fourth flag in the TCP header. This flag is the reset flag, which was activated in our case (see figure \ref{fig:TCP_RST}). Because of this, TCP connections to swift were interrupted each time a RST package was received, because the TCP connection was reset. This was a problem for file streaming, because the connection used by libswift to download the stream was continually interrupted, so the stream could not be played correctly. 
 \\\\
-We solved this problem by cross-compiling iptables\cite{iptables} for the TV, so we could set up some rules to block TCP RST packages. This required us to insert several kernel modules. Because this needs to be done each time the TV reboots, we added some rules to the init script of the TV so that these kernel modules are loaded automatically, together with the rules written for iptables (see \hyperref[sec:vusb_init]{appendix}).
+We solved this problem by cross-compiling iptables\cite{iptables} for the TV, so we could set up some rules to block these TCP RST packages. This required us to insert several kernel modules. Because this needs to be done each time the TV reboots, we added some rules to the init script of the TV so that these kernel modules are loaded automatically, together with the rules written for iptables (see \hyperref[sec:vusb_init]{appendix}).
 
 \begin{center}
 \begin{figure}[h]
